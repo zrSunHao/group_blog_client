@@ -1,0 +1,34 @@
+<div class="node" *ngFor="let node of nodes">
+  <div
+    draggable="true"
+    (drag)="onDragStart(node, $event)"
+    (drop)="onDrop(node, $event)"
+    (dragover)="onDragOver($event)"
+    class="node-top"
+    (click)="onClicked(node)"
+    [ngStyle]="{
+      'background-color': service.selectedNode == node ? '#009999' : '#1D7373',
+      color: service.selectedNode == node ? 'whitesmoke' : 'lightgray'
+    }"
+  >
+    <img
+      *ngIf="node.open"
+      src="assets/icons/arrow_down.png"
+      alt="&#9660;"
+      (click)="toggle(node, $event)"
+    />
+    <img
+      *ngIf="!node.open"
+      src="assets/icons/arrow_right.png"
+      alt="&#9658;"
+      (click)="toggle(node, $event)"
+    />
+    {{ node.name }}
+  </div>
+  <div
+    *ngIf="node.open && node.children && node.children.length > 0"
+    class="node-body"
+  >
+    <app-sun-tree [nodes]="node.children"></app-sun-tree>
+  </div>
+</div>

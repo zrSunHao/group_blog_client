@@ -1,0 +1,29 @@
+.node{
+    min-height: 2.1rem;
+    height: auto;
+    color: lightgray;
+}
+
+.node-top{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    background-color: #1D7373;
+    height: 1.7rem;
+}
+
+.node-top img{
+    height: 1rem;
+    width: 1rem;
+    margin-right: 1rem;
+    margin-left: 0.25rem;
+}
+
+.node-body{
+    height: auto;
+    border-left: 2px dotted #fff;
+    border-bottom: 2px dotted #fff;
+    margin: 0 0 10px 10px;
+    padding: 10px 0 10px 20px;
+}

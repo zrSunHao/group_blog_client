@@ -1,0 +1,70 @@
+.page-container {
+    display: grid;
+    grid-template-columns: 20rem auto;
+    gap: 1rem;
+    height: 100%;
+    width: 100%;
+    overflow-y: hidden;
+}
+
+.tree-container {
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.editor-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.editor {
+    min-width: 768px;
+    max-width: 1024px;
+    // height: 90vh;
+    margin-top: 2rem;
+    overflow: auto;
+}
+
+:host ::ng-deep .fr-wrapper {
+    background-color: rgb(154 197 160);
+}
+
+:host ::ng-deep .dark-theme .fr-element.fr-disabled {
+    -webkit-user-select: auto;
+    user-select: auto;
+}
+
+:host ::ng-deep .dark-theme.fr-box.fr-basic.fr-top .fr-wrapper {
+    background-color: rgb(154 197 160);
+    border: 0;
+    overflow-y: auto;
+}
+
+:host ::ng-deep .dark-theme.fr-box.fr-basic .fr-element {
+    background-color: rgb(142 191 149);
+}
+
+:host ::ng-deep .dark-theme .fr-view .fr-class-code {
+    background-color: rgb(124 161 129);
+}
+
+:host ::ng-deep .dark-theme .fr-wrapper .fr-placeholder {
+    color: gray;
+}
+
+:host ::ng-deep .fr-toolbar {
+    border: 0;
+    background-color: #424242;
+    //display: none;
+}
+
+:host ::ng-deep .fr-second-toolbar {
+    border: 0;
+    background-color: #424242;
+    //display: none;
+}
