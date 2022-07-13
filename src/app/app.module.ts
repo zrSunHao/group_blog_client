@@ -5,39 +5,27 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
-// // Import all Froala Editor plugins.
-import 'froala-editor/js/plugins.pkgd.min.js';
-
-// Import a Froala Editor language file.
-import 'froala-editor/js/languages/zh_cn.js';
-
-// Import a third-party plugin.
-import 'froala-editor/js/third_party/font_awesome.min';
-import 'froala-editor/js/third_party/image_tui.min';
-// import 'froala-editor/js/third_party/spell_checker.min';
-import 'froala-editor/js/third_party/embedly.min';
-
-// Import Angular plugin.
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { SunTreeComponent } from './sun-tree/sun-tree.component';
 import { TreeService } from './sun-tree/tree.service';
 
+
+import { CommonModule } from '@angular/common';
+import { SunEditorModule } from './sun-editor/sun-editor.module';
+
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
-      SunTreeComponent
-   ],
+    SunTreeComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-
+    CommonModule,
     DragDropModule,
-
-    FroalaEditorModule,
-    FroalaViewModule
+    SunEditorModule
   ],
   providers: [TreeService],
   bootstrap: [AppComponent]

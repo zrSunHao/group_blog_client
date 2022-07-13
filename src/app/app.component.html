@@ -3,24 +3,17 @@
 <div class="page-container">
   <div class="tree-container">
     <div>
-      <button  (click)="onAddNode()">添加</button>
-      <button [disabled]="!service.selectedNode"(click)="onUpdateNode()">修改</button>
-      <button [disabled]="!service.selectedNode"(click)="onDeleteNode()">删除</button>
+      <button (click)="onAddNode()">添加</button>
+      <button [disabled]="!service.selectedNode" (click)="onUpdateNode()">
+        修改
+      </button>
+      <button [disabled]="!service.selectedNode" (click)="onDeleteNode()">
+        删除
+      </button>
     </div>
     <app-sun-tree [nodes]="service.nodes"></app-sun-tree>
   </div>
   <div class="editor-container">
-    <button (click)="save()">提交</button>
-    <div
-      [froalaEditor]="options"
-      [(froalaModel)]="editorContent"
-      class="editor"
-      id="eg-dark-theme"
-    >
-      Hello, Froala!
-    </div>
-    <!-- <div class="non-editable" contenteditable="false" >
-      <div [innerHTML]="editorContent"></div>
-    </div> -->
+    <app-sun-editor></app-sun-editor>
   </div>
 </div>
