@@ -10,7 +10,6 @@
 .tree-container {
     height: 100%;
     width: 100%;
-    padding: 1rem;
     overflow-y: auto;
 }
 
@@ -20,4 +19,9 @@
     justify-content: left;
     height: 100vh;
     overflow-y: auto;
+    width: 100%;
+}
+
+app-sun-editor {
+    width: 100%;
 }

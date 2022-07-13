@@ -1,39 +1,61 @@
-
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
+@use "@angular/material" as mat;
 @include mat.core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$blog-app-primary: mat.define-palette(mat.$indigo-palette);
-$blog-app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$blog-app-warn: mat.define-palette(mat.$red-palette);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$blog-app-theme: mat.define-light-theme((
-  color: (
-    primary: $blog-app-primary,
-    accent: $blog-app-accent,
-    warn: $blog-app-warn,
+$customer-app-primary: mat.define-palette(mat.$teal-palette);
+$customer-app-accent: mat.define-palette(mat.$amber-palette, 600);
+$customer-app-warn: mat.define-palette(mat.$red-palette, A400);
+$customer-app-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $customer-app-primary,
+      accent: $customer-app-accent,
+      warn: $customer-app-warn,
+    ),
   )
-));
+);
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($blog-app-theme);
+@include mat.all-component-themes($customer-app-theme);
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Material Icons"), local("MaterialIcons-Regular"),
+    url(./@arts/MaterialIcons-Regular.ttf) format("truetype");
+}
 
-/* You can add global styles to this file, and also import other style files */
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #303030;}
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "楷体", "Helvetica Neue", sans-serif;
+  color: lightgray;
+  background-color: #303030;
+  overflow-y: hidden;
+}
+
+@import "./@arts/common.css";

@@ -1,5 +1,14 @@
-<textarea
-  style="width: 300px;"
-  placeholder="dsad"
-  cdkTextareaAutosize
-></textarea>
+<div class="document-node-container">
+  <div class="node-input-container">
+    <mat-form-field appearance="outline">
+      <textarea
+        matInput
+        placeholder="请输入标题内容"
+        cdkTextareaAutosize
+      ></textarea>
+    </mat-form-field>
+  </div>
+  <div class="node-operate-container">
+    <app-operate></app-operate>
+  </div>
+</div>

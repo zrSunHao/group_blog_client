@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { SunEditorComponent } from './sun-editor.component';
 import { EditorAudioComponent } from './editor-audio/editor-audio.component';
@@ -17,12 +20,16 @@ import { EditorQuoteComponent } from './editor-quote/editor-quote.component';
 import { EditorTableComponent } from './editor-table/editor-table.component';
 import { EditorVideoComponent } from './editor-video/editor-video.component';
 import { EditorService } from './editor.service';
+import { OperateComponent } from './operate/operate.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    MatInputModule, 
+    MatInputModule,
     MatFormFieldModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
   ],
   declarations: [
     SunEditorComponent,
@@ -37,11 +44,12 @@ import { EditorService } from './editor.service';
     EditorQuoteComponent,
     EditorTableComponent,
     EditorVideoComponent,
+    OperateComponent,
   ],
-  exports:[
+  exports: [
     SunEditorComponent
   ],
-  providers:[
+  providers: [
     EditorService
   ]
 })

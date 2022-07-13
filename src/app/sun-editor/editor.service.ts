@@ -27,6 +27,29 @@ export class DocumentNode {
   children: DocumentNode[] = [];
 }
 
+export enum DocumentOperateType {
+  edit = 1,
+  copy = 2,
+  paste = 3,
+  delete = 4,
+  dialog = 10,
+  upload = 11,
+  download = 12,
+  other = 0,
+}
+
+export class NodeTypeItem {
+  type: DocumentNodeType = DocumentNodeType.other;
+  name: string = '';
+  icon: string = '';
+}
+
+export class OperateItem {
+  type: DocumentOperateType = DocumentOperateType.other;
+  name: string = '';
+  icon: string = '';
+}
+
 @Injectable({
   providedIn: 'root'
 })
