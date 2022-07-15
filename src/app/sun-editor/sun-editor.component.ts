@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { EditorService, DocumentNode } from './editor.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { EditorService, DocumentNode, DocumentNodeType } from './editor.service';
 
 @Component({
   selector: 'app-sun-editor',
@@ -7,6 +7,9 @@ import { EditorService, DocumentNode } from './editor.service';
   styleUrls: ['./sun-editor.component.scss']
 })
 export class SunEditorComponent implements OnInit {
+
+  nodeType = DocumentNodeType;
+  @Input() nodes: DocumentNode[] = [];
 
   constructor(public service: EditorService) { }
 

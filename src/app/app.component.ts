@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { DOCUMENT_DATA } from './help';
+import { DocumentNode, DocumentNodeType } from './sun-editor/editor.service';
 import { TREENODES } from './sun-tree/model';
 import { TreeNode, TreeService } from './sun-tree/tree.service';
 
@@ -10,6 +12,7 @@ import { TreeNode, TreeService } from './sun-tree/tree.service';
 export class AppComponent {
   title = 'blog-app';
   nodes: TreeNode[] = TREENODES;
+  items: DocumentNode[] = DOCUMENT_DATA;
 
   public constructor(public service: TreeService) {
     this.service.nodes = this.nodes;

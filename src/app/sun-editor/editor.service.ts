@@ -24,6 +24,8 @@ export class DocumentNode {
   content: string = '';
   url: string = '';
   remark: string = '';
+  level: number = 0;
+  order: number = 1;
   children: DocumentNode[] = [];
 }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { EditorService, DocumentNode } from '../editor.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { EditorService, DocumentNode } from '../editor.service';
   styleUrls: ['./editor-video.component.scss']
 })
 export class EditorVideoComponent implements OnInit {
+
+  @Input() node: DocumentNode = new DocumentNode();
 
   constructor(public service: EditorService) { }
 
