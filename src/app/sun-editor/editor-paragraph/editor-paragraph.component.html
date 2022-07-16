@@ -7,7 +7,7 @@
         #input
         [(ngModel)]="node.content"
         placeholder="请输入段落内容"
-        cdkTextareaAutosize
+        rows="5"
       ></textarea>
     </mat-form-field>
     <div class="p-container" *ngIf="!edit" (click)="onInputFocus()">
@@ -18,7 +18,7 @@
       </p>
     </div>
   </div>
-  <div class="node-operate-container" *ngIf="edit">
+  <div class="node-operate-container">
     <app-operate></app-operate>
   </div>
 </div>

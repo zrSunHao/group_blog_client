@@ -13,7 +13,7 @@ export class EditorImgComponent implements OnInit {
   file: any;
 
   @Input() node: DocumentNode = new DocumentNode();
-  containerStyle: LooseObject = { 'justify-content': 'left' }; //flex-start center flex-end
+  containerStyle: LooseObject = { 'justify-content': 'flex-start' }; //flex-start center flex-end
   imgStyle: LooseObject = { 'max-height': '20rem', };
 
   constructor(public service: EditorService) { }
@@ -60,7 +60,7 @@ export class EditorImgComponent implements OnInit {
           break;
       }
     } else {
-      this.containerStyle = { 'justify-content': 'center' };
+      this.containerStyle = { 'justify-content': 'flex-start' };
     }
   }
 

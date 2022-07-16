@@ -3,7 +3,7 @@
     width: 100%;
     justify-content: flex-start;
     align-items: flex-start;
-    max-width: calc(1024px + 6rem);
+    max-width: calc(768px + 6rem);
     margin-bottom: 0.5rem;
 }
 
@@ -16,8 +16,7 @@
 }
 
 .mat-form-field {
-    min-width: 768px;
-    max-width: 1024px;
+    width: 768px;
     display: block;
 }
 
@@ -26,6 +25,7 @@
     justify-content: flex-start;
     align-items: center;
     min-height: 2.5rem;
+    width: 768px;
 }
 
 .headline-container h2,

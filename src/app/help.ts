@@ -14,7 +14,11 @@ export const DOCUMENT_DATA: DocumentNode[] = [
                 ]
             },
             { type: DocumentNodeType.h3, content: '阆中起价1.8亿拍卖食堂30年经营权', url: '', remark: '', data: {}, order: 2, children: [] },
-            { type: DocumentNodeType.h3, content: '女孩做22页旅游攻略因太热没出酒店', url: '', remark: '', data: {}, order: 3, children: [] },
+            {
+                type: DocumentNodeType.h3, content: '女孩做22页旅游攻略因太热没出酒店', url: '', remark: '', data: {}, order: 3, children: [
+                    { type: DocumentNodeType.table, content: '姓名|职位|事项\n唐玄奘|组长|西天取经\n孙悟空|干事|降妖除魔\n猪八戒|斥候|牵马\n沙僧|下手|挑担子', url: '', remark: '', data: { position: 'center' }, order: 4, children: [] },
+                ]
+            },
         ]
     },
     { type: DocumentNodeType.h2, content: '上海二季度GDP同比下降13.7%', url: '', remark: '', data: {}, order: 2, children: [] },

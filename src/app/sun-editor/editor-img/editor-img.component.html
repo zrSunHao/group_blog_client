@@ -1,7 +1,7 @@
 <input type="file" #imageInput [hidden]="true" accept="image/*" (change)="onFileChange($event)" [ngModel]="file"/>
 <div class="editor-img-up-container" *ngIf="!node.url">
   <button mat-flat-button color="primary" (click)="onAvatarClick()">
-    <mat-icon>cloud_upload</mat-icon> 点击上传图片
+    <mat-icon>cloud_upload</mat-icon> &nbsp;&nbsp;点击上传图片
   </button>
 </div>
 

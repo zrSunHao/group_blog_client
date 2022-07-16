@@ -3,7 +3,8 @@
 }
 
 textarea {
-    overflow: hidden !important;
+    /* overflow: hidden !important; */
+    line-height:1.5rem !important;
 }
 
 .info-snackbar {
