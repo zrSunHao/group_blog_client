@@ -19,13 +19,17 @@ export enum DocumentNodeType {
   other = 0,
 }
 
+export interface LooseObject {
+  [key: string]: string
+}
+
 export class DocumentNode {
   type: DocumentNodeType = DocumentNodeType.other;
   content: string = '';
   url: string = '';
   remark: string = '';
-  level: number = 0;
   order: number = 1;
+  data: LooseObject = {};
   children: DocumentNode[] = [];
 }
 

@@ -1,9 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { EditorService, DocumentNode, DocumentNodeType } from '../editor.service';
-
-interface LooseObject {
-  [key: string]: string
-}
+import { EditorService, DocumentNode, DocumentNodeType, LooseObject } from '../editor.service';
 
 class PElement {
   text: string = '';
@@ -29,7 +25,6 @@ export class EditorParagraphComponent implements OnInit {
   constructor(public service: EditorService) { }
 
   ngOnInit() {
-    this.node.level = 1;
     this.onStatusChange();
   }
 
@@ -65,7 +60,6 @@ export class EditorParagraphComponent implements OnInit {
     const reg = /\$\{(.+?)\}/g;
     const rs = this.node.content.match(reg);
     if (!rs) return eles;
-    console.log(rs)
     let text = this.node.content;
     const symbol = 'xsxxsxxsx';
     const fix = '#|';
@@ -95,7 +89,6 @@ export class EditorParagraphComponent implements OnInit {
         eles.push({ text: x, style: {} });
       }
     })
-    console.log(eles)
     return eles;
   }
   //${名称|color:red;background:green;font-weight:bold;}

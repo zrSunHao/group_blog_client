@@ -1,0 +1,21 @@
+.editor-img-container {
+    display: flex;
+    //justify-content: flex-start;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.img-name-wrap {
+    font-size: 12px !important;
+    color: gray;
+    display: flex;
+    justify-content: center;
+}
+
+.editor-img-up-container {
+    display: flex;
+    justify-content: flex-start;
+    padding: 1rem 1rem 1rem 1rem;
+}

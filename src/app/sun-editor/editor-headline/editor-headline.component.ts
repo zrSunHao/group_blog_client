@@ -19,7 +19,6 @@ export class EditorHeadlineComponent implements OnInit {
   constructor(public service: EditorService) { }
 
   ngOnInit() {
-    this.node.level = 1;
     this.onStatusChange();
   }
 
