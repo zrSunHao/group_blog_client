@@ -1,13 +1,30 @@
-<input type="file" #imageInput [hidden]="true" accept="image/*" (change)="onFileChange($event)" [ngModel]="file"/>
-<div class="editor-img-up-container" *ngIf="!node.url">
-  <button mat-flat-button color="primary" (click)="onAvatarClick()">
-    <mat-icon>cloud_upload</mat-icon> &nbsp;&nbsp;点击上传图片
-  </button>
-</div>
+<div class="document-node-container">
+  <div class="node-input-container">
+    <input
+      type="file"
+      #imageInput
+      [hidden]="true"
+      accept="image/*"
+      (change)="onFileChange($event)"
+      [ngModel]="file"
+    />
+    <div class="editor-img-up-container" *ngIf="!node.url">
+      <button mat-flat-button color="primary" (click)="onAvatarClick()">
+        <mat-icon>cloud_upload</mat-icon>
+        &nbsp;&nbsp;点击上传图片
+      </button>
+    </div>
 
-<div class="editor-img-container" *ngIf="node.url" [ngStyle]="containerStyle">
-  <div>
-    <img [src]="node.url" alt="图片" [ngStyle]="imgStyle" />
-    <div class="img-name-wrap">{{ node.content }}</div>
+    <div
+      class="editor-img-container"
+      *ngIf="node.url"
+      [ngStyle]="containerStyle"
+    >
+      <img [src]="node.url" alt="图片" [ngStyle]="imgStyle" />
+    </div>
+  </div>
+
+  <div class="node-operate-container">
+    <app-operate></app-operate>
   </div>
 </div>

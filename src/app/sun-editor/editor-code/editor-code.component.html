@@ -1,3 +1,27 @@
-<p>
-  editor-code works!
-</p>
+<div class="document-node-container">
+  <div class="node-input-container">
+    <mat-form-field appearance="outline" *ngIf="edit">
+      <textarea
+        (blur)="onInputBlur()"
+        matInput
+        #input
+        [(ngModel)]="node.content"
+        placeholder="请输入段落内容"
+        rows="5"
+      ></textarea>
+    </mat-form-field>
+    <div class="code-container" *ngIf="!edit" (click)="onInputFocus()">
+      <div class="code-index-wrap">
+        <div class="code-index" *ngFor="let item of list; let i = index">
+          {{ i + 1 }}
+        </div>
+      </div>
+      <div class="code-wrap">
+        <p *ngFor="let item of list">{{ item }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="node-operate-container">
+    <app-operate></app-operate>
+  </div>
+</div>

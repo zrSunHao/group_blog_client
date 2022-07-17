@@ -1,21 +1,35 @@
+.document-node-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: calc(768px + 6rem);
+    margin-bottom: 0.7rem;
+}
+
+.node-input-container {
+    flex: auto;
+}
+
 .editor-img-container {
     display: flex;
     //justify-content: flex-start;
-    padding-left: 1rem;
-    padding-right: 1rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
-}
-
-.img-name-wrap {
-    font-size: 12px !important;
-    color: gray;
-    display: flex;
-    justify-content: center;
+    width: 768px;
 }
 
 .editor-img-up-container {
     display: flex;
-    justify-content: flex-start;
-    padding: 1rem 1rem 1rem 1rem;
+    justify-content: center;
+    padding:0.5rem 0 0.5rem 0;
+    width: 768px;
+}
+
+.node-operate-container {
+    margin-left: 0.5rem;
+}
+
+img{
+    opacity: 0.8;
 }
