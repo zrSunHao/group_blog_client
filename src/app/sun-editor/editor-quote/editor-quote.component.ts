@@ -59,7 +59,6 @@ export class EditorQuoteComponent implements OnInit {
       if (bs.length > 1) b.url = bs[1];
       this.links.push(b);
     });
-    console.log(this.links)
   }
 
 }

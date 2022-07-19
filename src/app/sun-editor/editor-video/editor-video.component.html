@@ -1,3 +1,27 @@
-<p>
-  editor-video works!
-</p>
+<div class="document-node-container">
+  <div class="node-input-container">
+    <input
+      type="file"
+      #videoInput
+      [hidden]="true"
+      accept="video/*"
+      (change)="onFileChange($event)"
+      [ngModel]="file"
+    />
+    <div class="editor-video-up-container" *ngIf="!node.url">
+      <button mat-flat-button color="primary" (click)="onAvatarClick()">
+        <mat-icon>cloud_upload</mat-icon>
+        &nbsp;&nbsp;点击上传视频
+      </button>
+    </div>
+
+    <div class="editor-video-container" *ngIf="node.url">
+      <video controls [src]="node.url" [loop]="true" [volume]="0.2"></video>
+      <div class="editor-video-name">{{ node.content }}</div>
+    </div>
+  </div>
+
+  <div class="node-operate-container">
+    <app-operate></app-operate>
+  </div>
+</div>

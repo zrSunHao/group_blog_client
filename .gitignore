@@ -40,3 +40,5 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+src/assets/files/song.mp3
+src/assets/files/PrettBoy.mp4

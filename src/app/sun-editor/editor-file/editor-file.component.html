@@ -1,3 +1,37 @@
-<p>
-  editor-file works!
-</p>
+<div class="document-node-container">
+  <div class="node-input-container">
+    <input
+      type="file"
+      #fileInput
+      [hidden]="true"
+      accept="*"
+      (change)="onFileChange($event)"
+      [ngModel]="file"
+    />
+    <div class="editor-file-up-container" *ngIf="!node.url">
+      <button mat-flat-button color="primary" (click)="onAvatarClick()">
+        <mat-icon>cloud_upload</mat-icon>
+        &nbsp;&nbsp;点击上传文件
+      </button>
+    </div>
+    <div class="file-container" *ngIf="!edit">
+      <div class="file-wrap">
+        <div class="file-row">
+          <mat-icon color="primary">cloud_download</mat-icon>
+          <a
+            [href]="node.url"
+            target="_blank"
+            *ngIf="node.url"
+            [download]="node.content"
+          >
+            <span>{{ node.content }}</span>
+          </a>
+          <span *ngIf="!node.url">{{ node.content }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="node-operate-container">
+    <app-operate></app-operate>
+  </div>
+</div>

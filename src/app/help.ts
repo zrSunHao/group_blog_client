@@ -31,6 +31,12 @@ export const DOCUMENT_DATA: DocumentNode[] = [
         type: DocumentNodeType.h2, content: '活虾从菜场拎到家被“热熟”', url: '', remark: '', data: {}, order: 3, children: [
             { type: DocumentNodeType.quote, content: '《百度》|https://www.baidu.com/\n《哔哩哔哩》|https://www.bilibili.com/\n《ttttt》', url: '', remark: '', data: {}, order: 3, children: [] },
             { type: DocumentNodeType.link, content: '百度|https://www.baidu.com/\n哔哩哔哩|https://www.bilibili.com/', url: '', remark: '', data: {}, order: 3, children: [] },
+            { type: DocumentNodeType.file, content: 'bg_4.png', url: 'http://localhost:4200/assets/imgs/bg_4.png', remark: '', data: {}, order: 3, children: [] },
+            { type: DocumentNodeType.file, content: '', url: '', remark: '', data: {}, order: 3, children: [] },
+            { type: DocumentNodeType.audio, content: '为得一人心.mp3', url: 'assets/files/song.mp3', remark: '', data: {}, order: 3, children: [] },
+            { type: DocumentNodeType.audio, content: '', url: '', remark: '', data: {}, order: 3, children: [] },
+            { type: DocumentNodeType.video, content: 'PrettBoy.mp4', url: 'assets/files/PrettBoy.mp4', remark: '', data: {}, order: 3, children: [] },
+            { type: DocumentNodeType.video, content: '', url: '', remark: '', data: {}, order: 3, children: [] },
         ]
     },
 ];
