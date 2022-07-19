@@ -1,3 +1,28 @@
-<p>
-  editor-quote works!
-</p>
+<div class="document-node-container">
+  <div class="node-input-container">
+    <mat-form-field appearance="outline" *ngIf="edit">
+      <textarea
+        (blur)="onInputBlur()"
+        matInput
+        #input
+        [(ngModel)]="node.content"
+        placeholder="请输入引用内容"
+        rows="5"
+      ></textarea>
+    </mat-form-field>
+    <div class="quote-container" *ngIf="!edit" (click)="onInputFocus()">
+      <div class="quote-wrap">
+        <div *ngFor="let item of links" class="quote-row">
+          <mat-icon color="primary">format_quote</mat-icon>
+          <a [href]="item.url" target="_blank" *ngIf="item.url">
+            <span>{{ item.name }}</span>
+          </a>
+          <span *ngIf="!item.url">{{ item.name }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="node-operate-container">
+    <app-operate></app-operate>
+  </div>
+</div>

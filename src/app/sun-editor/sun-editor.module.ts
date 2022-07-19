@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 import { SunEditorComponent } from './sun-editor.component';
 import { EditorAudioComponent } from './editor-audio/editor-audio.component';
@@ -32,6 +33,7 @@ import { OperateComponent } from './operate/operate.component';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    ClipboardModule,
   ],
   declarations: [
     SunEditorComponent,

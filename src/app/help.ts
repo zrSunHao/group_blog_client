@@ -21,9 +21,16 @@ export const DOCUMENT_DATA: DocumentNode[] = [
             },
         ]
     },
-    { type: DocumentNodeType.h2, content: '上海二季度GDP同比下降13.7%', url: '', remark: '', data: {}, order: 2, children: [
-        { type: DocumentNodeType.list, content: '在 XAML 和 C# 中从 Visual Studio 中的单个共享代码库编写跨平台应用。\n跨平台共享 UI 布局和设计。\n跨平台共享代码、测试和业务逻辑。', url: '', remark: '', data: {}, order: 2, children: [] },
-        { type: DocumentNodeType.code, content: '[XamlCompilation (XamlCompilationOptions.Compile)]\npublic partial class MyPage : ContentPage\n{\n     ...\n}', url: '', remark: '', data: {}, order: 2, children: [] },
-    ] },
-    { type: DocumentNodeType.h2, content: '活虾从菜场拎到家被“热熟”', url: '', remark: '', data: {}, order: 3, children: [] },
+    {
+        type: DocumentNodeType.h2, content: '上海二季度GDP同比下降13.7%', url: '', remark: '', data: {}, order: 2, children: [
+            { type: DocumentNodeType.list, content: '在 XAML 和 C# 中从 Visual Studio 中的单个共享代码库编写跨平台应用。\n跨平台共享 UI 布局和设计。\n跨平台共享代码、测试和业务逻辑。', url: '', remark: '', data: {}, order: 2, children: [] },
+            { type: DocumentNodeType.code, content: '[XamlCompilation (XamlCompilationOptions.Compile)]\npublic partial class MyPage : ContentPage\n{\n     ...\n}', url: '', remark: '', data: {}, order: 2, children: [] },
+        ]
+    },
+    {
+        type: DocumentNodeType.h2, content: '活虾从菜场拎到家被“热熟”', url: '', remark: '', data: {}, order: 3, children: [
+            { type: DocumentNodeType.quote, content: '《百度》|https://www.baidu.com/\n《哔哩哔哩》|https://www.bilibili.com/\n《ttttt》', url: '', remark: '', data: {}, order: 3, children: [] },
+            { type: DocumentNodeType.link, content: '百度|https://www.baidu.com/\n哔哩哔哩|https://www.bilibili.com/', url: '', remark: '', data: {}, order: 3, children: [] },
+        ]
+    },
 ];

@@ -46,16 +46,13 @@ $customer-app-theme: mat.define-dark-theme(
   font-feature-settings: "liga";
 }
 
-html,
-body {
-  height: 100%;
-}
 body {
   margin: 0;
   font-family: Roboto, "楷体", "Helvetica Neue", sans-serif;
   color: lightgray;
   background-color: #303030;
-  overflow-y: hidden;
+  height: 100%;
+  overflow-y: auto;
 }
 
 @import "./@arts/common.css";

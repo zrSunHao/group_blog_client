@@ -14,7 +14,6 @@ export class EditorCodeComponent implements OnInit {
   edit: boolean = false;
   focus: boolean = false;
   list: string[] = [];
-  text:string ='';
 
   constructor(public service: EditorService) { }
 
@@ -38,14 +37,11 @@ export class EditorCodeComponent implements OnInit {
   }
 
   private onStatusChange() {
-    this.text = '';
     if (!this.node.content) this.edit = true;
     else {
       if (this.focus) this.edit = true;
       else {
         this.edit = false;
-        //this.text = this.node.content.replace(/\s/g,'&nbsp;')
-        console.log(this.text);
         this.onParseContent();
       }
     }

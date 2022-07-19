@@ -33,6 +33,11 @@ export class DocumentNode {
   children: DocumentNode[] = [];
 }
 
+export class DocumentLinkNode {
+  name: string = '';
+  url: string = '';
+}
+
 export enum DocumentOperateType {
   edit = 1,
   copy = 2,
