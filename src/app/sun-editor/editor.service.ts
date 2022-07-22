@@ -23,6 +23,10 @@ export interface LooseObject {
   [key: string]: string
 }
 
+interface NodeCallback {
+  (message: string): void;
+}
+
 export class DocumentNode {
   type: DocumentNodeType = DocumentNodeType.other;
   content: string = '';
@@ -31,6 +35,24 @@ export class DocumentNode {
   order: number = 1;
   data: LooseObject = {};
   children: DocumentNode[] = [];
+
+  constructor(type: DocumentNodeType = DocumentNodeType.other, content: string = '', url: string = '', data: LooseObject = {}) {
+    this.type = type;
+    this.content = content;
+    this.url = url;
+    this.data = data;
+  }
+
+  private callback: NodeCallback | undefined;
+  call(callback: NodeCallback): void {
+    this.callback = callback;
+  }
+
+  //外部调用回调函数
+  public notify(msg: string) {
+    if (this.callback) this.callback(msg);
+  }
+
 }
 
 export class DocumentLinkNode {

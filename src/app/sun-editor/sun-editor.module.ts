@@ -23,6 +23,7 @@ import { EditorTableComponent } from './editor-table/editor-table.component';
 import { EditorVideoComponent } from './editor-video/editor-video.component';
 import { EditorService } from './editor.service';
 import { OperateComponent } from './operate/operate.component';
+import { EditorTreeComponent } from './editor-tree/editor-tree.component';
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import { OperateComponent } from './operate/operate.component';
     EditorTableComponent,
     EditorVideoComponent,
     OperateComponent,
+    EditorTreeComponent,
   ],
   exports: [
     SunEditorComponent

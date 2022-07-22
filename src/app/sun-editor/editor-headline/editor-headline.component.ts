@@ -19,6 +19,9 @@ export class EditorHeadlineComponent implements OnInit {
   constructor(public service: EditorService) { }
 
   ngOnInit() {
+    this.node.call((msf:string)=>{
+      console.log(this.node)
+    })
     this.onStatusChange();
   }
 

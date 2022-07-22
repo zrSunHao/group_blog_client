@@ -1,16 +1,17 @@
 .container {
     display: flex;
-    width: 50px;
+    width: 60px;
     height: 30px;
-    margin-top: 0.3rem;
+    //margin-top: 0.3rem;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     // transition: 0.3s;
     // background-color: #42424296;
     //border: 1px solid green;
-    border-left: 2px solid darkcyan;
+    border-left: 3px solid darkcyan;
+    background: linear-gradient(90deg, rgb(29, 115, 115, 50%), rgb(29, 115, 115, 0%));
 }
 
 // .container:hover {
@@ -24,8 +25,9 @@
 }
 
 .container .mat-icon {
-    width: 18px;
-    height: 18px;
+    // width: 18px;
+    // height: 18px;
+    line-height: 20px;
 }
 
 .container .material-icons {
