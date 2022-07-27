@@ -10,7 +10,7 @@
         rows="5"
       ></textarea>
     </mat-form-field>
-    <div class="quote-container" *ngIf="!edit" (click)="onInputFocus()">
+    <div class="quote-container" *ngIf="!edit" (click)="onInputFocus()" #view>
       <div class="quote-wrap">
         <div *ngFor="let item of links" class="quote-row">
           <mat-icon color="primary">format_quote</mat-icon>

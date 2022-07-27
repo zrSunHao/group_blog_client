@@ -16,6 +16,8 @@ export class EditorParagraphComponent implements OnInit {
   @Input() node: DocumentNode = new DocumentNode();
   @ViewChild('input', { static: false })
   input!: ElementRef;
+  @ViewChild('view', { static: false })
+  view!: ElementRef;
 
   nodeType = DocumentNodeType;
   edit: boolean = false;
@@ -26,6 +28,9 @@ export class EditorParagraphComponent implements OnInit {
 
   ngOnInit() {
     this.onStatusChange();
+    this.node.call((msf:string)=>{
+      if(this.view) this.view.nativeElement.scrollIntoView();
+    })
   }
 
   onInputFocus() {

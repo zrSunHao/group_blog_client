@@ -10,7 +10,7 @@
         rows="5"
       ></textarea>
     </mat-form-field>
-    <div class="link-container" *ngIf="!edit" (click)="onInputFocus()">
+    <div class="link-container" *ngIf="!edit" (click)="onInputFocus()" #view>
       <div class="link-wrap">
         <div *ngFor="let item of links" class="link-row">
           <mat-icon color="primary">insert_link</mat-icon>

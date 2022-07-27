@@ -11,6 +11,8 @@ export class EditorFileComponent implements OnInit {
   @Input() node: DocumentNode = new DocumentNode();
   @ViewChild("fileInput", { static: false })
   fileInput!: ElementRef;
+  @ViewChild('view', { static: false })
+  view!: ElementRef;
   file: any;
   edit: boolean = false;
   focus: boolean = false;
@@ -19,6 +21,9 @@ export class EditorFileComponent implements OnInit {
 
   ngOnInit() {
     this.onStatusChange();
+    this.node.call((msf:string)=>{
+      if(this.view) this.view.nativeElement.scrollIntoView();
+    })
   }
 
   onAvatarClick(): void {

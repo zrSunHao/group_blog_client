@@ -10,6 +10,8 @@ export class EditorAudioComponent implements OnInit {
 
   @ViewChild("audioInput", { static: false })
   audioInput!: ElementRef;
+  @ViewChild('view', { static: false })
+  view!: ElementRef;
   file: any;
 
   @Input() node: DocumentNode = new DocumentNode();
@@ -17,7 +19,9 @@ export class EditorAudioComponent implements OnInit {
   constructor(public service: EditorService) { }
 
   ngOnInit() {
-
+    this.node.call((msf:string)=>{
+      if(this.view) this.view.nativeElement.scrollIntoView();
+    })
   }
 
   onAvatarClick(): void {

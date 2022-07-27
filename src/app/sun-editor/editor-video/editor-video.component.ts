@@ -10,6 +10,8 @@ export class EditorVideoComponent implements OnInit {
 
   @ViewChild("videoInput", { static: false })
   videoInput!: ElementRef;
+  @ViewChild('view', { static: false })
+  view!: ElementRef;
   file: any;
 
   @Input() node: DocumentNode = new DocumentNode();
@@ -17,7 +19,9 @@ export class EditorVideoComponent implements OnInit {
   constructor(public service: EditorService) { }
 
   ngOnInit() {
-
+    this.node.call((msf:string)=>{
+      if(this.view) this.view.nativeElement.scrollIntoView();
+    })
   }
 
   onAvatarClick(): void {

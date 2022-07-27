@@ -11,6 +11,8 @@ export class EditorCodeComponent implements OnInit {
   @Input() node: DocumentNode = new DocumentNode();
   @ViewChild('input', { static: false })
   input!: ElementRef;
+  @ViewChild('view', { static: false })
+  view!: ElementRef;
   edit: boolean = false;
   focus: boolean = false;
   list: string[] = [];
@@ -19,6 +21,9 @@ export class EditorCodeComponent implements OnInit {
 
   ngOnInit() {
     this.onStatusChange();
+    this.node.call((msf:string)=>{
+      if(this.view) this.view.nativeElement.scrollIntoView();
+    })
   }
 
   onInputFocus() {

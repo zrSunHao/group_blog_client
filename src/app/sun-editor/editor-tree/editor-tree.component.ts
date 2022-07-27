@@ -28,6 +28,7 @@ export class EditorTreeComponent implements OnInit {
   onClicked(node: DocumentNode) {
     this.service.selectedNode = node;
     this.service.selectNode(node);
+    node.notify('');
   }
 
   onDragStart(node: DocumentNode, event: DragEvent) {

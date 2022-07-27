@@ -11,6 +11,8 @@ export class EditorQuoteComponent implements OnInit {
   @Input() node: DocumentNode = new DocumentNode();
   @ViewChild('input', { static: false })
   input!: ElementRef;
+  @ViewChild('view', { static: false })
+  view!: ElementRef;
   edit: boolean = false;
   focus: boolean = false;
   links: DocumentLinkNode[] = [];

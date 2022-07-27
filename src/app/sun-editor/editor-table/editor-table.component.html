@@ -15,7 +15,7 @@
       [ngStyle]="containerStyle"
       *ngIf="!edit"
       (click)="onInputFocus()"
-    >
+      #view>
       <table>
         <tr>
           <th *ngFor="let item of ths">{{ item }}</th>

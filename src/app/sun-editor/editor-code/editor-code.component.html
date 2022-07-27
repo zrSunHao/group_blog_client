@@ -10,7 +10,7 @@
         rows="5"
       ></textarea>
     </mat-form-field>
-    <div class="code-container" *ngIf="!edit" (click)="onInputFocus()">
+    <div class="code-container" *ngIf="!edit" (click)="onInputFocus()" #view>
       <div class="code-index-wrap">
         <div class="code-index" *ngFor="let item of list; let i = index">
           {{ i + 1 }}

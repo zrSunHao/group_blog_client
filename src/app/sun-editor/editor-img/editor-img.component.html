@@ -15,11 +15,7 @@
       </button>
     </div>
 
-    <div
-      class="editor-img-container"
-      *ngIf="node.url"
-      [ngStyle]="containerStyle"
-    >
+    <div class="editor-img-container" *ngIf="node.url" [ngStyle]="containerStyle" #view>
       <img [src]="node.url" alt="图片" [ngStyle]="imgStyle" />
     </div>
   </div>

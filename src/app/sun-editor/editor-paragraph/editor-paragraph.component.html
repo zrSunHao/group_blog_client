@@ -10,7 +10,7 @@
         rows="5"
       ></textarea>
     </mat-form-field>
-    <div class="p-container" *ngIf="!edit" (click)="onInputFocus()">
+    <div class="p-container" *ngIf="!edit" (click)="onInputFocus()" #view>
       <p>
         <span *ngFor="let ele of elements" [ngStyle]="ele.style">
           {{ ele.text }}

@@ -10,7 +10,7 @@
         cdkTextareaAutosize
       ></textarea>
     </mat-form-field>
-    <div class="headline-container" *ngIf="!edit" (click)="onInputFocus()">
+    <div class="headline-container" *ngIf="!edit" (click)="onInputFocus()" #view>
       <h2 *ngIf="node.type == nodeType.h2">{{ node.content }}</h2>
       <h3 *ngIf="node.type == nodeType.h3">{{ node.content }}</h3>
       <h4 *ngIf="node.type == nodeType.h4">{{ node.content }}</h4>

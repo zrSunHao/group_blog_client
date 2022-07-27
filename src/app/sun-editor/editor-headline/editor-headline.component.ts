@@ -12,6 +12,9 @@ export class EditorHeadlineComponent implements OnInit {
   @ViewChild('input', { static: false })
   input!: ElementRef;
 
+  @ViewChild('view', { static: false })
+  view!: ElementRef;
+
   nodeType = DocumentNodeType;
   edit: boolean = false;
   focus: boolean = false;
@@ -19,10 +22,10 @@ export class EditorHeadlineComponent implements OnInit {
   constructor(public service: EditorService) { }
 
   ngOnInit() {
-    this.node.call((msf:string)=>{
-      console.log(this.node)
-    })
     this.onStatusChange();
+    this.node.call((msf:string)=>{
+      if(this.view) this.view.nativeElement.scrollIntoView();
+    })
   }
 
   onInputFocus() {

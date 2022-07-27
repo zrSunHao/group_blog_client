@@ -10,6 +10,8 @@ export class EditorImgComponent implements OnInit {
 
   @ViewChild("imageInput", { static: false })
   imageInput!: ElementRef;
+  @ViewChild('view', { static: false })
+  view!: ElementRef;
   file: any;
 
   @Input() node: DocumentNode = new DocumentNode();
@@ -20,6 +22,9 @@ export class EditorImgComponent implements OnInit {
 
   ngOnInit() {
     this.onStatusChange();
+    this.node.call((msf:string)=>{
+      if(this.view) this.view.nativeElement.scrollIntoView();
+    })
   }
 
   onAvatarClick(): void {
