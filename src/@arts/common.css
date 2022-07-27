@@ -25,8 +25,8 @@ textarea {
 
 /*定义滚动条高宽及背景高宽分别对应横竖滚动条的尺寸*/
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     background-color: #757575;
 }
 /*定义滚动条轨道*/
@@ -36,7 +36,7 @@ textarea {
 
 /*定义滑块内阴影+圆角*/
 ::-webkit-scrollbar-thumb {
-    background-color: #009688;
+    background-color: rgb(29, 115, 115, 60%);
 }
 
 .card {

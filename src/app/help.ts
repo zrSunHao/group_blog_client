@@ -11,12 +11,12 @@ export function GetDocumentData(): DocumentNode[] {
     const h3_p_2 = new DocumentNode(DocumentNodeType.p, '二是${农民工群体|color:red}就业形势好转。农民工群体多从事劳动密集型制造业和服务业行业，以个体户和灵活就业的居多，就业稳定性相对较差。受疫情冲击影响，4月份外来农业户籍人口失业率升至6.6%，随着疫情逐步得到控制，助企稳岗措施发力，农民工群体的就业明显改善。5月份外来农业户籍人口失业率降至6.2%，6月份降至5.3%，低于整体失业率水平。');
     const h3_p_3 = new DocumentNode(DocumentNodeType.p, '三是${青年人|color:red}就业压力仍然较大。青年群体初次进入劳动力市场，普遍面临摩擦性失业困境，同时受疫情影响，企业吸纳就业能力下降，年轻人求职渠道在疫情条件下也受到了阻碍。加之今年高校毕业生总量又创历史新高，加剧了青年人就业压力。6月份，16-24岁城镇青年失业率为19.3%，处于今年以来较高水平。');
     const h3_img_1 = new DocumentNode(DocumentNodeType.img, '今日入伏 一年中最热时段来了', 'assets/imgs/bg_4.png', { height: '20rem', position: 'center' });
-    const h3_img_2 = new DocumentNode(DocumentNodeType.img, '', '');
+    //const h3_img_2 = new DocumentNode(DocumentNodeType.img, '', '');
     const h3_table_1 = new DocumentNode(DocumentNodeType.table, '姓名|职位|事项\n唐玄奘|组长|西天取经\n孙悟空|干事|降妖除魔\n猪八戒|斥候|牵马\n沙僧|下手|挑担子', '', { position: 'center' });
     h2_1_h3_1.children.push(h3_p_1);
     h2_1_h3_1.children.push(h3_img_1);
     h2_1_h3_2.children.push(h3_p_2);
-    h2_1_h3_2.children.push(h3_img_2);
+    //h2_1_h3_2.children.push(h3_img_2);
     h2_1_h3_3.children.push(h3_p_3);
     h2_1_h3_3.children.push(h3_table_1);
     h2_1.children.push(h2_1_h3_1);
@@ -35,17 +35,17 @@ export function GetDocumentData(): DocumentNode[] {
 
     const h2_3 = new DocumentNode(DocumentNodeType.h2, '活虾从菜场拎到家被“热熟”');
     const h3_file_1 = new DocumentNode(DocumentNodeType.file, 'bg_4.png', 'http://localhost:4200/assets/imgs/bg_4.png');
-    const h3_file_2 = new DocumentNode(DocumentNodeType.file, '', '');
+    //const h3_file_2 = new DocumentNode(DocumentNodeType.file, '', '');
     const h3_audio_1 = new DocumentNode(DocumentNodeType.audio, '为得一人心.mp3', 'assets/files/song.mp3');
-    const h3_audio_2 = new DocumentNode(DocumentNodeType.audio, '', '');
+    //const h3_audio_2 = new DocumentNode(DocumentNodeType.audio, '', '');
     const h3_video_1 = new DocumentNode(DocumentNodeType.video, 'PrettBoy.mp4', 'assets/files/PrettBoy.mp4');
-    const h3_video_2 = new DocumentNode(DocumentNodeType.video, '', '');
+    //const h3_video_2 = new DocumentNode(DocumentNodeType.video, '', '');
     h2_3.children.push(h3_file_1);
-    h2_3.children.push(h3_file_2);
+    //h2_3.children.push(h3_file_2);
     h2_3.children.push(h3_audio_1);
-    h2_3.children.push(h3_audio_2);
+    //h2_3.children.push(h3_audio_2);
     h2_3.children.push(h3_video_1);
-    h2_3.children.push(h3_video_2);
+    //h2_3.children.push(h3_video_2);
 
     nodes.push(h2_1);
     nodes.push(h2_2);

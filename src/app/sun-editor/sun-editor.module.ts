@@ -53,7 +53,8 @@ import { EditorTreeComponent } from './editor-tree/editor-tree.component';
     EditorTreeComponent,
   ],
   exports: [
-    SunEditorComponent
+    SunEditorComponent,
+    EditorTreeComponent
   ],
   providers: [
     EditorService

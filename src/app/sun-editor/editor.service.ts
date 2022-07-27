@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 export enum DocumentNodeType {
   h2 = 2,
@@ -34,6 +34,7 @@ export class DocumentNode {
   remark: string = '';
   order: number = 1;
   data: LooseObject = {};
+  open: boolean = false;
   children: DocumentNode[] = [];
 
   constructor(type: DocumentNodeType = DocumentNodeType.other, content: string = '', url: string = '', data: LooseObject = {}) {
@@ -88,6 +89,66 @@ export class OperateItem {
 })
 export class EditorService {
 
+  public nodes: DocumentNode[] = [];
+  public selectedNode: DocumentNode | null = null;
+  public dragNode: DocumentNode | null = null;
+  public NodeType = DocumentNodeType;
+  public Headlines = [DocumentNodeType.h2, DocumentNodeType.h3, DocumentNodeType.h4, DocumentNodeType.h5, DocumentNodeType.h6]
+
+  onMove: EventEmitter<DocumentNode> = new EventEmitter<DocumentNode>();
+  onToggle: EventEmitter<DocumentNode> = new EventEmitter<DocumentNode>();
+  onSelected: EventEmitter<DocumentNode> = new EventEmitter<DocumentNode>();
+
   constructor() { }
+
+  public selectNode(node: DocumentNode) {
+    this.selectedNode = node;
+    this.onSelected.emit(node);
+  }
+
+  /**
+   * 移动结点
+   * h系列元素不能改变层级
+   * @param node 
+   * @returns 
+   */
+  public dropToNode(node: DocumentNode) {
+    if (!this.dragNode || this.dragNode == node) return;
+    this.remove(this.dragNode, this.nodes)
+    this.onMove.emit(this.dragNode);
+  }
+
+  public getNodeParent(child: DocumentNode): DocumentNode | null {
+    let parent: DocumentNode | null = null;
+    for (const node of this.nodes) {
+      if (node == child) break;
+      this.getParent(child, node, parent);
+      if (parent) break;
+    }
+    return parent;
+  }
+
+  private getParent(child: DocumentNode, current: DocumentNode, parent: DocumentNode | null = null) {
+    if (!current.children) return;
+    if (current.children.indexOf(child) != -1) {
+      parent = current;
+      return;
+    } else {
+      for (const node of current.children) this.getParent(child, node, parent);
+    }
+  }
+
+  private remove(target: DocumentNode, nodes: DocumentNode[]) {
+    if (!nodes || nodes.length < 1) return;
+    nodes.forEach((x, idx) => {
+      if (x == target) {
+        nodes.splice(idx, 1);
+        if (this.selectedNode == target) this.selectedNode = null;
+        return;
+      } else this.remove(target, x.children)
+    });
+  }
+
+
 
 }

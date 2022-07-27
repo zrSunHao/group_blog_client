@@ -1,0 +1,44 @@
+.node {
+    min-height: 2.1rem;
+    height: auto;
+    color: lightgray;
+}
+
+.node-top {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    background-color: #1d7373;
+    height: 30px;
+    padding-right: 5px;
+}
+
+.node-top:hover {
+    background-color: #009999 !important;
+}
+
+.node-body {
+    height: auto;
+    border-left: 2px dotted gray;
+    //border-bottom: 2px dotted gray;
+    margin: 0 0 10px 10px;
+    padding: 10px 0 0px 10px;
+}
+
+.node-top span {
+    line-height: 1;
+    text-align: center;
+}
+
+.node-top .category {
+    margin-left: 3px;
+    margin-right: 5px;
+}
+
+.node-top .content {
+    white-space: nowrap;
+    display: inline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -2,7 +2,7 @@
 
 <div class="page-container">
   <div class="tree-container">
-    <div>
+    <!-- <div>
       <button (click)="onAddNode()">添加</button>
       <button [disabled]="!service.selectedNode" (click)="onUpdateNode()">
         修改
@@ -10,9 +10,10 @@
       <button [disabled]="!service.selectedNode" (click)="onDeleteNode()">
         删除
       </button>
-    </div>
+    </div> -->
     <div class="tree-p">
-      <app-sun-tree [nodes]="service.nodes"></app-sun-tree>
+      <!-- <app-sun-tree [nodes]="service.nodes"></app-sun-tree> -->
+      <app-editor-tree [nodes]="items"></app-editor-tree>
     </div>
   </div>
   <div class="editor-container">
