@@ -33,27 +33,60 @@
 
 <mat-menu #operatemenu="matMenu">
   <button mat-menu-item>
-    <mat-icon>subject</mat-icon>
-    <span>添加段落</span>
+    <mat-icon>subject</mat-icon><span>添加段落</span>
+  </button>
+  <button mat-menu-item [matMenuTriggerFor]="position">
+    <mat-icon>view_week</mat-icon><span>布局</span>
+  </button>
+  <button mat-menu-item [matMenuTriggerFor]="addother">
+    <mat-icon>library_add</mat-icon><span>添加其他元素</span>
   </button>
   <button mat-menu-item>
-    <mat-icon>format_align_left</mat-icon>
-    <span>居左</span>
+    <mat-icon>delete</mat-icon><span>删除</span>
+  </button>
+</mat-menu>
+
+<mat-menu #position="matMenu">
+  <button mat-menu-item>
+    <mat-icon>format_align_left</mat-icon><span>居左</span>
   </button>
   <button mat-menu-item>
-    <mat-icon>format_align_center</mat-icon>
-    <span>居中</span>
+    <mat-icon>format_align_center</mat-icon><span>居中</span>
   </button>
   <button mat-menu-item>
-    <mat-icon>format_align_right</mat-icon>
-    <span>居右</span>
+    <mat-icon>format_align_right</mat-icon><span>居右</span>
+  </button>
+</mat-menu>
+
+<mat-menu #addother="matMenu">
+  <button mat-menu-item>
+    <mat-icon>image</mat-icon><span>图片</span>
   </button>
   <button mat-menu-item>
-    <mat-icon>library_add</mat-icon>
-    <span>添加其他元素</span>
+    <mat-icon>format_list_bulleted</mat-icon><span>清单</span>
   </button>
   <button mat-menu-item>
-    <mat-icon>delete</mat-icon>
-    <span>删除</span>
+    <mat-icon>code</mat-icon><span>代码</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>link</mat-icon><span>链接</span>
+  </button>
+  <button mat-menu-item [matMenuTriggerFor]="addmore">
+    <mat-icon>more_vert</mat-icon><span>更多</span>
+  </button>
+</mat-menu>
+
+<mat-menu #addmore="matMenu">
+  <button mat-menu-item>
+    <mat-icon>format_quote</mat-icon><span>引用</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>attach_file</mat-icon><span>文件</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>mic</mat-icon><span>音频</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>videocam</mat-icon><span>视频</span>
   </button>
 </mat-menu>
