@@ -17,16 +17,43 @@
       (click)="onInputFocus()"
       #view>
       <table>
-        <tr>
-          <th *ngFor="let item of ths">{{ item }}</th>
-        </tr>
-        <tr *ngFor="let row of rows">
-          <td *ngFor="let item of row">{{ item }}</td>
-        </tr>
+        <thead>
+          <tr><th *ngFor="let item of ths">{{ item }}</th></tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of rows"><td *ngFor="let item of row">{{ item }}</td></tr>
+        </tbody>
       </table>
     </div>
   </div>
   <div class="node-operate-container">
-    <app-operate></app-operate>
+    <app-operate [nodeType]="node.type" [matMenuTriggerFor]="operatemenu"></app-operate>
   </div>
 </div>
+
+<mat-menu #operatemenu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>subject</mat-icon>
+    <span>添加段落</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>format_align_left</mat-icon>
+    <span>居左</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>format_align_center</mat-icon>
+    <span>居中</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>format_align_right</mat-icon>
+    <span>居右</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>library_add</mat-icon>
+    <span>添加其他元素</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>delete</mat-icon>
+    <span>删除</span>
+  </button>
+</mat-menu>

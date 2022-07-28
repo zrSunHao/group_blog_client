@@ -1,20 +1,18 @@
-<div class="container">
-  <button mat-icon-button color="accent" [matMenuTriggerFor]="operatemenu">
-    <mat-icon>settings</mat-icon>
-  </button>
+<div class="container" [ngSwitch]="nodeType">
+  <mat-icon *ngSwitchCase="DocumentNodeType.audio">mic</mat-icon>
+  <mat-icon *ngSwitchCase="DocumentNodeType.code">code</mat-icon>
+  <mat-icon *ngSwitchCase="DocumentNodeType.file">attach_file</mat-icon>
+  <mat-icon *ngSwitchCase="DocumentNodeType.h2" color="accent">account_tree</mat-icon>
+  <mat-icon *ngSwitchCase="DocumentNodeType.h3" color="accent">account_tree</mat-icon>
+  <mat-icon *ngSwitchCase="DocumentNodeType.h4" color="accent">account_tree</mat-icon>
+  <mat-icon *ngSwitchCase="DocumentNodeType.h5" color="accent">account_tree</mat-icon>
+  <mat-icon *ngSwitchCase="DocumentNodeType.h6" color="accent">account_tree</mat-icon>
+  <mat-icon *ngSwitchCase="DocumentNodeType.img">image</mat-icon>
+  <mat-icon *ngSwitchCase="DocumentNodeType.link">link</mat-icon>
+  <mat-icon *ngSwitchCase="DocumentNodeType.list">format_list_bulleted</mat-icon>
+  <mat-icon *ngSwitchCase="DocumentNodeType.p">subject</mat-icon>
+  <mat-icon *ngSwitchCase="DocumentNodeType.quote">format_quote</mat-icon>
+  <mat-icon *ngSwitchCase="DocumentNodeType.table">grid_on</mat-icon>
+  <mat-icon *ngSwitchCase="DocumentNodeType.video">videocam</mat-icon>
+  <mat-icon *ngSwitchDefault>settings</mat-icon>
 </div>
-
-<mat-menu #operatemenu="matMenu">
-  <button mat-menu-item>
-    <mat-icon>dialpad</mat-icon>
-    <span>Redial</span>
-  </button>
-  <button mat-menu-item>
-    <mat-icon>voicemail</mat-icon>
-    <span>Check voice mail</span>
-  </button>
-  <button mat-menu-item>
-    <mat-icon>notifications_off</mat-icon>
-    <span>Disable alerts</span>
-  </button>
-</mat-menu>

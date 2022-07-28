@@ -21,8 +21,8 @@ export class EditorCodeComponent implements OnInit {
 
   ngOnInit() {
     this.onStatusChange();
-    this.node.call((msf:string)=>{
-      if(this.view) this.view.nativeElement.scrollIntoView();
+    this.node.call((msf: string) => {
+      if (this.view) this.view.nativeElement.scrollIntoView();
     })
   }
 
@@ -39,6 +39,10 @@ export class EditorCodeComponent implements OnInit {
   onInputBlur() {
     this.focus = false;
     this.onStatusChange();
+  }
+
+  copy(event: any) {
+    event.stopPropagation();
   }
 
   private onStatusChange() {

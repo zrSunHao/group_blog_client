@@ -12,13 +12,26 @@
     </mat-form-field>
     <div class="p-container" *ngIf="!edit" (click)="onInputFocus()" #view>
       <p>
-        <span *ngFor="let ele of elements" [ngStyle]="ele.style">
-          {{ ele.text }}
-        </span>
+        <span *ngFor="let ele of elements" [ngStyle]="ele.style">{{ ele.text }}</span>
       </p>
     </div>
   </div>
   <div class="node-operate-container">
-    <app-operate></app-operate>
+    <app-operate [nodeType]="node.type" [matMenuTriggerFor]="operatemenu"></app-operate>
   </div>
 </div>
+
+<mat-menu #operatemenu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>subject</mat-icon>
+    <span>添加段落</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>library_add</mat-icon>
+    <span>添加其他元素</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>delete</mat-icon>
+    <span>删除</span>
+  </button>
+</mat-menu>

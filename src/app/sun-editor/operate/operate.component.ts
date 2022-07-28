@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DocumentNodeType } from '../editor.service';
 
 @Component({
   selector: 'app-operate',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./operate.component.scss']
 })
 export class OperateComponent implements OnInit {
+
+  @Input() nodeType: DocumentNodeType = DocumentNodeType.other;
+  DocumentNodeType = DocumentNodeType;
 
   constructor() { }
 
