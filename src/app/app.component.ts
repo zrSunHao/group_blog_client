@@ -18,15 +18,12 @@ export class AppComponent {
     this.service.nodes = this.nodes;
     this.service.onMove.subscribe({ next: (node: TreeNode) => { console.log(node) }, error: (err: any) => { console.log(err) } })
     this.service.onSelected.subscribe({ next: (node: TreeNode) => { console.log(node) }, error: (err: any) => { console.log(err) } })
-
+    serv.nodes = this.items;
     setTimeout(() => {
       for (const item of this.items) {
         if (serv.Headlines.indexOf(item.type) != -1) item.open = true;
       }
     }, 100);
-  }
-
-  save() {
 
   }
 
