@@ -43,6 +43,21 @@ export class EditorTableComponent implements OnInit {
     this.onStatusChange();
   }
 
+  onLeft(){
+    this.node.data['position'] = 'left';
+    this.containerStyle['justify-content'] = 'flex-start';
+  }
+
+  onCenter(){
+    this.node.data['position'] = 'center';
+    this.containerStyle['justify-content'] = 'center';
+  }
+
+  onRight(){
+    this.node.data['position'] = 'right';
+    this.containerStyle['justify-content'] = 'flex-end';
+  }
+
   private onStatusChange() {
     if (!this.node.content) this.edit = true;
     else {

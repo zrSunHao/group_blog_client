@@ -24,7 +24,7 @@ export class EditorVideoComponent implements OnInit {
     })
   }
 
-  onAvatarClick(): void {
+  onFileClick(): void {
     this.videoInput.nativeElement.click();
   }
 

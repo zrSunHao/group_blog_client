@@ -28,8 +28,8 @@ export class EditorParagraphComponent implements OnInit {
 
   ngOnInit() {
     this.onStatusChange();
-    this.node.call((msf:string)=>{
-      if(this.view) this.view.nativeElement.scrollIntoView();
+    this.node.call((msf: string) => {
+      if (this.view) this.view.nativeElement.scrollIntoView();
     })
   }
 
@@ -64,7 +64,13 @@ export class EditorParagraphComponent implements OnInit {
     if (!this.node.content) return eles;
     const reg = /\$\{(.+?)\}/g;
     const rs = this.node.content.match(reg);
-    if (!rs) return eles;
+    if (!rs) {
+      const e = new PElement();
+      e.text = this.node.content;
+      e.style = {};
+      eles.push(e);
+      return eles;
+    }
     let text = this.node.content;
     const symbol = 'xsxxsxxsx';
     const fix = '#|';

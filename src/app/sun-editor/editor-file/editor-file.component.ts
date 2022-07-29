@@ -26,7 +26,7 @@ export class EditorFileComponent implements OnInit {
     })
   }
 
-  onAvatarClick(): void {
+  onFileClick(): void {
     this.fileInput.nativeElement.click();
   }
 

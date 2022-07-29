@@ -27,7 +27,7 @@ export class EditorImgComponent implements OnInit {
     })
   }
 
-  onAvatarClick(): void {
+  onFileClick(): void {
     this.imageInput.nativeElement.click();
   }
 
@@ -39,6 +39,36 @@ export class EditorImgComponent implements OnInit {
      this.node.content = e.target.files[0].name;
      console.log(e.target.files[0])
     }
+  }
+
+  onLeft(){
+    this.node.data['position'] = 'left';
+    this.containerStyle['justify-content'] = 'flex-start';
+  }
+
+  onCenter(){
+    this.node.data['position'] = 'center';
+    this.containerStyle['justify-content'] = 'center';
+  }
+
+  onRight(){
+    this.node.data['position'] = 'right';
+    this.containerStyle['justify-content'] = 'flex-end';
+  }
+
+  onBigHeight(){
+    this.node.data['height'] = '30rem';
+    this.imgStyle = { 'max-height': '30rem', };
+  }
+
+  onMiddleHeight(){
+    this.node.data['height'] = '20rem';
+    this.imgStyle = { 'max-height': '20rem', };
+  }
+
+  onSamllHeight(){
+    this.node.data['height'] = '10rem';
+    this.imgStyle = { 'max-height': '10rem', };
   }
 
 

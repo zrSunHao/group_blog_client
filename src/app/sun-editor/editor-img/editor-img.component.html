@@ -9,7 +9,7 @@
       [ngModel]="file"
     />
     <div class="editor-img-up-container" *ngIf="!node.url">
-      <button mat-flat-button color="primary" (click)="onAvatarClick()">
+      <button mat-flat-button color="primary" (click)="onFileClick()">
         <mat-icon>cloud_upload</mat-icon>&nbsp;&nbsp;点击上传图片
       </button>
     </div>
@@ -24,47 +24,56 @@
 </div>
 
 <mat-menu #operatemenu="matMenu">
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.p)">
     <mat-icon>subject</mat-icon><span>添加段落</span>
   </button>
   <button mat-menu-item [matMenuTriggerFor]="position">
     <mat-icon>view_week</mat-icon>
     <span>布局</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="onFileClick()">
     <mat-icon>edit</mat-icon><span>替换</span>
   </button>
   <button mat-menu-item [matMenuTriggerFor]="addother">
     <mat-icon>library_add</mat-icon><span>添加其他元素</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.removeNode(node)">
     <mat-icon>delete</mat-icon><span>删除</span>
   </button>
 </mat-menu>
 
 <mat-menu #position="matMenu">
-  <button mat-menu-item>
+  <button mat-menu-item (click)="onLeft()">
     <mat-icon>format_align_left</mat-icon><span>居左</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="onCenter()">
     <mat-icon>format_align_center</mat-icon><span>居中</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="onRight()">
     <mat-icon>format_align_right</mat-icon><span>居右</span>
+  </button>
+  <button mat-menu-item (click)="onSamllHeight()">
+    <mat-icon>photo_size_select_small</mat-icon><span>小图片</span>
+  </button>
+  <button mat-menu-item (click)="onMiddleHeight()">
+    <mat-icon>padding</mat-icon><span>中等大小</span>
+  </button>
+  <button mat-menu-item (click)="onBigHeight()">
+    <mat-icon>photo_size_select_large</mat-icon><span>大图片</span>
   </button>
 </mat-menu>
 
 <mat-menu #addother="matMenu">
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.list)">
     <mat-icon>format_list_bulleted</mat-icon><span>清单</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.table)">
     <mat-icon>grid_on</mat-icon><span>表格</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.code)">
     <mat-icon>code</mat-icon><span>代码</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.link)">
     <mat-icon>link</mat-icon><span>链接</span>
   </button>
   <button mat-menu-item [matMenuTriggerFor]="addmore">
@@ -73,16 +82,16 @@
 </mat-menu>
 
 <mat-menu #addmore="matMenu">
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.quote)">
     <mat-icon>format_quote</mat-icon><span>引用</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.file)">
     <mat-icon>attach_file</mat-icon><span>文件</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.audio)">
     <mat-icon>mic</mat-icon><span>音频</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.video)">
     <mat-icon>videocam</mat-icon><span>视频</span>
   </button>
 </mat-menu>

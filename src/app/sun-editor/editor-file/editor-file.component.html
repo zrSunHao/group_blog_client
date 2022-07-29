@@ -9,7 +9,7 @@
       [ngModel]="file"
     />
     <div class="editor-file-up-container" *ngIf="!node.url">
-      <button mat-flat-button color="primary" (click)="onAvatarClick()">
+      <button mat-flat-button color="primary" (click)="onFileClick()">
         <mat-icon>cloud_upload</mat-icon>
         &nbsp;&nbsp;点击上传文件
       </button>
@@ -36,31 +36,31 @@
   </div>
 </div>
 <mat-menu #operatemenu="matMenu">
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.quote)">
     <mat-icon>subject</mat-icon><span>添加段落</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="onFileClick()">
     <mat-icon>edit</mat-icon><span>替换</span>
   </button>
   <button mat-menu-item [matMenuTriggerFor]="addother">
     <mat-icon>library_add</mat-icon><span>添加其他元素</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.removeNode(node)">
     <mat-icon>delete</mat-icon><span>删除</span>
   </button>
 </mat-menu>
 
 <mat-menu #addother="matMenu">
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.img)">
     <mat-icon>image</mat-icon><span>图片</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.list)">
     <mat-icon>format_list_bulleted</mat-icon><span>清单</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.table)">
     <mat-icon>grid_on</mat-icon><span>表格</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.code)">
     <mat-icon>code</mat-icon><span>代码</span>
   </button>
   <button mat-menu-item [matMenuTriggerFor]="addmore">
@@ -69,16 +69,16 @@
 </mat-menu>
 
 <mat-menu #addmore="matMenu">
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.link)">
     <mat-icon>link</mat-icon><span>链接</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.quote)">
     <mat-icon>format_quote</mat-icon><span>引用</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.audio)">
     <mat-icon>mic</mat-icon><span>音频</span>
   </button>
-  <button mat-menu-item>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.video)">
     <mat-icon>videocam</mat-icon><span>视频</span>
   </button>
 </mat-menu>

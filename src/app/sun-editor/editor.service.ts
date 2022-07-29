@@ -215,6 +215,43 @@ export class EditorService {
     return values;
   }
 
+  public nodeFactory(type: DocumentNodeType): DocumentNode {
+    let node = new DocumentNode(type);
+    node.data = {};
+    if (type == DocumentNodeType.img) node.data = { height: '20rem', position: 'center' };
+    if (type == DocumentNodeType.table) node.data = { position: 'center' };
+    node.children = [];
+    return node;
+  }
+
+  public insertNode(preNode: DocumentNode, node: DocumentNode) {
+    this.backup();
+    const parent = this.getNodeParent(preNode);
+    if (!parent && node.type == DocumentNodeType.h2) {
+      const index = this.nodes.indexOf(preNode);
+      if (index != -1) this.nodes.splice(index + 1, 0, node);
+    }
+    if (parent) {
+      const index = parent.children.indexOf(preNode);
+      if (index != -1) parent.children.splice(index + 1, 0, node);
+    }
+  }
+
+  public insertNotHeadPeerNode(preNode: DocumentNode, nodeType: DocumentNodeType) {
+    const node = this.nodeFactory(nodeType);
+    this.insertNode(preNode, node);
+  }
+
+  public removeNode(node: DocumentNode) {
+    const parent = this.getNodeParent(node);
+    this.backup();
+    if (!parent) {
+      this.nodes = this.nodes.filter(x => x != node);
+    } else {
+      parent.children = parent.children.filter(x => x != node);
+    }
+  }
+
   private getParent(child: DocumentNode, current: DocumentNode): DocumentNode | null {
     if (!current.children) return null;
     if (current.children.indexOf(child) != -1) {
@@ -227,17 +264,6 @@ export class EditorService {
       }
       return null;
     }
-  }
-
-  private remove(target: DocumentNode, nodes: DocumentNode[]) {
-    if (!nodes || nodes.length < 1) return;
-    nodes.forEach((x, idx) => {
-      if (x == target) {
-        nodes.splice(idx, 1);
-        if (this.selectedNode == target) this.selectedNode = null;
-        return;
-      } else this.remove(target, x.children)
-    });
   }
 
   private parse(node: DocumentNode): DocumentNode {
@@ -263,6 +289,4 @@ export class EditorService {
     data.children = [];
     return data;
   }
-
-
 }

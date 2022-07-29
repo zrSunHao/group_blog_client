@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { EditorService, DocumentNode } from '../editor.service';
+import { EditorService, DocumentNode, DocumentNodeType } from '../editor.service';
 
 @Component({
   selector: 'app-editor-audio',
@@ -13,6 +13,7 @@ export class EditorAudioComponent implements OnInit {
   @ViewChild('view', { static: false })
   view!: ElementRef;
   file: any;
+  nodeType = DocumentNodeType;
 
   @Input() node: DocumentNode = new DocumentNode();
 
@@ -24,7 +25,7 @@ export class EditorAudioComponent implements OnInit {
     })
   }
 
-  onAvatarClick(): void {
+  onFileClick(): void {
     this.audioInput.nativeElement.click();
   }
 
