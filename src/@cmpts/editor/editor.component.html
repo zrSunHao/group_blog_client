@@ -1,0 +1,23 @@
+<div class="editor-container" [ngSwitch]="item.type" *ngFor="let item of nodes">
+    <app-headline *ngSwitchCase="nodeType.h2" [node]="item"></app-headline>
+    <app-headline *ngSwitchCase="nodeType.h3" [node]="item"></app-headline>
+    <app-headline *ngSwitchCase="nodeType.h4" [node]="item"></app-headline>
+    <app-headline *ngSwitchCase="nodeType.h5" [node]="item"></app-headline>
+    <app-headline *ngSwitchCase="nodeType.h6" [node]="item"></app-headline>
+
+    <app-paragraph *ngSwitchCase="nodeType.p" [node]="item"></app-paragraph>
+    <app-img *ngSwitchCase="nodeType.img" [node]="item"></app-img>
+    <app-list *ngSwitchCase="nodeType.list" [node]="item"></app-list>
+    <app-table *ngSwitchCase="nodeType.table" [node]="item"></app-table>
+    <app-link *ngSwitchCase="nodeType.link" [node]="item"></app-link>
+    <app-quote *ngSwitchCase="nodeType.quote" [node]="item"></app-quote>
+
+    <app-code *ngSwitchCase="nodeType.code" [node]="item"></app-code>
+    <app-file *ngSwitchCase="nodeType.file" [node]="item"></app-file>
+    <app-video *ngSwitchCase="nodeType.video" [node]="item"></app-video>
+    <app-audio *ngSwitchCase="nodeType.audio" [node]="item"></app-audio>
+
+    <div class="children-wrap" *ngIf="item.children && item.children.length > 0">
+        <app-editor [nodes]="item.children"></app-editor>
+    </div>
+</div>

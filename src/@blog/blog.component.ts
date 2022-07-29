@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DocumentNode, EditorService } from 'src/@cmpts/sun-editor/editor.service';
-import { GetDocumentData } from 'src/@cmpts/sun-editor/help';
+import { DocumentNode, EditorService } from 'src/@cmpts/editor/editor.service';
+import { GetDocumentData } from 'src/@cmpts/editor/help';
 
 @Component({
   selector: 'app-blog',

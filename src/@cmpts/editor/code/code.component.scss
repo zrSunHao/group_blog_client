@@ -1,0 +1,82 @@
+.document-node-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: calc(768px + 82px);
+    margin-bottom: 0.7rem;
+}
+
+.node-input-container {
+    flex: auto;
+}
+
+.node-operate-container {
+    margin-left: 0.5rem;
+}
+
+.mat-form-field {
+    width: 768px;
+    display: block;
+}
+
+.code-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 2.5rem;
+    width: 768px;
+    position: relative;
+}
+
+.code-wrap {
+    padding: 0.5rem;
+    width: 100%;
+    // white-space: pre-line;
+    background-color: rgba($color: #000000, $alpha: 0.3);
+}
+
+.code-row{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+p {
+    white-space: pre;
+    line-height: 1.8rem;
+    margin: 0;
+}
+
+.code-index-wrap{
+    display: flex;
+    padding: 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: rgba($color: #000000, $alpha: 0.3);
+    border-right: 2px dotted gray;
+}
+
+.code-index{
+    height: 1.8rem;
+    width: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+}
+
+.copy{
+    z-index: 10;
+    position:absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    background-color: darkcyan;
+    padding: 0.3rem;
+    border-radius: 0.2rem;
+}
+
+.copy:active{
+    background-color:deepskyblue;
+}

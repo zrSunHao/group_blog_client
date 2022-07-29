@@ -1,0 +1,59 @@
+.document-node-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: calc(768px + 82px);
+    margin-bottom: 0.7rem;
+}
+
+.node-input-container {
+    flex: auto;
+}
+
+.node-operate-container {
+    margin-left: 0.5rem;
+}
+
+.editor-file-up-container {
+    display: flex;
+    justify-content: center;
+    padding:0.5rem 0 0.5rem 0;
+    width: 768px;
+}
+.file-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 2.5rem;
+    width: 768px;
+}
+
+.file-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0.5rem;
+    width: 100%;
+    // white-space: pre-line;
+    background-color: rgba($color: #000000, $alpha: 0.3);
+}
+
+.file-wrap a {
+    color: cyan;
+    text-underline-offset: 3px;
+}
+
+.file-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 1rem;
+}
+
+.file-row mat-icon {
+    margin-right: 0.5rem;
+}

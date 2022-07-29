@@ -1,0 +1,40 @@
+<div class="node" *ngFor="let node of nodes">
+  <div
+    draggable="true"
+    (drag)="onDragStart(node, $event)"
+    (drop)="onDrop(node, $event)"
+    (dragover)="onDragOver($event)"
+    class="node-top"
+    (click)="onClicked(node)"
+    [ngStyle]="{
+      'background-color': service.selectedNode == node ? '#009999' : '#1D7373',
+      color: service.selectedNode == node ? 'whitesmoke' : 'lightgray'
+    }"
+  >
+    <span *ngIf="Headlines.indexOf(node.type) != -1">
+      <mat-icon *ngIf="node.open" (click)="toggle(node, $event)">expand_more</mat-icon>
+      <mat-icon *ngIf="!node.open" (click)="toggle(node, $event)">chevron_right</mat-icon>
+    </span>
+    <span [ngSwitch]="node.type" class="category">
+      <mat-icon *ngSwitchCase="NodeType.audio">mic</mat-icon>
+      <mat-icon *ngSwitchCase="NodeType.code">code</mat-icon>
+      <mat-icon *ngSwitchCase="NodeType.file">attach_file</mat-icon>
+      <mat-icon *ngSwitchCase="NodeType.h2" color="accent">account_tree</mat-icon>
+      <mat-icon *ngSwitchCase="NodeType.h3" color="accent">account_tree</mat-icon>
+      <mat-icon *ngSwitchCase="NodeType.h4" color="accent">account_tree</mat-icon>
+      <mat-icon *ngSwitchCase="NodeType.h5" color="accent">account_tree</mat-icon>
+      <mat-icon *ngSwitchCase="NodeType.h6" color="accent">account_tree</mat-icon>
+      <mat-icon *ngSwitchCase="NodeType.img">image</mat-icon>
+      <mat-icon *ngSwitchCase="NodeType.link">link</mat-icon>
+      <mat-icon *ngSwitchCase="NodeType.list">format_list_bulleted</mat-icon>
+      <mat-icon *ngSwitchCase="NodeType.p">subject</mat-icon>
+      <mat-icon *ngSwitchCase="NodeType.quote">format_quote</mat-icon>
+      <mat-icon *ngSwitchCase="NodeType.table">grid_on</mat-icon>
+      <mat-icon *ngSwitchCase="NodeType.video">videocam</mat-icon>
+    </span>
+    <div [ngSwitch]="node.type" class="content">{{node.content}}</div>
+  </div>
+  <div *ngIf="node.open && node.children && node.children.length > 0" class="node-body">
+    <app-tree [nodes]="node.children"></app-tree>
+  </div>
+</div>

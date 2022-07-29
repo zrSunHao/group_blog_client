@@ -1,0 +1,57 @@
+.document-node-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: calc(768px + 82px);
+    margin-bottom: 0.7rem;
+}
+
+.node-input-container {
+    flex: auto;
+}
+
+.node-operate-container {
+    margin-left: 0.5rem;
+}
+
+.mat-form-field {
+    width: 768px;
+    display: block;
+}
+
+.table-container {
+    display: flex;
+    //justify-content: flex-start;
+    align-items: center;
+    min-height: 2.5rem;
+    width: 768px;
+}
+
+table {
+    border-spacing: 0px; /*设置边框的距离*/
+    border-collapse: collapse; /*合并边框(设置了此属性 边框的距离就没用了 所以用此属性无需再设置边框距离)*/
+}
+
+td,
+th {
+    border: 2px solid gray;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    letter-spacing: 0.1rem;
+}
+
+th {
+    background-color: rgb(0 0 0 / 20%) !important;
+}
+
+tr:nth-child(odd) {
+    /*设置隔行背景不同色:参数:even 表示偶数  odd  表示奇数 */
+    background-color: rgb(0 0 0 / 10%) !important;
+}
+
+tr:hover {
+    background-color: rgb(0 0 0 / 30%) !important;
+}
