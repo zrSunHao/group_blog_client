@@ -142,7 +142,16 @@ export class EditorService {
       return;
     }
 
-    // case 2：托e 放h 托e置于放h子元素集合最后
+    // case 2：托h 放e 若在同一个父h之下，托h置于放e之后
+    if (this.Headlines.indexOf(this.dragNode.type) != -1 && this.Headlines.indexOf(dropNode.type) == -1) {
+      if (!dragParent || !dropParent) return;
+      if (dragParent != dropParent) return;
+      dragParent.children = dragParent.children.filter(x => x != this.dragNode);
+      let index = dropParent.children.indexOf(dropNode);
+      dropParent.children.splice(index + 1, 0, this.dragNode);
+    }
+
+    // case 3：托e 放h 托e置于放h子元素集合最后
     if (this.Headlines.indexOf(this.dragNode.type) == -1 && this.Headlines.indexOf(dropNode.type) != -1) {
       this.backup();
       if (dragParent) dragParent.children = dragParent.children.filter(x => x != this.dragNode);
@@ -150,7 +159,7 @@ export class EditorService {
       return;
     }
 
-    // case 3：托e 放e 托e置于放e之后
+    // case 4：托e 放e 托e置于放e之后
     if (this.Headlines.indexOf(this.dragNode.type) == -1 && this.Headlines.indexOf(dropNode.type) == -1) {
       this.backup();
       if (dragParent) dragParent.children = dragParent.children.filter(x => x != this.dragNode);
