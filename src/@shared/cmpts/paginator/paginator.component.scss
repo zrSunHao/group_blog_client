@@ -1,0 +1,33 @@
+.warp {
+    display: grid;
+    grid-template-columns: 9rem 6rem auto 1.5rem 2rem 6rem 7rem 7rem 2rem 1.5rem;
+    gap: 1rem;
+    font-size: 8px;
+}
+
+.warp ::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0 !important;
+}
+
+.page-total {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-right-align {
+    text-align: right;
+}
+
+input.page-right-align::-webkit-outer-spin-button,
+input.page-right-align::-webkit-inner-spin-button {
+    display: none;
+}
+
+input.page-right-align {
+    -moz-appearance: textfield;
+}
+
+::ng-deep .mat-form-field-prefix, ::ng-deep .mat-form-field-suffix {
+    position: initial;
+}

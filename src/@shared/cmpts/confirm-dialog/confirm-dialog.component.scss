@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.mat-dialog-title{
+    margin-bottom: 0.25rem;
+}
+
+mat-divider{
+    margin-bottom: 1rem;
+}
+
+.header h3 {
+    margin: 0;
+}
+
+.header button :hover {
+    font-size: 2rem;
+}

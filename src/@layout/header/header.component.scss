@@ -1,0 +1,80 @@
+.header-container {
+    display: grid;
+    grid-template-columns: 15rem auto 15rem;
+    color: mistyrose;
+}
+
+$header-height: 3rem;
+
+.logo-wrap {
+    height: $header-height;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.logo-wrap img {
+    height: 3rem;
+    width: 3rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.logo-wrap img:hover {
+    -webkit-animation: wobble-hor-bottom 0.8s both;
+    animation: wobble-hor-bottom 0.8s both;
+    animation-delay: 300ms;
+}
+
+.logo-wrap h2 {
+    text-align: center;
+    margin: 0;
+    font-weight: bold;
+    font-style: oblique;
+    letter-spacing: 0.25rem;
+}
+
+.logo-wrap h2:hover {
+    color: white;
+}
+
+.menu-wrap {
+    height: $header-height;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.menu-wrap button {
+    font-weight: bold;
+    margin-right: 0.25rem;
+}
+
+.menu-selection-btn {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.menu-wrap button:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.customer-wrap {
+    height: $header-height;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.material-icons {
+    font-size: 1.35rem !important;
+}
+
+.role {
+    font-weight: bold;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.role:hover {
+    transform: scale(1.2);
+}

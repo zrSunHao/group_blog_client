@@ -1,0 +1,28 @@
+<div class="header-container">
+  <div class="logo-wrap">
+    <img class="logo-img" src="/assets/icons/logo_256.png" alt="icon"/>
+    <h2>Group Blog</h2>
+  </div>
+  <div class="menu-wrap">
+    <button mat-button [ngClass]="{'menu-selection-btn':pages[0].checked}" (click)="onMainrPage()">
+      <mat-icon>{{pages[0].icon}}</mat-icon>{{pages[0].name}}
+    </button>
+    <button mat-button [ngClass]="{'menu-selection-btn':pages[1].checked}" (click)="onGroupPage()">
+      <mat-icon>{{pages[1].icon}}</mat-icon>{{pages[1].name}}
+    </button>
+  </div>
+  <div class="customer-wrap">
+    <span class="role" [matMenuTriggerFor]="menu">{{userName}}</span>
+  </div>
+</div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="onPsdReset()">
+    <mat-icon>fingerprint</mat-icon>
+    <span>修改密码</span>
+  </button>
+  <button mat-menu-item (click)="onLogoutClick()">
+    <mat-icon>logout</mat-icon>
+    <span>登出</span>
+  </button>
+</mat-menu>

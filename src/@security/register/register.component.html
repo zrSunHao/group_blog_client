@@ -1,0 +1,41 @@
+<div class="page bg-image-net">
+  <div class="container">
+    <div class="bg-box"></div>
+    <div class="wrap">
+      <div class="exhibition"></div>
+      <form [formGroup]="form">
+        <img src="/assets/icons/logo_256.png" alt=""/>
+        <div class="title">Group Blog</div>
+        <mat-form-field appearance="outline">
+          <mat-label>账号</mat-label>
+          <input matInput placeholder="请输入账号" formControlName="userName" autocomplete="off">
+          <mat-icon matSuffix>account_circle</mat-icon>
+          <mat-hint>字母开头，6-16位，字母、数字、下划线</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>密码</mat-label>
+          <input matInput placeholder="请输入密码" type="password" formControlName="password" autocomplete="off">
+          <mat-icon matSuffix>fingerprint</mat-icon>
+          <mat-hint>必须包含大小写字母和数字，6-18位</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>确认密码</mat-label>
+          <input matInput placeholder="请输入确认密码" type="password" formControlName="confirmPsd" autocomplete="off">
+          <mat-icon matSuffix>fingerprint</mat-icon>
+          <mat-hint [ngStyle]="{color: '#ff1744'}" *ngIf="form.value.password!=form.value.confirmPsd">确认密码不正确
+          </mat-hint>
+          <mat-hint *ngIf="form.value.password===form.value.confirmPsd">再次输入密码</mat-hint>
+        </mat-form-field>
+        <div class="link">
+          <a mat-button color="accent" routerLink="/security/login/">已有帐号？登录</a>
+        </div>
+        <button type="button" mat-raised-button color="primary" (click)="register()"
+          [disabled]="!form.valid&&form.value.password===form.value.confirmPsd">
+          注&nbsp;&nbsp;&nbsp;&nbsp;册</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+

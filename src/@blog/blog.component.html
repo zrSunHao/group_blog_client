@@ -1,0 +1,22 @@
+<div class="page">
+  <div>
+    <div class="topbar">
+      <mat-icon>dashboard</mat-icon>
+      <div>
+        <h2>博客管理</h2>
+      </div>
+      <div class="box-fill"></div>
+    </div>
+  </div>
+  <div class="body-container">
+    <div class="tree-container">
+      <div class="tree-p">
+        <app-editor-tree [nodes]="serv.nodes"></app-editor-tree>
+      </div>
+    </div>
+    <div class="editor-container">
+      <app-sun-editor [nodes]="serv.nodes"></app-sun-editor>
+    </div>
+  </div>
+</div>
+

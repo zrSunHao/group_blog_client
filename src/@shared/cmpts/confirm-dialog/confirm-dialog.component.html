@@ -1,0 +1,11 @@
+<div mat-dialog-title class="header">
+  <h3>操作确认</h3>
+</div>
+<mat-divider></mat-divider>
+<div mat-dialog-content>
+  {{message}}
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button color="warn" (click)="onCloseClick()">取消</button>
+  <button mat-button cdkFocusInitial color="accent" (click)="onAgreeClick()">确定</button>
+</div>

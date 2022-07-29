@@ -1,4 +1,5 @@
-import { DocumentNode, DocumentNodeType } from "./sun-editor/editor.service";
+import { DocumentNode, DocumentNodeType } from "./editor.service";
+
 
 export function GetDocumentData(): DocumentNode[] {
     const nodes: DocumentNode[] = [];
