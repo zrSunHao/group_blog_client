@@ -18,7 +18,10 @@ export class HeaderComponent implements OnInit {
 
   userName: string = 'zhangsan';
   pages: PageElement[] = [
-    { name: '专栏', icon: 'dashboard', checked: true, address: 'blog' },
+    { name: '博客园', icon: 'dashboard', checked: true, address: 'blog' },
+    { name: '笔记管理', icon: 'dashboard', checked: false, address: 'topic' },
+    { name: '我的收藏', icon: 'star', checked: false, address: 'star' },
+    { name: '文件查询', icon: 'dashboard', checked: false, address: 'resource' },
     { name: '用户管理', icon: 'group', checked: false, address: 'group' },
   ];
 
@@ -26,6 +29,10 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    for (const page of this.pages) {
+      if (this.router.url.indexOf(page.address) == 1) page.checked = true;
+      else page.checked = false;
+    }
     this.router.events
       .pipe(filter(e => e instanceof NavigationEnd))
       .subscribe(e => {
@@ -36,12 +43,8 @@ export class HeaderComponent implements OnInit {
       });
   }
 
-  onGroupPage() {
-    this.router.navigate(['group']);
-  }
-
-  onMainrPage() {
-    this.router.navigate(['column']);
+  onSkipPage(address: string) {
+    this.router.navigate([address]);
   }
 
   onPsdReset(): void {

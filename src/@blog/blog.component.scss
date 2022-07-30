@@ -14,33 +14,3 @@
     justify-content: center;
     overflow-y: hidden;
 }
-
-.tree-container {
-    height: 100%;
-    max-width: 280px;
-    min-width: 200px;
-    width: 100%;
-}
-
-.editor-container {
-    display: flex;
-    align-items: flex-start;
-    max-height: calc(100vh - 9rem);
-    // margin-top: 1rem;
-    //justify-content: center;
-    // height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
-.tree-p {
-    position: fixed;
-    top: 8rem;
-    margin-bottom: 2rem;
-    max-width: 280px;
-    min-width: 200px;
-    width: 100%;
-    max-height: calc(100vh - 9rem);
-    overflow-y: auto;
-    padding-right: 0.5rem;
-}

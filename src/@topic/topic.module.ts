@@ -4,21 +4,23 @@ import { CommonModule } from '@angular/common';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatIconModule } from '@angular/material/icon';
 
+import { EditorModule } from 'src/@cmpts/editor/editor.module';
 import { SharedModule } from 'src/@shared/shared.module';
 
-import { BlogComponent } from './blog.component';
-import { BlogRoutingModule } from './blog.module.routing';
+import { TopicComponent } from './topic.component';
+import { TopicRoutingModule } from './topic.module.routing';
 
 @NgModule({
   imports: [
     CommonModule,
-    
+
     DragDropModule,
     MatIconModule,
+    EditorModule,
     SharedModule,
 
-    BlogRoutingModule
+    TopicRoutingModule
   ],
-  declarations: [BlogComponent]
+  declarations: [TopicComponent]
 })
-export class BlogModule { }
+export class TopicModule { }

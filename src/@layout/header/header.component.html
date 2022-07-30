@@ -4,11 +4,8 @@
     <h2>Group Blog</h2>
   </div>
   <div class="menu-wrap">
-    <button mat-button [ngClass]="{'menu-selection-btn':pages[0].checked}" (click)="onMainrPage()">
-      <mat-icon>{{pages[0].icon}}</mat-icon>{{pages[0].name}}
-    </button>
-    <button mat-button [ngClass]="{'menu-selection-btn':pages[1].checked}" (click)="onGroupPage()">
-      <mat-icon>{{pages[1].icon}}</mat-icon>{{pages[1].name}}
+    <button mat-button *ngFor="let page of pages" [ngClass]="{'menu-selection-btn':page.checked}" (click)="onSkipPage(page.address)">
+      <mat-icon>{{page.icon}}</mat-icon> {{page.name}}
     </button>
   </div>
   <div class="customer-wrap">
