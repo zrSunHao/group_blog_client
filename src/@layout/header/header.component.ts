@@ -25,8 +25,8 @@ export class HeaderComponent implements OnInit {
     { name: '用户管理', icon: 'group', checked: false, address: 'group' },
   ];
 
-  constructor(private router: Router,
-  ) { }
+  constructor(private router: Router) { 
+  }
 
   ngOnInit() {
     for (const page of this.pages) {

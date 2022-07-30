@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-topic',
@@ -7,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopicComponent implements OnInit {
 
-  public constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
+  }
+
+  onTopicClick(topic: any) {
+    this.router.navigate(['topic/column']);
   }
 
 }
