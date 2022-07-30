@@ -1,21 +1,25 @@
 <div class="page">
-  <div>
-    <div class="topbar">
-      <mat-icon>dashboard</mat-icon>
-      <div>
-        <h2>主题管理</h2>
-      </div>
-      <div class="box-fill"></div>
-    </div>
-  </div>
-  <div class="body-container">
-    <div class="tree-container">
-      <div class="tree-p">
-        <app-tree [nodes]="serv.nodes"></app-tree>
+    <div>
+      <div class="topbar">
+        <mat-icon class="topbar-icon">dashboard</mat-icon>
+        <div>
+          <h2>博客园</h2>
+        </div>
+        <div class="box-fill"></div>
+        <button type="button" mat-raised-button color="primary"><mat-icon>add</mat-icon> 添加领域</button>
+        <button type="button" mat-raised-button color="primary"><mat-icon>refresh</mat-icon> 刷新</button>
       </div>
     </div>
-    <div class="editor-container">
-      <app-editor [nodes]="serv.nodes"></app-editor>
+    <div class="body-container bg-image-net">
+      <div class="domain-wrap">
+        <div class="domain" *ngFor="let item of [].constructor(5)">
+          <div class="domain-title"><h3>领域名称</h3></div>
+          <div class="topic-add"><mat-icon>add</mat-icon></div>
+          <div class="topic-warp">
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+  

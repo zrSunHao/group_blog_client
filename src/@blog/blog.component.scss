@@ -3,14 +3,13 @@
     width: 100%;
     display: grid;
     grid-template-rows: 4rem auto;
+    overflow-y: auto;
 }
 
 .body-container {
     display: flex;
-    //grid-template-columns: 15rem auto;
-    gap: 1.5rem;
-    height: 100%;
+    height: calc(100vh - 7rem);
     width: 100%;
     justify-content: center;
-    overflow-y: hidden;
+    
 }
