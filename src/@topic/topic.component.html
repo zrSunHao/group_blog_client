@@ -12,11 +12,11 @@
     </div>
     <div class="body-container bg-image-net">
       <div class="domain-wrap">
-        <div class="domain" *ngFor="let item of [].constructor(5)">
+        <div class="domain" *ngFor="let domain of [].constructor(5)">
           <div class="domain-title"><h3>领域名称</h3></div>
           <div class="topic-add"><mat-icon>add</mat-icon></div>
           <div class="topic-warp">
-
+            <app-topic-item *ngFor="let topic of [].constructor(8)"></app-topic-item>
           </div>
         </div>
       </div>

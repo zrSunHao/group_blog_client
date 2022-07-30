@@ -12,6 +12,8 @@ import { SharedModule } from 'src/@shared/shared.module';
 import { TopicComponent } from './topic.component';
 import { TopicRoutingModule } from './topic.module.routing';
 import { NoteComponent } from './note/note.component';
+import { ColumnComponent } from './column/column.component';
+import { TopicItemComponent } from './cmpts/topic-item/topic-item.component';
 
 const mats = [DragDropModule, MatButtonModule, MatMenuModule, MatIconModule,];
 
@@ -23,6 +25,6 @@ const mats = [DragDropModule, MatButtonModule, MatMenuModule, MatIconModule,];
     SharedModule,
     TopicRoutingModule
   ],
-  declarations: [TopicComponent, NoteComponent]
+  declarations: [TopicComponent, NoteComponent,ColumnComponent,TopicItemComponent]
 })
 export class TopicModule { }

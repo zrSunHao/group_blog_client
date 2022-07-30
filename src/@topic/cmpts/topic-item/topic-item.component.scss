@@ -1,0 +1,48 @@
+.topic-container {
+    height: 60px;
+    width: 110px;
+    border-width: 6px;
+    border-color: gray;
+    border-style: double dashed;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.topic-container:hover {
+    border-width: 6px;
+    border-color: silver;
+    border-style: dashed double;
+}
+
+.topic-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+}
+
+.topic-icon mat-icon {
+    color: silver;
+}
+
+.topic-title {
+    width: 110px;
+    display: inline;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: smaller;
+    text-align: center;
+}
+
+// .topic-title h6{
+
+//     display: inline;
+//     overflow: hidden;
+
+// }
