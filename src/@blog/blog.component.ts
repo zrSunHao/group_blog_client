@@ -23,7 +23,7 @@ export class BlogComponent implements OnInit {
   }
 
   onNoteClick(note: any) {
-    this.router.navigate(['topic/note']);
+    this.router.navigate(['read']);
   }
 
   onPaginatorChange(paginator: Paginator) {

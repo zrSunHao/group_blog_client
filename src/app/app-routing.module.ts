@@ -12,6 +12,7 @@ const routes: Routes = [
         { path: 'blog', loadChildren: () => import('../@blog/blog.module').then(m => m.BlogModule) },
         { path: 'topic', loadChildren: () => import('../@topic/topic.module').then(m => m.TopicModule) },
         { path: 'star', loadChildren: () => import('../@star/star.module').then(m => m.StarModule) },
+        { path: 'read', loadChildren: () => import('../@read/read.module').then(m => m.ReadModule) },
         { path: 'resource', loadChildren: () => import('../@resource/resource.module').then(m => m.ResourceModule) },
         { path: 'group', loadChildren: () => import('../@group/group.module').then(m => m.GroupModule) },
         { path: '**', redirectTo: '/blog' },

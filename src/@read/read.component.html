@@ -3,13 +3,11 @@
     <div class="topbar">
       <mat-icon>dashboard</mat-icon>
       <div>
-        <h2>主题管理</h2>
+        <h2>阅读 - 这是笔记标题</h2>
       </div>
       <div class="box-fill"></div>
-      <button type="button" mat-raised-button color="primary" (click)="onEditEnable()" *ngIf="!serv.canEdit"><mat-icon>edit</mat-icon> 修改</button>
-      <button type="button" mat-raised-button color="primary" (click)="onAddH2()" *ngIf="serv.canEdit"><mat-icon>refresh</mat-icon> 添加顶级标题</button>
-      <button type="button" mat-raised-button color="primary" (click)="onTempSave()" *ngIf="serv.canEdit"><mat-icon>refresh</mat-icon> 暂存</button>
-      <button type="button" mat-raised-button color="primary" (click)="onSave()" *ngIf="serv.canEdit"><mat-icon>refresh</mat-icon> 保存</button>
+      <button type="button" mat-raised-button color="primary" (click)="onFavoriteClick()" *ngIf="!star"><mat-icon>edit</mat-icon> 收藏</button>
+      <button type="button" mat-raised-button color="primary" (click)="onCancelClick()" *ngIf="star"><mat-icon>edit</mat-icon> 取消收藏</button>
       <button type="button" mat-raised-button color="primary" (click)="onPrintClick()"><mat-icon>refresh</mat-icon> 打印</button>
       <button type="button" mat-raised-button color="primary" (click)="onBackClick()"><mat-icon>refresh</mat-icon> 返回</button>
     </div>

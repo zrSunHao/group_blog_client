@@ -15,7 +15,7 @@ export class StarComponent implements OnInit {
   }
 
   onNoteClick(note: any) {
-    this.router.navigate(['topic/note']);
+    this.router.navigate(['read']);
   }
 
 }
