@@ -10,6 +10,8 @@
 
 .note-container:hover {
     background-color: rgb(29, 115, 115, 90%);
+    box-shadow: 0 8px 16px 0 rgb(0, 0, 0, 70%);
+    transition: 0.3s;
 }
 
 .note-container .info {

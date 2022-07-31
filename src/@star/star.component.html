@@ -1,3 +1,29 @@
-<p>
-  star works!
-</p>
+<div class="page">
+  <div>
+    <div class="topbar">
+      <mat-icon class="topbar-icon">dashboard</mat-icon>
+      <div><h2>我的收藏 - 专栏(12)</h2></div>
+      <div class="box-fill"></div>
+      <mat-form-field appearance="legacy" color="accent">
+        <mat-label>文章标题</mat-label>
+        <input matInput placeholder="请输入要查询的文章标题" autocomplete="off">
+      </mat-form-field>
+      <button type="button" mat-raised-button color="primary"><mat-icon>add</mat-icon> 查询</button>
+      <button type="button" mat-raised-button color="primary"><mat-icon>refresh</mat-icon> 重置</button>
+      <button type="button" mat-raised-button color="primary"><mat-icon>refresh</mat-icon> 刷新</button>
+    </div>
+  </div>
+  <div class="body-container bg-image-net">
+    <div class="column-collect">
+      <div class="column-box">
+        <div class="column-wrap">
+          <app-column-item *ngFor="let item of [].constructor(8)"></app-column-item>
+        </div>
+      </div>
+    </div>
+    <div class="note-wrap">
+      <app-note-item *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12,13]"
+      [imgUrl]="'assets/files/card_'+item+'.png'" (onClick)="onNoteClick(item)"></app-note-item>
+    </div>
+  </div>
+</div>

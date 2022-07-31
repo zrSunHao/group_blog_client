@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-note-item',
@@ -7,11 +7,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class NoteItemComponent implements OnInit {
 
-  @Input() imgUrl:string = 'assets/files/card_1.png';
+  @Input() imgUrl: string = 'assets/files/card_1.png';
+  @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onMyClick() {
+    this.onClick.emit();
   }
 
 }

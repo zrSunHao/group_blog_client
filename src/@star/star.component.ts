@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-star',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
+  }
+
+  onNoteClick(note: any) {
+    this.router.navigate(['topic/note']);
   }
 
 }

@@ -23,4 +23,8 @@ export class NoteComponent implements OnInit {
   ngOnInit() {
   }
 
+  onBackClick(){
+    history.back();
+  }
+
 }

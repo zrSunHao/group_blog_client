@@ -1,11 +1,11 @@
 <div class="warp">
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" color="accent">
     <mat-label>当前排序项</mat-label>
     <mat-select [(value)]="columnOp" (valueChange)="notify()">
       <mat-option value={{c.value}} *ngFor="let c of columns">{{c.name}}</mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" color="accent">
     <mat-label>排序方式</mat-label>
     <mat-select [(value)]="sort" (valueChange)="notify()">
       <mat-option value="asc">升序</mat-option>
@@ -19,7 +19,7 @@
   <button mat-icon-button [disabled]="previousDisabled">
     <mat-icon (click)="previousPage()">chevron_left</mat-icon>
   </button>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" mat-form-field>
     <mat-label>每页条数</mat-label>
     <mat-select [(value)]="pageSize" (valueChange)="notify()">
       <mat-option [value]="5">5条</mat-option>
@@ -28,7 +28,7 @@
       <mat-option [value]="50">50条</mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" mat-form-field>
     <mat-label>当前页数</mat-label>
     <input matInput type="number" [(ngModel)]="pageIndex" placeholder="1" class="page-right-align" (keyup.enter)="keyEnter()">
     <span matPrefix>当前第&nbsp;</span>
