@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
+import { NotifyService } from 'src/@shared/services/notify.service';
+import { DialogResetComponent } from '../dialog-reset/dialog-reset.component';
+import { ResetDto } from 'src/@shared/models/paging.model';
 
 export class PageElement {
   name: string = '';
@@ -25,7 +29,8 @@ export class HeaderComponent implements OnInit {
     { name: '用户管理', icon: 'group', checked: false, address: 'group' },
   ];
 
-  constructor(private router: Router) { 
+  constructor(private router: Router,
+    private dialog: MatDialog, private notifyServ: NotifyService) {
   }
 
   ngOnInit() {
@@ -48,10 +53,22 @@ export class HeaderComponent implements OnInit {
   }
 
   onPsdReset(): void {
+    const user = new ResetDto();
+    user.userName = this.userName;
+    const dialogRef = this.dialog.open(DialogResetComponent,
+      { width: '360px', data: user, }
+    );
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result?.op === 'save') {
+        const newPsd: string = result?.newPsd;
+        this.notifyServ.notify(`重置密码成功！！！`, 'success');
+      }
+    });
   }
 
   onLogoutClick(): void {
+    this.router.navigate(['/security/login']);
     // this.hostServ.logout().subscribe({
     //   next: res => {
     //     this.hostServ.clear();

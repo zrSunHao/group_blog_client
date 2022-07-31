@@ -23,6 +23,12 @@ export class PagingParameter<T>{
     sortColumn: string = 'default'
 }
 
+export class ResetDto{
+    userName:string = '';
+    newPsd:string = '';
+    oldPsd:string = '';
+}
+
 export interface OptionItem {
     key: string | number;
     value: string;
