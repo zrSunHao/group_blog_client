@@ -68,6 +68,7 @@ body {
   position: fixed;
   top: 0;
   height: 4rem;
+  box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024, 0 1px 18px #0000001f;
 }
 
 .topbar .topbar-icon {
@@ -91,6 +92,30 @@ body {
 
 .box-fill {
   flex: 1;
+}
+
+.table-header-row {
+  height: 3rem;
+  background-color: #303030;
+}
+.table-element-row:hover {
+  background-color: #303030;
+}
+
+table button {
+  margin-right: 0.5rem;
+}
+
+table mat-icon {
+  color: orange;
+}
+
+table mat-icon:hover {
+  color: #e91e63;
+}
+
+thead tr th {
+  z-index: 15 !important;
 }
 
 @import "./@arts/common.css";

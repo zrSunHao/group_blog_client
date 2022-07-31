@@ -1,3 +1,89 @@
-<p>
-  resource works!
-</p>
+<div class="page">
+  <div>
+    <div class="topbar">
+      <mat-icon class="topbar-icon">dashboard</mat-icon>
+      <div>
+        <h2>用户管理</h2>
+      </div>
+      <div class="box-fill"></div>
+      <button type="button" mat-raised-button color="primary"><mat-icon>refresh</mat-icon> 重置</button>
+      <button type="button" mat-raised-button color="primary"><mat-icon>search</mat-icon> 查询</button>
+    </div>
+  </div>
+  <div class="body-container bg-image-net">
+    <div class="search-wrap">
+      <form class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>文件名</mat-label>
+          <input matInput placeholder="请输入要搜索的账号" [(ngModel)]="filter.fileName" name="fileName"
+            autocomplete="off">
+          <mat-icon matSuffix>report</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>文件类型</mat-label>
+          <input matInput placeholder="请输入要搜索的账号" [(ngModel)]="filter.type" name="type"
+            autocomplete="off">
+          <mat-icon matSuffix>report</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>来源分类</mat-label>
+          <mat-select [(ngModel)]="filter.category" name="category">
+            <mat-option *ngFor="let op of categoryOps" [value]="op.key">{{op.value}}</mat-option>
+          </mat-select>
+          <mat-icon matSuffix>category</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>上传时间</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate [(ngModel)]="filter.startAt" name="startAt" placeholder="开始日期">
+            <input matEndDate [(ngModel)]="filter.endAt" name="endAt" placeholder="结束日期">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+        </form>
+    </div>
+    <div class="table-wrap">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="fileName">
+          <th mat-header-cell *matHeaderCellDef> 文件名称 </th>
+          <td mat-cell *matCellDef="let element" style="color: #a5f3fc;min-width: 5rem;" [matTooltip]="element.fileName"> {{element.fileName | clip:18}} </td>
+        </ng-container>
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef> 文件类型 </th>
+          <td mat-cell *matCellDef="let element" style="color: #a5f3fc;min-width: 5rem;" [matTooltip]="element.type"> {{element.type | clip:18}} </td>
+        </ng-container>
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef> 角色 </th>
+          <td mat-cell *matCellDef="let element" style="min-width: 5rem;">
+            <span *ngIf="element.category === categoryOps[0].key" style="color: #a5f3fc;">{{categoryOps[0].value}}</span>
+            <span *ngIf="element.category === categoryOps[1].key" style="color: #a5f3fc;">{{categoryOps[1].value}}</span>
+            <span *ngIf="element.category === categoryOps[2].key" style="color: #fde68a;">{{categoryOps[2].value}}</span>
+            <span *ngIf="element.category === categoryOps[3].key" style="color: #a7f3d0;">{{categoryOps[3].value}}</span>
+            <span *ngIf="element.category === categoryOps[4].key" style="color: #a5f3fc;">{{categoryOps[4].value}}</span>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="size">
+          <th mat-header-cell *matHeaderCellDef> 文件类型 </th>
+          <td mat-cell *matCellDef="let element" style="color: #a5f3fc;min-width: 5rem;"> {{element.size | fileSizeFormat}} </td>
+        </ng-container>
+        <ng-container matColumnDef="createdAt">
+          <th mat-header-cell *matHeaderCellDef> 上传时间 </th>
+          <td mat-cell *matCellDef="let element" style="max-width: 12rem;"> {{element.createdAt| date:'yyyy-MM-dd HH:mm:ss'}} </td>
+        </ng-container>
+        <ng-container matColumnDef="operate">
+          <th mat-header-cell *matHeaderCellDef> 操作 </th>
+          <td mat-cell *matCellDef="let element" style="width: 6rem;">
+            <button mat-icon-button matTooltip="下载" ><mat-icon>message</mat-icon></button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="table-header-row"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-element-row"></tr>
+      </table>
+    </div>
+    <div class="footer">
+      <app-paginator [total]="total" [columns]="columns" [columnOp]="columnOp" (onChange)="onPaginatorChange($event)">
+      </app-paginator>
+    </div>
+  </div>
+</div>

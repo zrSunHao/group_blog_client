@@ -11,14 +11,14 @@ import { IconSnackBarComponent } from './cmpts/icon-snack-bar/icon-snack-bar.com
 import { ConfirmDialogComponent } from './cmpts/confirm-dialog/confirm-dialog.component';
 
 import { ClipPipe } from './pipes/clip.pipe';
+import { FileSizeFormatPipe } from './pipes/fileSizeFormat.pipe';
 
 import { NotifyService } from './services/notify.service';
-
 
 const mats = [MatButtonModule, MatDialogModule, MatSnackBarModule, MatDividerModule,];
 const components = [IconSnackBarComponent, ConfirmDialogComponent,];
 const services = [NotifyService];
-const pipes = [ClipPipe];
+const pipes = [ClipPipe,FileSizeFormatPipe];
 const exports = [ConfirmDialogComponent,];
 
 @NgModule({
