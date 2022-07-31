@@ -22,8 +22,8 @@ export class ImgComponent implements OnInit {
 
   ngOnInit() {
     this.onStatusChange();
-    this.node.call((msf:string)=>{
-      if(this.view) this.view.nativeElement.scrollIntoView();
+    this.node.call((msf: string) => {
+      if (this.view) this.view.nativeElement.scrollIntoView();
     })
   }
 
@@ -35,38 +35,38 @@ export class ImgComponent implements OnInit {
     if (e?.target?.files?.length) {
       // const formData = new FormData();
       // formData.append('avatar', e.target.files[0]);
-     this.node.url = 'assets/imgs/bg_4.png';
-     this.node.content = e.target.files[0].name;
-     console.log(e.target.files[0])
+      this.node.url = 'assets/imgs/bg_4.png';
+      this.node.content = e.target.files[0].name;
+      console.log(e.target.files[0])
     }
   }
 
-  onLeft(){
+  onLeft() {
     this.node.data['position'] = 'left';
     this.containerStyle['justify-content'] = 'flex-start';
   }
 
-  onCenter(){
+  onCenter() {
     this.node.data['position'] = 'center';
     this.containerStyle['justify-content'] = 'center';
   }
 
-  onRight(){
+  onRight() {
     this.node.data['position'] = 'right';
     this.containerStyle['justify-content'] = 'flex-end';
   }
 
-  onBigHeight(){
+  onBigHeight() {
     this.node.data['height'] = '30rem';
     this.imgStyle = { 'max-height': '30rem', };
   }
 
-  onMiddleHeight(){
+  onMiddleHeight() {
     this.node.data['height'] = '20rem';
     this.imgStyle = { 'max-height': '20rem', };
   }
 
-  onSamllHeight(){
+  onSamllHeight() {
     this.node.data['height'] = '10rem';
     this.imgStyle = { 'max-height': '10rem', };
   }

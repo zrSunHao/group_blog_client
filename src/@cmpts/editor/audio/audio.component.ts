@@ -20,8 +20,8 @@ export class AudioComponent implements OnInit {
   constructor(public service: EditorService) { }
 
   ngOnInit() {
-    this.node.call((msf:string)=>{
-      if(this.view) this.view.nativeElement.scrollIntoView();
+    this.node.call((msf: string) => {
+      if (this.view) this.view.nativeElement.scrollIntoView();
     })
   }
 

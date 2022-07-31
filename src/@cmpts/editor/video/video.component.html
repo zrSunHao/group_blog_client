@@ -19,7 +19,7 @@
       <div class="editor-video-name">{{ node.content }}</div>
     </div>
   </div>
-  <div class="node-operate-container">
+  <div class="node-operate-container" *ngIf="service.canEdit">
     <app-operate [nodeType]="node.type" [matMenuTriggerFor]="operatemenu"></app-operate>
   </div>
 </div>

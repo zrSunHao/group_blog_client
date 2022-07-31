@@ -27,6 +27,7 @@ export class QuoteComponent implements OnInit {
   }
 
   onInputFocus() {
+    if (!this.service.canEdit) return;
     this.focus = true;
     this.onStatusChange();
     setTimeout(() => {

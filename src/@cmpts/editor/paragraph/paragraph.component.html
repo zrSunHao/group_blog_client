@@ -1,6 +1,6 @@
 <div class="document-node-container">
   <div class="node-input-container">
-    <mat-form-field appearance="outline" *ngIf="edit">
+    <mat-form-field appearance="outline" *ngIf="edit && service.canEdit">
       <textarea
         (blur)="onInputBlur()"
         matInput
@@ -16,7 +16,7 @@
       </p>
     </div>
   </div>
-  <div class="node-operate-container">
+  <div class="node-operate-container" *ngIf="service.canEdit">
     <app-operate [nodeType]="node.type" [matMenuTriggerFor]="operatemenu"></app-operate>
   </div>
 </div>

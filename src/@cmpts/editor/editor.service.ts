@@ -90,6 +90,7 @@ export class EditorService {
 
   public nodes: DocumentNode[] = [];
   public selectedNode: DocumentNode | null = null;
+  public canEdit: boolean = true;
   public dragNode: DocumentNode | null = null;
   public NodeType = DocumentNodeType;
   public Headlines = [DocumentNodeType.h2, DocumentNodeType.h3, DocumentNodeType.h4, DocumentNodeType.h5, DocumentNodeType.h6];
@@ -102,12 +103,12 @@ export class EditorService {
   onSelected: EventEmitter<DocumentNode> = new EventEmitter<DocumentNode>();
 
   constructor() {
-    for (let index = 0; index < this.BackupCount; index++) {
-      this.BackupKeys.push(`${this.BackupKeyPrefix}${index + 1}`)
-    }
-    for (const key of this.BackupKeys) {
-      localStorage.removeItem(key);
-    }
+    this.initBackupInfo();
+  }
+
+  public editEnable(enable:boolean){
+    this.canEdit = enable;
+    this.initBackupInfo();
   }
 
   public selectNode(node: DocumentNode) {
@@ -122,7 +123,7 @@ export class EditorService {
    * @returns 
    */
   public dropToNode(dropNode: DocumentNode) {
-    if (!this.dragNode || this.dragNode == dropNode) return;
+    if (!this.canEdit || !this.dragNode || this.dragNode == dropNode) return;
 
     const dragParent = this.getNodeParent(this.dragNode);
     const dropParent = this.getNodeParent(dropNode);
@@ -183,6 +184,7 @@ export class EditorService {
 
   // 备份数据
   public backup() {
+    if(!this.canEdit) return;
     let index = 1;
     for (const key of this.BackupKeys) {
       if (index == this.BackupKeys.length) {
@@ -199,6 +201,7 @@ export class EditorService {
 
   // 回退数据
   public fallback() {
+    if(!this.canEdit) return;
     const json = localStorage.getItem(`${this.BackupKeyPrefix}${this.BackupCount}`);
     if (!json) {
       this.canBack = false;
@@ -234,6 +237,7 @@ export class EditorService {
   }
 
   public insertNode(preNode: DocumentNode, node: DocumentNode) {
+    if(!this.canEdit) return;
     this.backup();
     const parent = this.getNodeParent(preNode);
     if (!parent && node.type == DocumentNodeType.h2) {
@@ -247,17 +251,29 @@ export class EditorService {
   }
 
   public insertNotHeadPeerNode(preNode: DocumentNode, nodeType: DocumentNodeType) {
+    if(!this.canEdit) return;
     const node = this.nodeFactory(nodeType);
     this.insertNode(preNode, node);
   }
 
   public removeNode(node: DocumentNode) {
+    if(!this.canEdit) return;
     const parent = this.getNodeParent(node);
     this.backup();
     if (!parent) {
       this.nodes = this.nodes.filter(x => x != node);
     } else {
       parent.children = parent.children.filter(x => x != node);
+    }
+  }
+
+  private initBackupInfo(){
+    if(!this.canEdit) return;
+    for (let index = 0; index < this.BackupCount; index++) {
+      this.BackupKeys.push(`${this.BackupKeyPrefix}${index + 1}`)
+    }
+    for (const key of this.BackupKeys) {
+      localStorage.removeItem(key);
     }
   }
 

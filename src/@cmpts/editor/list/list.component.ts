@@ -21,12 +21,13 @@ export class ListComponent implements OnInit {
 
   ngOnInit() {
     this.onStatusChange();
-    this.node.call((msf:string)=>{
-      if(this.view) this.view.nativeElement.scrollIntoView();
+    this.node.call((msf: string) => {
+      if (this.view) this.view.nativeElement.scrollIntoView();
     })
   }
 
   onInputFocus() {
+    if (!this.service.canEdit) return;
     this.focus = true;
     this.onStatusChange();
     setTimeout(() => {

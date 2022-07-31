@@ -23,12 +23,13 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     this.onStatusChange();
-    this.node.call((msf:string)=>{
-      if(this.view) this.view.nativeElement.scrollIntoView();
+    this.node.call((msf: string) => {
+      if (this.view) this.view.nativeElement.scrollIntoView();
     })
   }
 
   onInputFocus() {
+    if (!this.service.canEdit) return;
     this.focus = true;
     this.onStatusChange();
     setTimeout(() => {
@@ -43,17 +44,17 @@ export class TableComponent implements OnInit {
     this.onStatusChange();
   }
 
-  onLeft(){
+  onLeft() {
     this.node.data['position'] = 'left';
     this.containerStyle['justify-content'] = 'flex-start';
   }
 
-  onCenter(){
+  onCenter() {
     this.node.data['position'] = 'center';
     this.containerStyle['justify-content'] = 'center';
   }
 
-  onRight(){
+  onRight() {
     this.node.data['position'] = 'right';
     this.containerStyle['justify-content'] = 'flex-end';
   }
