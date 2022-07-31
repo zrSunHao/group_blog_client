@@ -1,0 +1,28 @@
+.page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-y: auto;
+    color: black;
+    background-color: white;
+}
+
+.catalogue{
+    margin-bottom: 2rem;
+    width: 768px;
+}
+
+.catalogue h2{
+    font-weight: bold !important;
+}
+
+.title{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.title h1{
+    margin: 0 !important;
+    font-weight: bold !important;
+}

@@ -91,6 +91,7 @@ export class EditorService {
   public nodes: DocumentNode[] = [];
   public selectedNode: DocumentNode | null = null;
   public canEdit: boolean = true;
+  public printMode: boolean = false;
   public dragNode: DocumentNode | null = null;
   public NodeType = DocumentNodeType;
   public Headlines = [DocumentNodeType.h2, DocumentNodeType.h3, DocumentNodeType.h4, DocumentNodeType.h5, DocumentNodeType.h6];

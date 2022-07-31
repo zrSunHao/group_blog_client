@@ -1,0 +1,10 @@
+<div class="headline-container" [ngSwitch]="node.type" *ngFor="let node of nodes">
+      <h2 *ngIf="node.type == nodeType.h2">{{ node.content }}</h2>
+      <h3 *ngIf="node.type == nodeType.h3">{{ node.content }}</h3>
+      <h4 *ngIf="node.type == nodeType.h4">{{ node.content }}</h4>
+      <h5 *ngIf="node.type == nodeType.h5">{{ node.content }}</h5>
+      <h6 *ngIf="node.type == nodeType.h6">{{ node.content }}</h6>
+  <div class="children-wrap" *ngIf="node.children && node.children.length > 0">
+      <app-headline [nodes]="node.children"></app-headline>
+  </div>
+</div>

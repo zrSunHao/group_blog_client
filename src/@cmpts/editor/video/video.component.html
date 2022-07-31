@@ -8,13 +8,13 @@
       (change)="onFileChange($event)"
       [ngModel]="file"
     />
-    <div class="editor-video-up-container" *ngIf="!node.url">
+    <div class="editor-video-up-container" *ngIf="!node.url && service.canEdit">
       <button mat-flat-button color="primary" (click)="onFileClick()">
         <mat-icon>cloud_upload</mat-icon>
         &nbsp;&nbsp;点击上传视频
       </button>
     </div>
-    <div class="editor-video-container" *ngIf="node.url" #view>
+    <div class="editor-video-container" *ngIf="node.url && !service.printMode" #view>
       <video controls [src]="node.url" [loop]="true" [volume]="0.2"></video>
       <div class="editor-video-name">{{ node.content }}</div>
     </div>
