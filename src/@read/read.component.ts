@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { DocumentNode, EditorService } from 'src/@cmpts/editor/editor.service';
 import { GetDocumentData } from 'src/@cmpts/editor/help';
 
@@ -13,7 +12,7 @@ export class ReadComponent implements OnInit {
   star: boolean = false;
   nodes: DocumentNode[] = GetDocumentData();
 
-  public constructor(public serv: EditorService,private router: Router) {
+  public constructor(public serv: EditorService) {
     serv.nodes = this.nodes;
     serv.editEnable(false);
     setTimeout(() => {
@@ -35,7 +34,8 @@ export class ReadComponent implements OnInit {
   }
 
   onPrintClick() {
-    this.router.navigate(['report']);
+    let url = `${location.protocol}//${location.host}/report`;
+    window.open(url, '_blank');
   }
 
   onBackClick() {
