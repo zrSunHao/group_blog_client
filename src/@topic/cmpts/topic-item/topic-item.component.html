@@ -1,10 +1,23 @@
-<div class="topic-container" (click)="onMyClick()">
+<div class="topic-container" [matMenuTriggerFor]="operatemenu">
   <div>
     <div class="topic-icon">
-      <mat-icon>settings</mat-icon>
+      <mat-icon>{{ data.logo }}</mat-icon>
     </div>
   </div>
-  <div class="topic-title">
-    设计模式
-  </div>
+  <div class="topic-title">{{ data.name }}</div>
 </div>
+
+<mat-menu #operatemenu="matMenu">
+  <button mat-menu-item (click)="onColumnClick()">
+    <mat-icon>eyes</mat-icon>
+    <span>查看专栏</span>
+  </button>
+  <button mat-menu-item (click)="onUpdateClick()">
+    <mat-icon>edit</mat-icon>
+    <span>修 改</span>
+  </button>
+  <button mat-menu-item (click)="onDeleteClick()">
+    <mat-icon>delete</mat-icon>
+    <span>删 除</span>
+  </button>
+</mat-menu>

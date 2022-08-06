@@ -16,21 +16,26 @@ import { EditorModule } from 'src/@cmpts/editor/editor.module';
 import { ColumnItemModule } from 'src/@cmpts/column-item/column-item.module';
 import { NoteItemModule } from 'src/@cmpts/note-item/note-item.module';
 
-import { TopicComponent } from './topic.component';
 import { TopicRoutingModule } from './topic.module.routing';
+import { TopicService } from './topic.service';
+import { TopicComponent } from './topic.component';
 import { NoteComponent } from './note/note.component';
 import { ColumnComponent } from './column/column.component';
 import { TopicItemComponent } from './cmpts/topic-item/topic-item.component';
 import { DialogTopicComponent } from './dialog-topic/dialog-topic.component';
 import { DialogDomainComponent } from './dialog-domain/dialog-domain.component';
+import { DialogColumnComponent } from './dialog-column/dialog-column.component';
+import { DomainComponent } from './cmpts/domain/domain.component';
 
 const cores = [CommonModule, FormsModule, ReactiveFormsModule,];
 const mats = [DragDropModule, MatButtonModule, MatMenuModule, MatIconModule, MatInputModule, MatFormFieldModule, MatDialogModule];
 const shareds = [EditorModule, SharedModule, NoteItemModule, ColumnItemModule];
-const cmpts = [TopicComponent, NoteComponent, ColumnComponent, TopicItemComponent, DialogTopicComponent, DialogDomainComponent]
+const cmpts = [TopicComponent, NoteComponent, ColumnComponent, TopicItemComponent,DomainComponent,
+   DialogTopicComponent, DialogDomainComponent,DialogColumnComponent]
 
 @NgModule({
   imports: [...cores, ...mats, ...shareds, TopicRoutingModule],
-  declarations: [...cmpts]
+  declarations: [...cmpts],
+  providers: [TopicService]
 })
 export class TopicModule { }

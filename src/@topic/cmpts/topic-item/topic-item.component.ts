@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { TopicElet } from 'src/@topic/model';
 
 @Component({
   selector: 'app-topic-item',
@@ -7,15 +8,27 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class TopicItemComponent implements OnInit {
 
-  @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
+  @Input() data: TopicElet = new TopicElet();
+
+  @Output() onColumn: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onUpdate: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onDelete: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onMyClick() {
-    this.onClick.emit();
+  onColumnClick() {
+    this.onColumn.emit();
+  }
+
+  onUpdateClick() {
+    this.onUpdate.emit();
+  }
+
+  onDeleteClick() {
+    this.onDelete.emit();
   }
 
 }
