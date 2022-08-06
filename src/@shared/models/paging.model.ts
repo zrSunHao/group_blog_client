@@ -17,7 +17,7 @@ export class ResponsePagingResult<T> {
 
 export class PagingParameter<T>{
     pageIndex: number = 0;
-    pageSize: number = 10;
+    pageSize: number = 5;
     filter: T | null = null;
     sort: 'desc' | 'asc' = 'desc';
     sortColumn: string = 'default'

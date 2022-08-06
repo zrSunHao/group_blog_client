@@ -18,6 +18,7 @@ import { PaginatorModule } from 'src/@cmpts/paginator/paginator.module';
 
 import { ResourceComponent } from './resource.component';
 import { ResourceRoutingModule } from './resource.module.routing';
+import { ResourceService } from './resource.service';
 
 const mats = [
   MatInputModule,
@@ -40,6 +41,7 @@ const mats = [
     SharedModule,
     ResourceRoutingModule
   ],
-  declarations: [ResourceComponent]
+  declarations: [ResourceComponent],
+  providers: [ResourceService]
 })
 export class ResourceModule { }

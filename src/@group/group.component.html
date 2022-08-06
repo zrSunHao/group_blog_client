@@ -13,7 +13,7 @@
   <div class="body-container bg-image-net">
     <div class="search-wrap">
       <form class="form">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" color="accent">
           <mat-label>账号</mat-label>
           <input matInput placeholder="请输入要搜索的账号" [(ngModel)]="filter.userName" name="userName"
             autocomplete="off">
@@ -36,7 +36,7 @@
           </mat-select>
           <mat-icon matSuffix>lock</mat-icon>
         </mat-form-field>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" color="accent">
           <mat-label>最近登录时间</mat-label>
           <mat-date-range-input [rangePicker]="picker">
             <input matStartDate [(ngModel)]="filter.startAt" name="startAt" placeholder="开始日期">
@@ -88,7 +88,7 @@
       </table>
     </div>
     <div class="footer">
-      <app-paginator [total]="total" [pageSize]="pageSize" [columns]="columns" [columnOp]="columnOp" (onChange)="onPaginatorChange($event)">
+      <app-paginator [total]="total" [columns]="columns" [columnOp]="columnOp" (onChange)="onPaginatorChange($event)">
       </app-paginator>
     </div>
   </div>

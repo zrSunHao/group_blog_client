@@ -23,8 +23,7 @@ export class GroupComponent implements OnInit {
     { key: RoleType.superManager, value: '超级管理员' },
   ];
 
-  pageSize: 5 | 10 | 20 | 50 = 5;
-  total = 30;
+  total = 0;
   columnOp = 'lastLoginAt';
   columns: Array<PaginatorColumn> = [
     { name: '账号', value: 'userName' },
@@ -60,7 +59,6 @@ export class GroupComponent implements OnInit {
     this.filter = new UserFilter();
     this.params.filter = this.filter;
     this.params.pageIndex = 1;
-    this.params.pageSize = this.pageSize;
     this.params.sortColumn = this.columnOp;
     this.columnOp = 'lastLoginAt';
     this._loadData(this.params);

@@ -26,7 +26,7 @@ export class PaginatorComponent implements OnInit, OnChanges {
 
   @Input() sort: 'desc' | 'asc' = 'desc';
   @Input() pageIndex: number = 1;
-  @Input() pageSize: 5 | 10 | 20 | 50 = 10;
+  @Input() pageSize: 5 | 10 | 20 | 50 = 5;
 
   @Output() onChange: EventEmitter<Paginator> = new EventEmitter<Paginator>();
 
