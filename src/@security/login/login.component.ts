@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
+import { Validators, FormControl, FormGroup } from '@angular/forms';
 
-import { AuthService, LoginDto } from '../auth.service';
+import { AuthService, AUTH_KEY, LoginM, LoginRes } from '../auth.service';
 import { NotifyService } from 'src/@shared/services/notify.service';
 
 @Component({
@@ -12,14 +12,14 @@ import { NotifyService } from 'src/@shared/services/notify.service';
 })
 export class LoginComponent implements OnInit {
 
-  form: UntypedFormGroup;
+  form: FormGroup;
 
   constructor(private router: Router,
     private notifyServ: NotifyService,
     private hostServ: AuthService) {
-    this.form = new UntypedFormGroup({
-      userName: new UntypedFormControl(null, [Validators.required, Validators.pattern(/^[a-zA-Z][a-zA-Z0-9_]{5,15}$/)]),
-      password: new UntypedFormControl(null, [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,17}$/)]),
+    this.form = new FormGroup({
+      userName: new FormControl<string | null>(null, [Validators.required, Validators.pattern(/^[a-zA-Z][a-zA-Z0-9_]{5,15}$/)]),
+      password: new FormControl<string | null>(null, [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,17}$/)]),
     });
   }
 
@@ -27,12 +27,24 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    const dto: LoginDto = { userName: '', password: ''};
+    const dto: LoginM = { userName: '', password: '' };
     dto.password = this.form.controls['password'].value;
     dto.userName = this.form.controls['userName'].value;
-    
+    this.hostServ.login(dto).subscribe({
+      next: res => {
+        if (res.success) {
+          const loginRes = res.data as LoginRes;
+          localStorage.setItem(AUTH_KEY, JSON.stringify(loginRes));
+          this.router.navigate(['/']);
+        } else {
+          const msg = `登录失败！！！ ${res.allMessages}`;
+          this.notifyServ.notify(msg, 'error');
+        }
+      },
+      error: err => {
+        const msg = `登录失败！！！ ${err}`;
+        this.notifyServ.notify(msg, 'error');
+      }
+    });
   }
-
-
-
 }

@@ -8,22 +8,6 @@ textarea {
     line-height:1.5rem !important;
 }
 
-.info-snackbar {
-    background: #67e8f9;
-}
-
-.success-snackbar {
-    background: #86efac;
-}
-
-.warning-snackbar {
-    background: #fde68a;
-}
-
-.error-snackbar {
-    background: #fda4af;
-}
-
 /*定义滚动条高宽及背景高宽分别对应横竖滚动条的尺寸*/
 ::-webkit-scrollbar {
     width: 6px;

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -22,9 +23,9 @@ const pipes = [ClipPipe,FileSizeFormatPipe];
 const exports = [ConfirmDialogComponent,];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ...mats],
+  imports: [CommonModule, FormsModule,HttpClientModule, ...mats],
   declarations: [...components, ...pipes],
   providers: [...services,],
-  exports: [...exports, ...pipes]
+  exports: [...exports, ...pipes,HttpClientModule]
 })
 export class SharedModule { }

@@ -4,7 +4,8 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
 import { NotifyService } from 'src/@shared/services/notify.service';
 import { DialogResetComponent } from '../dialog-reset/dialog-reset.component';
-import { ResetDto } from 'src/@shared/models/paging.model';
+import { ResetDto, RoleType } from 'src/@shared/models/paging.model';
+import { AuthService, AUTH_KEY, LoginRes } from 'src/@security/auth.service';
 
 export class PageElement {
   name: string = '';
@@ -22,18 +23,28 @@ export class HeaderComponent implements OnInit {
 
   userName: string = 'zhangsan';
   pages: PageElement[] = [
-    { name: '博客园', icon: 'dashboard', checked: true, address: 'blog' },
+    { name: '组内分享', icon: 'dashboard', checked: true, address: 'blog' },
     { name: '笔记管理', icon: 'dashboard', checked: false, address: 'topic' },
     { name: '我的收藏', icon: 'star', checked: false, address: 'star' },
     { name: '文件查询', icon: 'dashboard', checked: false, address: 'resource' },
-    { name: '用户管理', icon: 'group', checked: false, address: 'group' },
   ];
 
   constructor(private router: Router,
-    private dialog: MatDialog, private notifyServ: NotifyService) {
+    private dialog: MatDialog,
+    private notifyServ: NotifyService,
+    private hostServ: AuthService) {
   }
 
   ngOnInit() {
+    const json = localStorage.getItem(AUTH_KEY);
+    if (json) {
+      const res = JSON.parse(json) as LoginRes;
+      console.log(res.role === RoleType.superManager)
+      if (res && (res.role == RoleType.manager || res.role == RoleType.superManager)) {
+        console.log(res)
+        this.pages.push({ name: '用户管理', icon: 'group', checked: false, address: 'group' },);
+      }
+    }
     for (const page of this.pages) {
       if (this.router.url.indexOf(page.address) == 1) page.checked = true;
       else page.checked = false;
@@ -58,27 +69,20 @@ export class HeaderComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogResetComponent,
       { width: '360px', data: user, }
     );
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result?.op === 'save') {
-        const newPsd: string = result?.newPsd;
-        this.notifyServ.notify(`重置密码成功！！！`, 'success');
-      }
-    });
   }
 
   onLogoutClick(): void {
     this.router.navigate(['/security/login']);
-    // this.hostServ.logout().subscribe({
-    //   next: res => {
-    //     this.hostServ.clear();
-    //     this.router.navigate(['/security/login']);
-    //   },
-    //   error: err => {
-    //     this.hostServ.clear();
-    //     this.router.navigate(['/security/login']);
-    //   }
-    // })
+    this.hostServ.logout().subscribe({
+      next: res => {
+        localStorage.removeItem(AUTH_KEY)
+        this.router.navigate(['/security/login']);
+      },
+      error: err => {
+        localStorage.removeItem(AUTH_KEY)
+        this.router.navigate(['/security/login']);
+      }
+    })
   }
 
 }

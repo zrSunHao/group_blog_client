@@ -16,6 +16,7 @@ import { SharedModule } from 'src/@shared/shared.module';
 import { LayoutComponent } from './layout.component';
 import { HeaderComponent } from './header/header.component';
 import { DialogResetComponent } from './dialog-reset/dialog-reset.component';
+import { AuthService } from 'src/@security/auth.service';
 
 const mats = [
   MatInputModule,
@@ -43,6 +44,9 @@ const mats = [
     LayoutComponent,
     HeaderComponent,
     DialogResetComponent
+  ],
+  providers:[
+    AuthService
   ]
 })
 export class LayoutModule { }

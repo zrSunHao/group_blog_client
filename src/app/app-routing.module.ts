@@ -1,6 +1,8 @@
+import { RoleType } from 'src/@shared/models/paging.model';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from 'src/@layout/layout.component';
+import { AuthGuard } from 'src/@shared/guard/auth.guard';
 
 const routes: Routes = [
   { path: 'notfound', loadChildren: () => import('../@notfound/notfound.module').then(m => m.NotfoundModule) },
@@ -14,7 +16,10 @@ const routes: Routes = [
         { path: 'star', loadChildren: () => import('../@star/star.module').then(m => m.StarModule) },
         { path: 'read', loadChildren: () => import('../@read/read.module').then(m => m.ReadModule) },
         { path: 'resource', loadChildren: () => import('../@resource/resource.module').then(m => m.ResourceModule) },
-        { path: 'group', loadChildren: () => import('../@group/group.module').then(m => m.GroupModule) },
+        {
+          path: 'group', loadChildren: () => import('../@group/group.module').then(m => m.GroupModule), canActivate: [AuthGuard],
+          data: { roles: [RoleType.manager, RoleType.superManager] }
+        },
         { path: '**', redirectTo: '/blog' },
       ]
   },

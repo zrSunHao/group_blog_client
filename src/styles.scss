@@ -122,4 +122,20 @@ thead tr th {
   z-index: 15 !important;
 }
 
+.info-snackbar {
+  background: #67e8f9;
+}
+
+.success-snackbar {
+  background: #86efac;
+}
+
+.warning-snackbar {
+  background: #fde68a;
+}
+
+.error-snackbar {
+  background: #fda4af;
+}
+
 @import "./@arts/common.css";
