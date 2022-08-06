@@ -13,9 +13,6 @@ import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MAT_MOMENT_DATE_FORMATS, MomentDateAda
 
 import { LayoutModule } from 'src/@layout/layout.module';
 import { AuthGuard } from 'src/@shared/guard/auth.guard';
-import { JwtInterceptor } from 'src/@shared/guard/jwt.interceptor';
-import { ErrorInterceptor } from 'src/@shared/guard/error.interceptor';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,8 +37,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     },
     { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
     AuthGuard,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

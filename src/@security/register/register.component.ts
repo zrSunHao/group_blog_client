@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
         if (res.success) {
           const msg = `注册成功！！！`;
           this.notifyServ.notify(msg, 'success');
-          this.router.navigate(['/security/login']);
+          //this.router.navigate(['/security/login']);
         } else {
           const msg = `注册失败！！！ ${res.allMessages}`;
           this.notifyServ.notify(msg, 'error');

@@ -1,0 +1,30 @@
+<div mat-dialog-title class="header">
+  <h3>修改账号[{{data.userName}}]信息</h3>
+</div>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>角色</mat-label>
+      <mat-select formControlName="role">
+        <mat-option [value]="item.key" *ngFor="let item of roleOps">{{item.value}}</mat-option>
+      </mat-select>
+      <mat-icon matSuffix>category</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>是否锁定</mat-label>
+      <mat-select formControlName="limited">
+        <mat-option [value]="false">否</mat-option>
+        <mat-option [value]="true">是</mat-option>
+      </mat-select>
+      <mat-icon matSuffix>lock</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="remark">
+      <mat-label>备注</mat-label>
+      <textarea placeholder="请输入备注" matInput formControlName="remark" rows="3"></textarea>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button color="warn" (click)="onCloseClick()">取消</button>
+  <button mat-button [disabled]="!form.valid" color="accent" (click)="onSaveClick()">保存</button>
+</div>

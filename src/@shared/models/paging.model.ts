@@ -40,28 +40,3 @@ export enum RoleType {
     superManager = 100,
     other = -1
 }
-
-export class UserFilter {
-    userName: string = '';
-    role: RoleType = RoleType.other;
-    limited: boolean | undefined;
-    startAt: Date | null = null;
-    endAt: Date | null = null;
-}
-
-export class UserElet {
-    userName: string = '';
-    role: RoleType = RoleType.other;
-    limited: boolean | null = null;
-    createdAt: Date = new Date();
-    lastLoginAt: Date = new Date();
-}
-
-export const USER_DATA: UserElet[] = [
-    { userName: 'zhangsan', role: RoleType.odinary, limited: false, createdAt: new Date(), lastLoginAt: new Date() },
-    { userName: 'lisi', role: RoleType.odinary, limited: false, createdAt: new Date(), lastLoginAt: new Date() },
-    { userName: 'wangwu', role: RoleType.manager, limited: true, createdAt: new Date(), lastLoginAt: new Date() },
-    { userName: 'zhaoliu', role: RoleType.odinary, limited: false, createdAt: new Date(), lastLoginAt: new Date() },
-    { userName: 'sunwukong', role: RoleType.manager, limited: false, createdAt: new Date(), lastLoginAt: new Date() },
-]
-

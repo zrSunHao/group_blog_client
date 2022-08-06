@@ -21,7 +21,7 @@ export class PageElement {
 })
 export class HeaderComponent implements OnInit {
 
-  userName: string = 'zhangsan';
+  userName: string = 'zhanghao';
   pages: PageElement[] = [
     { name: '组内分享', icon: 'dashboard', checked: true, address: 'blog' },
     { name: '笔记管理', icon: 'dashboard', checked: false, address: 'topic' },
@@ -39,9 +39,8 @@ export class HeaderComponent implements OnInit {
     const json = localStorage.getItem(AUTH_KEY);
     if (json) {
       const res = JSON.parse(json) as LoginRes;
-      console.log(res.role === RoleType.superManager)
+      if (res) this.userName = res.userName;
       if (res && (res.role == RoleType.manager || res.role == RoleType.superManager)) {
-        console.log(res)
         this.pages.push({ name: '用户管理', icon: 'group', checked: false, address: 'group' },);
       }
     }

@@ -17,7 +17,10 @@ import { SharedModule } from 'src/@shared/shared.module';
 import { PaginatorModule } from 'src/@cmpts/paginator/paginator.module';
 
 import { GroupComponent } from './group.component';
+import { DialogResetComponent } from './dialog-reset/dialog-reset.component';
+import { DialogMemberComponent } from './dialog-member/dialog-member.component';
 import { GroupRoutingModule } from './group.module.routing';
+import { GroupService } from './group.service';
 
 const mats = [
   MatInputModule,
@@ -40,6 +43,7 @@ const mats = [
     PaginatorModule,
     GroupRoutingModule
   ],
-  declarations: [GroupComponent]
+  declarations: [GroupComponent, DialogResetComponent, DialogMemberComponent],
+  providers: [GroupService]
 })
 export class GroupModule { }

@@ -1,0 +1,24 @@
+<div mat-dialog-title class="header">
+  <h3>重置账号[{{data.userName}}]密码</h3>
+</div>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>新密码</mat-label>
+      <input matInput placeholder="请输入新密码" type="password" formControlName="newPsd" autocomplete="off">
+      <mat-icon matSuffix>fingerprint</mat-icon>
+      <mat-hint>必须包含大小写字母和数字，6-18位</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>确认密码</mat-label>
+      <input matInput placeholder="请输入确认密码" type="password" formControlName="confirmPsd" autocomplete="off">
+      <mat-icon matSuffix>fingerprint</mat-icon>
+      <mat-hint [ngStyle]="{color: '#ff1744'}" *ngIf="form.value.newPsd!=form.value.confirmPsd">确认密码不正确</mat-hint>
+      <mat-hint *ngIf="form.value.newPsd===form.value.confirmPsd">再次输入密码</mat-hint>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button color="warn" (click)="onCloseClick()">取消</button>
+  <button mat-button [disabled]="!form.valid" color="accent" (click)="onSaveClick()">重置</button>
+</div>
