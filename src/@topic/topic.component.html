@@ -1,21 +1,22 @@
 <div class="page">
-    <div>
-      <div class="topbar">
-        <mat-icon class="topbar-icon">dashboard</mat-icon>
-        <div>
-          <h2>笔记 - 领域（{{domains.length}}）| 主题</h2>
-        </div>
-        <div class="box-fill"></div>
-        <button type="button" mat-raised-button color="primary" (click)="onAddDomain()"><mat-icon>add</mat-icon> 添加领域</button>
-        <button type="button" mat-raised-button color="primary"><mat-icon>refresh</mat-icon> 刷新</button>
+  <div>
+    <div class="topbar">
+      <mat-icon class="topbar-icon">dashboard</mat-icon>
+      <div>
+        <h2>笔记 - 领域（{{domains.length}}）| 主题</h2>
       </div>
-    </div>
-    <div class="body-container bg-image-net">
-      <div class="domain-wrap">
-        <app-domain *ngFor="let domain of domains" [data]="domain" (onUpdate)="onUpdateDomain(domain)"
-        (onDelete)="onDeleteDomain(domain)" (onAddTopic)="onAddTopic(domain)"
-        (onUpdateTopic)="onUpdateTopic($event)" (onDeleteTopic)="onDeleteTopic($event)" (onTopicColumn)="onOpenColumn($event)"></app-domain>
-      </div>
+      <div class="box-fill"></div>
+      <input type="file" #imageInput [hidden]="true" accept="image/*" (change)="onFileChange($event)" [ngModel]="file"/>
+      <button type="button" mat-raised-button color="primary" (click)="onAddDomain()"><mat-icon>add</mat-icon> 添加领域</button>
+      <button type="button" mat-raised-button color="primary" *ngIf="domains.length>0" (click)="onSortDomain()"><mat-icon>sort</mat-icon> 领域排序</button>
+      <button type="button" mat-raised-button color="primary" (click)="onRefreshClick()"><mat-icon>refresh</mat-icon> 刷新</button>
     </div>
   </div>
+  <div class="body-container bg-image-net">
+    <div class="domain-wrap">
+      <app-domain *ngFor="let domain of domains" [data]="domain" (onUpdate)="onUpdateDomain(domain)"
+      (onDelete)="onDeleteDomain(domain)" (onAddTopic)="onAddTopic(domain)" (onTopic)="onTopic($event)" ></app-domain>
+    </div>
+  </div>
+</div>
   

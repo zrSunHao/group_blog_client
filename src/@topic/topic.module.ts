@@ -10,6 +10,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { SharedModule } from 'src/@shared/shared.module';
 import { EditorModule } from 'src/@cmpts/editor/editor.module';
@@ -26,12 +27,16 @@ import { DialogTopicComponent } from './dialog-topic/dialog-topic.component';
 import { DialogDomainComponent } from './dialog-domain/dialog-domain.component';
 import { DialogColumnComponent } from './dialog-column/dialog-column.component';
 import { DomainComponent } from './cmpts/domain/domain.component';
+import { DialogDomainSequenceComponent } from './dialog-domain-sequence/dialog-domain-sequence.component';
+import { DialogTopicToDomainComponent } from './dialog-topic-to-domain/dialog-topic-to-domain.component';
 
 const cores = [CommonModule, FormsModule, ReactiveFormsModule,];
-const mats = [DragDropModule, MatButtonModule, MatMenuModule, MatIconModule, MatInputModule, MatFormFieldModule, MatDialogModule];
+const mats = [DragDropModule, MatButtonModule, MatMenuModule, MatIconModule, MatTooltipModule,
+  MatInputModule, MatFormFieldModule, MatDialogModule];
 const shareds = [EditorModule, SharedModule, NoteItemModule, ColumnItemModule];
-const cmpts = [TopicComponent, NoteComponent, ColumnComponent, TopicItemComponent,DomainComponent,
-   DialogTopicComponent, DialogDomainComponent,DialogColumnComponent]
+const cmpts = [TopicComponent, NoteComponent, ColumnComponent, TopicItemComponent, DomainComponent,
+  DialogTopicComponent, DialogDomainComponent, DialogColumnComponent, DialogDomainSequenceComponent, 
+  DialogTopicToDomainComponent]
 
 @NgModule({
   imports: [...cores, ...mats, ...shareds, TopicRoutingModule],

@@ -1,16 +1,20 @@
 <div class="topic-container" [matMenuTriggerFor]="operatemenu">
   <div>
-    <div class="topic-icon">
-      <mat-icon>{{ data.logo }}</mat-icon>
+    <div class="topic-logo">
+      <img draggable="false" *ngIf="data.logo" [src]="hostServ.fileBaseUrl + data.logo" alt=""/>
     </div>
   </div>
-  <div class="topic-title">{{ data.name }}</div>
+  <div class="topic-title" [matTooltip]="data.name">{{ data.name }}</div>
 </div>
 
 <mat-menu #operatemenu="matMenu">
   <button mat-menu-item (click)="onColumnClick()">
-    <mat-icon>eyes</mat-icon>
+    <mat-icon>view_week</mat-icon>
     <span>查看专栏</span>
+  </button>
+  <button mat-menu-item (click)="onLogoClick()">
+    <mat-icon>image</mat-icon>
+    <span>上传Logo</span>
   </button>
   <button mat-menu-item (click)="onUpdateClick()">
     <mat-icon>edit</mat-icon>

@@ -7,7 +7,7 @@ import { TopicComponent } from './topic.component';
 const routes: Routes = [
     { path: '', component: TopicComponent, },
     { path: 'note', component: NoteComponent, },
-    { path: 'column', component: ColumnComponent }
+    { path: 'column/:topicId/:topicName', component: ColumnComponent }
 ]
 
 @NgModule({

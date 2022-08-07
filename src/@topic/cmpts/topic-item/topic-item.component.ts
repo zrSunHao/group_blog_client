@@ -1,5 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TopicElet } from 'src/@topic/model';
+import { TopicService } from 'src/@topic/topic.service';
+
+export enum TopicOp {
+  column = 1,
+  update = 2,
+  logo = 3,
+  delete = 4,
+  other = 100,
+}
 
 @Component({
   selector: 'app-topic-item',
@@ -10,25 +19,27 @@ export class TopicItemComponent implements OnInit {
 
   @Input() data: TopicElet = new TopicElet();
 
-  @Output() onColumn: EventEmitter<any> = new EventEmitter<any>();
-  @Output() onUpdate: EventEmitter<any> = new EventEmitter<any>();
-  @Output() onDelete: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onOperate: EventEmitter<TopicOp> = new EventEmitter<TopicOp>();
 
-  constructor() { }
+  constructor(public hostServ: TopicService) { }
 
   ngOnInit() {
   }
 
   onColumnClick() {
-    this.onColumn.emit();
+    this.onOperate.emit(TopicOp.column);
+  }
+
+  onLogoClick() {
+    this.onOperate.emit(TopicOp.logo);
   }
 
   onUpdateClick() {
-    this.onUpdate.emit();
+    this.onOperate.emit(TopicOp.update);
   }
 
   onDeleteClick() {
-    this.onDelete.emit();
+    this.onOperate.emit(TopicOp.delete);
   }
 
 }

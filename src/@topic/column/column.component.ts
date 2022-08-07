@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NotifyService } from 'src/@shared/services/notify.service';
 
 @Component({
   selector: 'app-column',
@@ -8,10 +9,19 @@ import { Router } from '@angular/router';
 })
 export class ColumnComponent implements OnInit {
 
-  constructor(private router: Router) {
+  topicId: string = '';
+  topicName: string = '';
+
+  constructor(private router: Router,
+    private route: ActivatedRoute,
+    private notifyServ: NotifyService,) {
   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.topicId = params['topicId'];
+      this.topicName = params['topicName'];
+    });
   }
 
   onNoteClick(note: any) {

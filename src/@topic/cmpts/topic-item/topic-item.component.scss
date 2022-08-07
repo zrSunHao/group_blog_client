@@ -11,6 +11,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .topic-container:hover {
@@ -19,15 +20,16 @@
     border-style: dashed double;
 }
 
-.topic-icon {
+.topic-logo {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 6px;
+    margin-bottom: 2px;
 }
 
-.topic-icon mat-icon {
-    color: silver;
+.topic-logo img{
+    height: 2.5rem;
+    border-radius: 1.25rem;
 }
 
 .topic-title {

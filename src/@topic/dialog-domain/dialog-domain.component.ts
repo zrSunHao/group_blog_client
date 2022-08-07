@@ -63,7 +63,7 @@ export class DialogDomainComponent implements OnInit {
   }
 
   private onUpdate(): void {
-    this.hostServ.addDomain(this.data).subscribe({
+    this.hostServ.updateDomain(this.data).subscribe({
       next: res => {
         if (res.success) {
           this.notifyServ.notify(`更新领域[${this.origionName}]成功！！！`, 'success');

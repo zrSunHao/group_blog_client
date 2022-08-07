@@ -1,6 +1,8 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { FileCategory } from 'src/@resource/model';
+import { AUTH_KEY, LoginRes } from 'src/@security/auth.service';
 import { OptionItem, ResponsePagingResult, ResponseResult } from 'src/@shared/models/paging.model';
 import { environment } from 'src/environments/environment';
 import { ColumnElet, DomainElet, SequnceM, TopicElet } from './model';
@@ -10,12 +12,25 @@ import { ColumnElet, DomainElet, SequnceM, TopicElet } from './model';
 })
 export class TopicService {
 
-  public baseUrl = environment.hostUrl + 'series';
+  public fileBaseUrl: string = '';
+  private baseUrl = environment.hostUrl + 'series';
+  private resourceUrl = environment.hostUrl + 'resource';
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-type': 'application/json' })
   };
 
-  constructor(public http: HttpClient) { }
+  public dragTopic: TopicElet | null = null;
+  public dragTopicDomain: DomainElet | null = null;
+
+  constructor(public http: HttpClient) {
+    let key: string = '';
+    const json = localStorage.getItem(AUTH_KEY);
+    if (json) {
+      const res = JSON.parse(json) as LoginRes;
+      if (res) key = res.key;
+    }
+    this.fileBaseUrl = `${this.resourceUrl}/GetFileByName?key=${key}&name=`;
+  }
 
   public getDomainList(): Observable<ResponsePagingResult<DomainElet>> {
     const url = `${this.baseUrl}/getDomainList`;
@@ -69,6 +84,11 @@ export class TopicService {
     return this.http.patch<ResponseResult<boolean>>(url, param, this.httpOptions).pipe(catchError(this.handleError));
   }
 
+  public addTopicLogo(id: string, logo: string): Observable<ResponseResult<boolean>> {
+    const url = `${this.baseUrl}/addTopicLogo?id=${id}&logo=${logo}`;
+    return this.http.patch<ResponseResult<boolean>>(url, {}, this.httpOptions).pipe(catchError(this.handleError));
+  }
+
 
 
   public getColumnList(topicId: string): Observable<ResponsePagingResult<ColumnElet>> {
@@ -96,6 +116,17 @@ export class TopicService {
     return this.http.patch<ResponseResult<boolean>>(url, param, this.httpOptions).pipe(catchError(this.handleError));
   }
 
+  public addColumnLogo(id: string, logo: string): Observable<ResponseResult<boolean>> {
+    const url = `${this.baseUrl}/addColumnLogo?id=${id}&logo=${logo}`;
+    return this.http.patch<ResponseResult<boolean>>(url, {}, this.httpOptions).pipe(catchError(this.handleError));
+  }
+
+
+  public logo(ownerId: string, category: FileCategory, formData: FormData): Observable<ResponseResult<string>> {
+    const url = `${this.resourceUrl}/Save?ownerId=${ownerId}&category=${category}`;
+    return this.http.post<ResponseResult<string>>(url, formData)
+      .pipe(catchError(this.handleError));
+  }
 
 
   private handleError(error: HttpErrorResponse) {

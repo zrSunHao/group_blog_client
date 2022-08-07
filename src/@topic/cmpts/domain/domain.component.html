@@ -1,9 +1,13 @@
 <div class="domain">
-  <div class="domain-title" [matMenuTriggerFor]="operatemenu"><h3>{{data.name}}（{{data.topics.length}}）</h3></div>
-  <div class="topic-add"><mat-icon>add</mat-icon></div>
-  <div class="topic-warp">
-    <app-topic-item *ngFor="let topic of data.topics" [data]="topic" 
-    (onColumn)="onTopicColumnClick(topic)" (onColumn)="onUpdateTopicClick(topic)" (onColumn)="onDeleteTopicClick(topic)">
+  <div class="domain-title" [matMenuTriggerFor]="operatemenu">
+    <h3>{{data.name}}（<span *ngIf="data.topics">{{data.topics.length}}</span>）</h3>
+  </div>
+  <div class="topic-add" (click)="onAddTopicClick()"><mat-icon>add</mat-icon></div>
+  <div class="topic-warp"  draggable="false" (drop)="onDropWrap($event)"  (dragover)="onDragOver($event)">
+    <app-topic-item *ngFor="let topic of data.topics" [data]="topic" (onOperate)="onTopicClick($event,topic)" 
+     draggable="true" (drop)="onDrop(topic, $event)"
+     (drag)="onDragStart(topic, $event)"
+     (dragover)="onDragOver($event)">
   </app-topic-item>
   </div>
 </div>

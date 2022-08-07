@@ -5,7 +5,9 @@ export enum FileCategory {
     note_img = 2,
     note_file = 3,
     note_audio = 4,
-    note_vedio = 5
+    note_vedio = 5,
+    topic_logo = 11,
+    column_logo = 12,
 }
 
 export class ResourceFilter {
@@ -40,4 +42,6 @@ export const CategoryOps: OptionItem[] = [
     { key: FileCategory.note_file, value: '笔记元素-文件' },
     { key: FileCategory.note_audio, value: '笔记元素-音频' },
     { key: FileCategory.note_vedio, value: '笔记元素-视频' },
+    { key: FileCategory.topic_logo, value: '主题Logo' },
+    { key: FileCategory.column_logo, value: '专栏Logo' },
 ];
