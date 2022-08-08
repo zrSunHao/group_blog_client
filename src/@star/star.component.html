@@ -22,8 +22,8 @@
       </div>
     </div>
     <div class="note-wrap">
-      <app-note-item *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12,13]"
-      [imgUrl]="'assets/files/card_'+item+'.png'" (onClick)="onNoteClick(item)"></app-note-item>
+      <app-note-item *ngFor="let item of [].constructor(15)"
+       (onClick)="onNoteClick(item)"></app-note-item>
     </div>
   </div>
 </div>

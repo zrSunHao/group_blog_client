@@ -33,13 +33,13 @@ export class ResourceComponent implements OnInit {
 
   ngOnInit() {
     this.onResetClick();
-    let key:string = '';
+    let key: string = '';
     const json = localStorage.getItem(AUTH_KEY);
     if (json) {
       const res = JSON.parse(json) as LoginRes;
       if (res) key = res.key;
     }
-    this.downloadUrl= `${this.hostServ.baseUrl}/GetFileByName?key=${key}&name=`;
+    this.downloadUrl = `${this.hostServ.baseUrl}/GetFileByName?key=${key}&name=`;
   }
 
   onPaginatorChange(paginator: Paginator) {
@@ -66,10 +66,10 @@ export class ResourceComponent implements OnInit {
   }
 
   private _loadData(params: PagingParameter<ResourceFilter>): void {
-    this.dataSource = [];
     this.hostServ.getList(params).subscribe({
       next: res => { this._renderInfo(res); },
       error: err => {
+        this.dataSource = [];
         const msg = `数据加载失败！！！ ${err}`;
         this.notifyServ.notify(msg, 'error');
       }

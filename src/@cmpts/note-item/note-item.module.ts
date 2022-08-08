@@ -6,6 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 
+import { SharedModule } from 'src/@shared/shared.module';
+
 import { NoteItemComponent } from './note-item.component';
 
 const mats = [MatTooltipModule, MatIconModule, MatButtonModule, MatMenuModule];
@@ -13,7 +15,8 @@ const mats = [MatTooltipModule, MatIconModule, MatButtonModule, MatMenuModule];
 @NgModule({
   imports: [
     CommonModule,
-    ...mats
+    ...mats,
+    SharedModule
   ],
   exports: [NoteItemComponent],
   declarations: [NoteItemComponent]

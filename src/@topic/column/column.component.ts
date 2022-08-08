@@ -3,7 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ColumnElet, ColumnOp } from 'src/@cmpts/column-item/column-item.component';
-import { NoteElet } from 'src/@cmpts/note-item/note-item.component';
+import { NoteElet, NoteOp } from 'src/@cmpts/note-item/note-item.component';
 import { FileCategory } from 'src/@resource/model';
 import { ConfirmDialogComponent } from 'src/@shared/cmpts/confirm-dialog/confirm-dialog.component';
 import { OptionItem } from 'src/@shared/models/paging.model';
@@ -94,8 +94,8 @@ export class ColumnComponent implements OnInit {
     }
   }
 
-  onNoteClick(note: any) {
-    this.router.navigate(['topic/note']);
+  onNoteClick(op: NoteOp, note: NoteElet): void {
+    // this.router.navigate(['topic/note']);
   }
 
   onFileChange(e: any): void {
@@ -129,9 +129,13 @@ export class ColumnComponent implements OnInit {
     }
   }
 
-  onColumnDrop(event: CdkDragDrop<ColumnElet[]>) {
+  onColumnDrop(event: CdkDragDrop<ColumnElet[]>): void {
     moveItemInArray(this.columns, event.previousIndex, event.currentIndex);
     this.columnSort();
+  }
+
+  onSortNote(): void {
+
   }
 
   private columnSort(): void {
