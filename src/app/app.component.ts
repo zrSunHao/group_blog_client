@@ -11,6 +11,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    document.title = 'Group Blog ヾ(^▽^*)))';
   }
 }
 

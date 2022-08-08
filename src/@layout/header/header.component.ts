@@ -23,8 +23,8 @@ export class HeaderComponent implements OnInit {
 
   userName: string = 'zhanghao';
   pages: PageElement[] = [
-    { name: '组内分享', icon: 'dashboard', checked: true, address: 'blog' },
-    { name: '笔记管理', icon: 'dashboard', checked: false, address: 'topic' },
+    { name: '组内分享', icon: 'school', checked: true, address: 'blog' },
+    { name: '笔记管理', icon: 'widgets', checked: false, address: 'topic' },
     { name: '我的收藏', icon: 'star', checked: false, address: 'star' },
     { name: '文件查询', icon: 'dashboard', checked: false, address: 'resource' },
   ];

@@ -15,15 +15,6 @@ export class TopicElet {
     order: number = 1024;
 }
 
-export class ColumnElet {
-    id: string | null = null;
-    name: string = '';
-    logo: string = '';
-    intro: string = '';
-    topicId: string = '';
-    order: number = 1024;
-}
-
 export class SequnceM {
     dropGroupId: string = '';
     dragObjectId: string = '';

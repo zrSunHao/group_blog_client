@@ -1,5 +1,23 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
+export class ColumnElet {
+  id: string | null = null;
+  name: string = '';
+  logo: string | null = '';
+  intro: string = '';
+  topicId: string = '';
+  order: number = 1024;
+}
+
+export enum ColumnOp {
+  selected = 1,
+  update = 2,
+  logo = 3,
+  delete = 4,
+  add_note = 5,
+  other = 100,
+}
+
 @Component({
   selector: 'app-column-item',
   templateUrl: './column-item.component.html',
@@ -7,19 +25,34 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class ColumnItemComponent implements OnInit {
 
-  @Input() name: string = '小程序小程序啦啦啦啦啦啦啦啦啦啦啦啦啦啦';
-  @Input() intro: string = '一是就业主体人群就业总体稳定。25-59岁就业主体人群失业率4月份虽有所升高，但是升幅明显低于总体失业率水平。6月份，25-59岁就业主体人群失业率为4.5%，比上月回落0.6个百分点，接近2021年平均水平。';
-  @Input() selected: boolean = false;
-  @Output() onClick: EventEmitter<any> = new EventEmitter<any>();
+  @Input() data: ColumnElet = new ColumnElet();
+  @Input() fileBaseUrl: string = '';
+  @Input() selectedId: string | null | undefined = '';
+  @Output() onOperate: EventEmitter<ColumnOp> = new EventEmitter<ColumnOp>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onMyClick() {
-    this.selected = true;
-    this.onClick.emit();
+  onSelectedClick() {
+    this.onOperate.emit(ColumnOp.selected);
+  }
+
+  onUpdateClick() {
+    this.onOperate.emit(ColumnOp.update);
+  }
+
+  onLogoClick() {
+    this.onOperate.emit(ColumnOp.logo);
+  }
+
+  onDeleteClick() {
+    this.onOperate.emit(ColumnOp.delete);
+  }
+
+  onAddNoteClick() {
+    this.onOperate.emit(ColumnOp.add_note);
   }
 
 }

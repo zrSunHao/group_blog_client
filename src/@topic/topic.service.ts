@@ -1,11 +1,13 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { ColumnElet } from 'src/@cmpts/column-item/column-item.component';
+import { NoteElet } from 'src/@cmpts/note-item/note-item.component';
 import { FileCategory } from 'src/@resource/model';
 import { AUTH_KEY, LoginRes } from 'src/@security/auth.service';
 import { OptionItem, ResponsePagingResult, ResponseResult } from 'src/@shared/models/paging.model';
 import { environment } from 'src/environments/environment';
-import { ColumnElet, DomainElet, SequnceM, TopicElet } from './model';
+import { DomainElet, SequnceM, TopicElet } from './model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,7 @@ export class TopicService {
   public fileBaseUrl: string = '';
   private baseUrl = environment.hostUrl + 'series';
   private resourceUrl = environment.hostUrl + 'resource';
+  private noteUrl = environment.hostUrl + 'note';
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-type': 'application/json' })
   };
@@ -120,6 +123,14 @@ export class TopicService {
     const url = `${this.baseUrl}/addColumnLogo?id=${id}&logo=${logo}`;
     return this.http.patch<ResponseResult<boolean>>(url, {}, this.httpOptions).pipe(catchError(this.handleError));
   }
+
+
+
+  public getMyNoteList(columnId: string | null): Observable<ResponsePagingResult<NoteElet>> {
+    const url = `${this.noteUrl}/GetMyList?columnId=${columnId}`;
+    return this.http.get<ResponsePagingResult<NoteElet>>(url).pipe(catchError(this.handleError));
+  }
+
 
 
   public logo(ownerId: string, category: FileCategory, formData: FormData): Observable<ResponseResult<string>> {

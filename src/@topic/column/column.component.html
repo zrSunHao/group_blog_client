@@ -1,22 +1,26 @@
 <div class="page">
   <div>
     <div class="topbar">
-      <mat-icon class="topbar-icon">dashboard</mat-icon>
+      <mat-icon class="topbar-icon">widgets</mat-icon>
       <div>
-        <h2>主题 - 专栏(12)</h2>
+        <h2>[{{topicName}}]主题 - 
+          <span *ngIf="selectedColumn?.name">[{{selectedColumn?.name}}]</span>
+          专栏({{columns.length}})</h2>
       </div>
       <div class="box-fill"></div>
-      <button type="button" mat-raised-button color="primary"><mat-icon>add</mat-icon> 添加专栏</button>
-      <button type="button" mat-raised-button color="primary"><mat-icon>refresh</mat-icon> 重置</button>
-      <button type="button" mat-raised-button color="primary"><mat-icon>refresh</mat-icon> 刷新</button>
-      <button type="button" mat-raised-button color="primary" (click)="onBackClick()"><mat-icon>refresh</mat-icon> 返回</button>
+      <input type="file" #imageInput [hidden]="true" accept="image/*" (change)="onFileChange($event)" [ngModel]="file"/>
+      <button type="button" mat-raised-button color="primary" (click)="onAddColumnClick()"><mat-icon>playlist_add</mat-icon> 添加专栏</button>
+      <button type="button" mat-raised-button color="primary" (click)="onResetClick()"><mat-icon>refresh</mat-icon> 重置</button>
+      <button type="button" mat-raised-button color="primary" (click)="onReFreshClick()"><mat-icon>autorenew</mat-icon> 刷新</button>
+      <button type="button" mat-raised-button color="primary" (click)="onBackClick()"><mat-icon>arrow_back</mat-icon> 返回</button>
     </div>
   </div>
   <div class="body-container bg-image-net">
     <div class="column-collect">
       <div class="column-box">
-        <div class="column-wrap">
-          <app-column-item *ngFor="let item of [].constructor(8)"></app-column-item>
+        <div class="column-wrap" cdkDropList (cdkDropListDropped)="onColumnDrop($event)">
+          <app-column-item [selectedId]="selectedColumn?.id" [data]="column" *ngFor="let column of columns" cdkDrag
+           [fileBaseUrl]="hostServ.fileBaseUrl" (onOperate)="onColumnOpClick($event,column)"></app-column-item>
         </div>
       </div>
     </div>

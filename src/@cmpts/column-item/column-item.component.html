@@ -1,11 +1,24 @@
-<div class="column-container" [ngClass]="{ 'column-selected': selected }" (click)="onMyClick()">
-  <div class="title">
-    <div class="icon"><mat-icon>settings</mat-icon></div>
-    <div class="headline" [matTooltip]="name" matTooltipPosition="right">
-      {{ name | clip: 12 }}
+<div class="column-container" [ngClass]="{ 'column-selected': selectedId == data.id}">
+  <div class="title" (click)="onSelectedClick()">
+    <div class="logo">
+      <img *ngIf="data.logo" alt="" [src]="fileBaseUrl+data.logo"/>
     </div>
+    <div class="headline" [matTooltip]="data.name" matTooltipPosition="right">{{ data.name | clip: 12 }}</div>
   </div>
-  <div class="intro">
-    {{ intro }}
-  </div>
+  <div class="intro" [matMenuTriggerFor]="operatemenu" [matTooltip]="data.intro" matTooltipPosition="right">{{ data.intro }}</div>
 </div>
+
+<mat-menu #operatemenu="matMenu">
+  <button mat-menu-item (click)="onLogoClick()">
+    <mat-icon>image</mat-icon><span>上传Logo</span>
+  </button>
+  <button mat-menu-item (click)="onUpdateClick()">
+    <mat-icon>edit</mat-icon><span>修 改</span>
+  </button>
+  <button mat-menu-item (click)="onDeleteClick()">
+    <mat-icon>delete</mat-icon><span>删 除</span>
+  </button>
+  <button mat-menu-item (click)="onAddNoteClick()">
+    <mat-icon>view_week</mat-icon><span>添加笔记</span>
+  </button>
+</mat-menu>

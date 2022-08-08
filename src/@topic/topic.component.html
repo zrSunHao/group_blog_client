@@ -1,7 +1,7 @@
 <div class="page">
   <div>
     <div class="topbar">
-      <mat-icon class="topbar-icon">dashboard</mat-icon>
+      <mat-icon class="topbar-icon">widgets</mat-icon>
       <div>
         <h2>笔记 - 领域（{{domains.length}}）| 主题</h2>
       </div>
@@ -9,7 +9,7 @@
       <input type="file" #imageInput [hidden]="true" accept="image/*" (change)="onFileChange($event)" [ngModel]="file"/>
       <button type="button" mat-raised-button color="primary" (click)="onAddDomain()"><mat-icon>add</mat-icon> 添加领域</button>
       <button type="button" mat-raised-button color="primary" *ngIf="domains.length>0" (click)="onSortDomain()"><mat-icon>sort</mat-icon> 领域排序</button>
-      <button type="button" mat-raised-button color="primary" (click)="onRefreshClick()"><mat-icon>refresh</mat-icon> 刷新</button>
+      <button type="button" mat-raised-button color="primary" (click)="onRefreshClick()"><mat-icon>autorenew</mat-icon> 刷新</button>
     </div>
   </div>
   <div class="body-container bg-image-net">

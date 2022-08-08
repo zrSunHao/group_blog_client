@@ -1,5 +1,17 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
+export class NoteElet {
+  id: number | null = null;
+  contentId: string | null = null;
+  name: string = '';
+  profileName: string | null = '';
+  intro: string = '';
+  columnId: string = '';
+  hits: number = 0;
+  opened: boolean = false;
+  lastModifiedAt: Date | null = null;
+}
+
 @Component({
   selector: 'app-note-item',
   templateUrl: './note-item.component.html',
