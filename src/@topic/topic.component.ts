@@ -194,7 +194,7 @@ export class TopicComponent implements OnInit {
   }
 
   private onOpenColumn(t: TopicElet): void {
-    this.router.navigate([`topic/column/${t.id}/${t.name}`]);
+    this.router.navigate([`topic/column/${t.domainId}/${t.id}/${t.name}`]);
   }
 
   private getDomainList(): void {

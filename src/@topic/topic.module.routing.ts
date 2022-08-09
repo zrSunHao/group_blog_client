@@ -6,8 +6,8 @@ import { TopicComponent } from './topic.component';
 
 const routes: Routes = [
     { path: '', component: TopicComponent, },
-    { path: 'note', component: NoteComponent, },
-    { path: 'column/:topicId/:topicName', component: ColumnComponent }
+    { path: 'note/:id/:name', component: NoteComponent, },
+    { path: 'column/:domainId/:topicId/:topicName', component: ColumnComponent }
 ]
 
 @NgModule({

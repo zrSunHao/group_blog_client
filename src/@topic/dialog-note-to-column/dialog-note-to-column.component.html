@@ -1,0 +1,35 @@
+<div mat-dialog-title class="header">
+  <h3>移动笔记[{{origionName}}]</h3>
+</div>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>领域名称</mat-label>
+      <mat-select formControlName="domainId" (valueChange)="onDomainChange($event)">
+        <mat-option *ngFor="let item of domains" [value]="item.key">{{item.value}}</mat-option>
+      </mat-select>
+      <mat-hint>请选择领域</mat-hint>
+      <mat-icon matSuffix>category</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>主题名称</mat-label>
+      <mat-select formControlName="topicId" (valueChange)="onTopicChange($event)">
+        <mat-option *ngFor="let item of topics" [value]="item.key">{{item.value}}</mat-option>
+      </mat-select>
+      <mat-hint>请选择主题</mat-hint>
+      <mat-icon matSuffix>category</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>专栏名称</mat-label>
+      <mat-select formControlName="columnId">
+        <mat-option *ngFor="let item of columns" [value]="item.key">{{item.value}}</mat-option>
+      </mat-select>
+      <mat-hint>请选择专栏</mat-hint>
+      <mat-icon matSuffix>category</mat-icon>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button color="warn" (click)="onCloseClick()">取消</button>
+  <button mat-button [disabled]="!form.valid" color="accent" (click)="onSaveClick()">保存</button>
+</div>

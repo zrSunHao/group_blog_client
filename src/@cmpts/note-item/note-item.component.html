@@ -5,13 +5,15 @@
     </div>
     <div class="content">
         <div class="detail">
-            <h2 [matTooltip]="data.name">{{data.name | clip:18}}<br><span [matTooltip]="data.intro">{{data.intro | clip:18}}</span></h2>
+            <h2 [matTooltip]="data.name" matTooltipPosition="left">{{data.name | clip:10}}<br><span [matTooltip]="data.keys" matTooltipPosition="left">{{data.keys | clip:18}}</span></h2>
             <div class="action">
                 <button type="button" mat-raised-button color="primary" (click)="onSeeClick()">查看</button>
                 <button type="button" mat-raised-button color="primary" [matMenuTriggerFor]="operatemenu">操作</button>
             </div>
             <div class="data">
-                <h3>{{data.author}}<br><span>作者</span></h3>
+                <h3 *ngIf="!isAuthor">{{data.author}}<br><span>作者</span></h3>
+                <h3 *ngIf="isAuthor && data.opened"><mat-icon class="open-icon" color="accent">visibility</mat-icon><br><span>状态</span></h3>
+                <h3 *ngIf="isAuthor &&!data.opened"><mat-icon class="open-icon">visibility_off</mat-icon><br><span>状态</span></h3>
                 <h3>{{data.hits}}<br><span>查看次数</span></h3>
                 <h3>{{data.lastModifiedAt| date:'yy/MM/dd'}}<br><span>时间</span></h3>
             </div>
@@ -21,10 +23,19 @@
 
 <mat-menu #operatemenu="matMenu">
     <button mat-menu-item (click)="onLogoClick()">
-      <mat-icon>image</mat-icon><span>上传Logo</span>
+      <mat-icon>image</mat-icon><span>上传封面</span>
     </button>
     <button mat-menu-item (click)="onUpdateClick()">
       <mat-icon>edit</mat-icon><span>修 改</span>
+    </button>
+    <button mat-menu-item (click)="onToColumnClick()">
+      <mat-icon>category</mat-icon><span>移 动</span>
+    </button>
+    <button mat-menu-item (click)="onOpenClick()" *ngIf="!data.opened">
+      <mat-icon>school</mat-icon><span>允许他人查看</span>
+    </button>
+    <button mat-menu-item (click)="onCloseClick()" *ngIf="data.opened">
+      <mat-icon>lock</mat-icon><span>不允许他人查看</span>
     </button>
     <button mat-menu-item (click)="onDeleteClick()">
       <mat-icon>delete</mat-icon><span>删 除</span>

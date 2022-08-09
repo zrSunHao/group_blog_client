@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSelectModule } from '@angular/material/select';
 
 import { SharedModule } from 'src/@shared/shared.module';
 import { EditorModule } from 'src/@cmpts/editor/editor.module';
@@ -28,15 +29,17 @@ import { DialogDomainComponent } from './dialog-domain/dialog-domain.component';
 import { DialogColumnComponent } from './dialog-column/dialog-column.component';
 import { DomainComponent } from './cmpts/domain/domain.component';
 import { DialogDomainSequenceComponent } from './dialog-domain-sequence/dialog-domain-sequence.component';
-import { DialogTopicToDomainComponent } from './dialog-topic-to-domain/dialog-topic-to-domain.component';
+import { DialogNoteComponent } from './dialog-note/dialog-note.component';
+import { DialogNoteSequenceComponent } from './dialog-note-sequence/dialog-note-sequence.component';
+import { DialogNoteToColumnComponent } from './dialog-note-to-column/dialog-note-to-column.component';
 
 const cores = [CommonModule, FormsModule, ReactiveFormsModule,];
 const mats = [DragDropModule, MatButtonModule, MatMenuModule, MatIconModule, MatTooltipModule,
-  MatInputModule, MatFormFieldModule, MatDialogModule];
+  MatInputModule, MatFormFieldModule, MatDialogModule, MatSelectModule];
 const shareds = [EditorModule, SharedModule, NoteItemModule, ColumnItemModule];
 const cmpts = [TopicComponent, NoteComponent, ColumnComponent, TopicItemComponent, DomainComponent,
-  DialogTopicComponent, DialogDomainComponent, DialogColumnComponent, DialogDomainSequenceComponent, 
-  DialogTopicToDomainComponent]
+  DialogTopicComponent, DialogDomainComponent, DialogColumnComponent, DialogDomainSequenceComponent,
+  DialogNoteComponent, DialogNoteSequenceComponent, DialogNoteToColumnComponent]
 
 @NgModule({
   imports: [...cores, ...mats, ...shareds, TopicRoutingModule],

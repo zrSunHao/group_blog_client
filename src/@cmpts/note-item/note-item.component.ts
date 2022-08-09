@@ -5,9 +5,11 @@ export class NoteElet {
   contentId: string | null = null;
   name: string = '';
   profileName: string | null = '';
-  intro: string = '';
+  intro: string | null = '';
+  keys: string = '';
   columnId: string = '';
   hits: number = 0;
+  order: number = 0;
   author: string = '';
   opened: boolean = false;
   lastModifiedAt: Date | null = null;
@@ -18,6 +20,9 @@ export enum NoteOp {
   update = 2,
   logo = 3,
   delete = 4,
+  opened = 5,
+  closed = 6,
+  to_column = 7,
 }
 
 @Component({
@@ -29,6 +34,7 @@ export class NoteItemComponent implements OnInit {
 
   @Input() data: NoteElet = new NoteElet();
   @Input() fileBaseUrl: string = '';
+  @Input() isAuthor = false;
   @Output() onClick: EventEmitter<NoteOp> = new EventEmitter<NoteOp>();
   defaultImgUrl: string = '';
 
@@ -53,5 +59,17 @@ export class NoteItemComponent implements OnInit {
 
   onDeleteClick() {
     this.onClick.emit(NoteOp.delete);
+  }
+
+  onOpenClick() {
+    this.onClick.emit(NoteOp.opened);
+  }
+
+  onCloseClick() {
+    this.onClick.emit(NoteOp.closed);
+  }
+
+  onToColumnClick() {
+    this.onClick.emit(NoteOp.to_column);
   }
 }

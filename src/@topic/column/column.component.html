@@ -11,8 +11,7 @@
       <input type="file" #imageInput [hidden]="true" accept="image/*" (change)="onFileChange($event)" [ngModel]="file"/>
       <button type="button" mat-raised-button color="primary" (click)="onAddColumnClick()"><mat-icon>playlist_add</mat-icon> 添加专栏</button>
       <button type="button" mat-raised-button color="primary" *ngIf="notes.length>0" (click)="onSortNote()"><mat-icon>sort</mat-icon> 笔记排序</button>
-      <button type="button" mat-raised-button color="primary" (click)="onResetClick()"><mat-icon>refresh</mat-icon> 重置</button>
-      <button type="button" mat-raised-button color="primary" (click)="onReFreshClick()"><mat-icon>autorenew</mat-icon> 刷新</button>
+      <button type="button" mat-raised-button color="primary" (click)="onResetClick()"><mat-icon>autorenew</mat-icon> 刷新</button>
       <button type="button" mat-raised-button color="primary" (click)="onBackClick()"><mat-icon>arrow_back</mat-icon> 返回</button>
     </div>
   </div>
@@ -26,8 +25,8 @@
       </div>
     </div>
     <div class="note-wrap">
-      <app-note-item *ngFor="let note of [].constructor(15)" [fileBaseUrl]="hostServ.fileBaseUrl"
-       (onClick)="onNoteClick($event,note)"></app-note-item>
+      <app-note-item *ngFor="let note of notes" [data]="note" [fileBaseUrl]="hostServ.fileBaseUrl" [isAuthor]="true"
+       (onClick)="onNoteOpClick($event,note)"></app-note-item>
     </div>
   </div>
 </div>

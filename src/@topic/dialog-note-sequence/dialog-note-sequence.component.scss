@@ -1,0 +1,31 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.header h3 {
+    margin: 0;
+}
+
+.note-item {
+    background-color: rgb(0, 0, 0, 20%);
+    border-width: 3px;
+    border-color: gray;
+    border-style: dashed double;
+    margin-bottom: 0.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 0.5rem;
+    cursor:move;
+}
+
+.note-item:hover {
+    background-color: rgb(0, 0, 0, 30%);
+    border-color: #0acebb;
+    border-style: double dashed;
+    color: #0acebb;
+}

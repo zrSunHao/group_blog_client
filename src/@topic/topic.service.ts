@@ -60,6 +60,11 @@ export class TopicService {
     return this.http.patch<ResponseResult<boolean>>(url, param, this.httpOptions).pipe(catchError(this.handleError));
   }
 
+  public getDomainItems(): Observable<ResponsePagingResult<OptionItem>> {
+    const url = `${this.baseUrl}/getDomainItems`;
+    return this.http.get<ResponsePagingResult<OptionItem>>(url).pipe(catchError(this.handleError));
+  }
+
 
 
   public getTopicList(domainId: string): Observable<ResponsePagingResult<TopicElet>> {
@@ -92,6 +97,11 @@ export class TopicService {
     return this.http.patch<ResponseResult<boolean>>(url, {}, this.httpOptions).pipe(catchError(this.handleError));
   }
 
+  public getTopicItems(domainId: string): Observable<ResponsePagingResult<OptionItem>> {
+    const url = `${this.baseUrl}/getTopicItems?domainId=${domainId}`;
+    return this.http.get<ResponsePagingResult<OptionItem>>(url).pipe(catchError(this.handleError));
+  }
+
 
 
   public getColumnList(topicId: string): Observable<ResponsePagingResult<ColumnElet>> {
@@ -109,8 +119,8 @@ export class TopicService {
     return this.http.patch<ResponseResult<boolean>>(url, param, this.httpOptions).pipe(catchError(this.handleError));
   }
 
-  public deleteColumnc(id: string): Observable<ResponseResult<boolean>> {
-    const url = `${this.baseUrl}/deleteColumnc?id=${id}`;
+  public deleteColumn(id: string): Observable<ResponseResult<boolean>> {
+    const url = `${this.baseUrl}/deleteColumn?id=${id}`;
     return this.http.delete<ResponseResult<boolean>>(url, this.httpOptions).pipe(catchError(this.handleError));
   }
 
@@ -124,11 +134,51 @@ export class TopicService {
     return this.http.patch<ResponseResult<boolean>>(url, {}, this.httpOptions).pipe(catchError(this.handleError));
   }
 
+  public getColumnItems(topicId: string): Observable<ResponsePagingResult<OptionItem>> {
+    const url = `${this.baseUrl}/getColumnItems?topicId=${topicId}`;
+    return this.http.get<ResponsePagingResult<OptionItem>>(url).pipe(catchError(this.handleError));
+  }
+
 
 
   public getMyNoteList(columnId: string | null): Observable<ResponsePagingResult<NoteElet>> {
     const url = `${this.noteUrl}/GetMyList?columnId=${columnId}`;
     return this.http.get<ResponsePagingResult<NoteElet>>(url).pipe(catchError(this.handleError));
+  }
+
+  public addNote(param: NoteElet): Observable<ResponseResult<NoteElet>> {
+    const url = `${this.noteUrl}/add`;
+    return this.http.post<ResponseResult<NoteElet>>(url, param, this.httpOptions).pipe(catchError(this.handleError));
+  }
+
+  public updateNote(param: NoteElet): Observable<ResponseResult<boolean>> {
+    const url = `${this.noteUrl}/update`;
+    return this.http.patch<ResponseResult<boolean>>(url, param, this.httpOptions).pipe(catchError(this.handleError));
+  }
+
+  public deleteNote(id: string): Observable<ResponseResult<boolean>> {
+    const url = `${this.noteUrl}/delete?id=${id}`;
+    return this.http.delete<ResponseResult<boolean>>(url, this.httpOptions).pipe(catchError(this.handleError));
+  }
+
+  public openNote(id: string, opened: boolean): Observable<ResponseResult<boolean>> {
+    const url = `${this.noteUrl}/open?id=${id}&opened=${opened}`;
+    return this.http.patch<ResponseResult<boolean>>(url, {}, this.httpOptions).pipe(catchError(this.handleError));
+  }
+
+  public addNoteProfile(id: string, profileName: string): Observable<ResponseResult<boolean>> {
+    const url = `${this.noteUrl}/addProfile?id=${id}&profileName=${profileName}`;
+    return this.http.patch<ResponseResult<boolean>>(url, {}, this.httpOptions).pipe(catchError(this.handleError));
+  }
+
+  public toNoteColumn(id: string, columnId: string): Observable<ResponseResult<boolean>> {
+    const url = `${this.noteUrl}/toColumn?id=${id}&columnId=${columnId}`;
+    return this.http.patch<ResponseResult<boolean>>(url, {}, this.httpOptions).pipe(catchError(this.handleError));
+  }
+
+  public sortNote(param: SequnceM): Observable<ResponseResult<boolean>> {
+    const url = `${this.noteUrl}/sortMyNotes`;
+    return this.http.patch<ResponseResult<boolean>>(url, param, this.httpOptions).pipe(catchError(this.handleError));
   }
 
 
