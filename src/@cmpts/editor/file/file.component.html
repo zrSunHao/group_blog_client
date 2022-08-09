@@ -19,7 +19,7 @@
         <div class="file-row">
           <mat-icon color="primary">cloud_download</mat-icon>
           <a
-            [href]="node.url"
+            [href]="service.fileBaseUrl+node.url"
             target="_blank"
             *ngIf="node.url"
             [download]="node.content"

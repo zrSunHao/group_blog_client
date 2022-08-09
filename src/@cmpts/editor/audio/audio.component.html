@@ -15,7 +15,7 @@
       </button>
     </div>
     <div class="editor-audio-container" *ngIf="node.url" #view>
-      <audio controls [src]="node.url" [loop]="true" [volume]="0.2"></audio>
+      <audio controls [src]="service.fileBaseUrl+node.url" [loop]="true" [volume]="0.2"></audio>
       <div class="editor-audio-name">{{ node.content }}</div>
     </div>
   </div>

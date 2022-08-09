@@ -391,7 +391,6 @@ export class ColumnComponent implements OnInit {
   private getMyNoteList(): void {
     this.notes = [];
     let columnId = '';
-    console.log(this.selectedColumn);
     if (this.selectedColumn?.id) columnId = this.selectedColumn.id;
     else {
       if (this.columns.length > 0 && this.columns[0]?.id) columnId = this.columns[0].id;

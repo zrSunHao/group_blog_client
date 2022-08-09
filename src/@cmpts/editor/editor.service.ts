@@ -1,4 +1,10 @@
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
+import { catchError, Observable, throwError } from 'rxjs';
+import { FileCategory } from 'src/@resource/model';
+import { AUTH_KEY, LoginRes } from 'src/@security/auth.service';
+import { ResponseResult } from 'src/@shared/models/paging.model';
+import { environment } from 'src/environments/environment';
 
 export enum DocumentNodeType {
   h2 = 2,
@@ -88,28 +94,40 @@ export class OperateItem {
 })
 export class EditorService {
 
-  public nodes: DocumentNode[] = [];
+  public nodes: DocumentNode[] = []; // 初始化时须外部赋值
+  public noteId: string = ''; // 初始化时须外部赋值
   public selectedNode: DocumentNode | null = null;
   public canEdit: boolean = true;
   public printMode: boolean = false;
   public dragNode: DocumentNode | null = null;
   public NodeType = DocumentNodeType;
   public Headlines = [DocumentNodeType.h2, DocumentNodeType.h3, DocumentNodeType.h4, DocumentNodeType.h5, DocumentNodeType.h6];
-  public canBack: boolean = false;
-  private BackupCount = 5;
-  private BackupKeyPrefix = 'editor_backup_';
-  private BackupKeys: string[] = [];
-
+  
   onToggle: EventEmitter<DocumentNode> = new EventEmitter<DocumentNode>();
   onSelected: EventEmitter<DocumentNode> = new EventEmitter<DocumentNode>();
 
-  constructor() {
-    this.initBackupInfo();
+  public fileBaseUrl: string = '';
+  private resourceUrl = environment.hostUrl + 'resource';
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-type': 'application/json' })
+  };
+
+  constructor(public http: HttpClient) {
+    let key: string = '';
+    const json = localStorage.getItem(AUTH_KEY);
+    if (json) {
+      const res = JSON.parse(json) as LoginRes;
+      if (res) key = res.key;
+    }
+    this.fileBaseUrl = `${this.resourceUrl}/GetFileByName?key=${key}&name=`;
   }
 
-  public editEnable(enable:boolean){
+  public opened(noteId: string) {
+    this.fileBaseUrl = `${this.resourceUrl}/GetNoteFileByName?noteId=${noteId}&name=`;
+  }
+
+  public editEnable(enable: boolean) {
     this.canEdit = enable;
-    this.initBackupInfo();
   }
 
   public selectNode(node: DocumentNode) {
@@ -131,7 +149,6 @@ export class EditorService {
     // case 1：托h 放h 若在同一个父h之下，托h置于放h之后
     if (this.Headlines.indexOf(this.dragNode.type) != -1 && this.Headlines.indexOf(dropNode.type) != -1) {
       if (dragParent != dropParent) return;
-      this.backup();
       if (!dropParent) {
         this.nodes = this.nodes.filter(x => x != this.dragNode);
         let index = this.nodes.indexOf(dropNode);
@@ -155,7 +172,6 @@ export class EditorService {
 
     // case 3：托e 放h 托e置于放h子元素集合最后
     if (this.Headlines.indexOf(this.dragNode.type) == -1 && this.Headlines.indexOf(dropNode.type) != -1) {
-      this.backup();
       if (dragParent) dragParent.children = dragParent.children.filter(x => x != this.dragNode);
       dropNode.children.push(this.dragNode);
       return;
@@ -163,7 +179,6 @@ export class EditorService {
 
     // case 4：托e 放e 托e置于放e之后
     if (this.Headlines.indexOf(this.dragNode.type) == -1 && this.Headlines.indexOf(dropNode.type) == -1) {
-      this.backup();
       if (dragParent) dragParent.children = dragParent.children.filter(x => x != this.dragNode);
       if (dropParent) {
         let index = dropParent.children.indexOf(dropNode);
@@ -181,42 +196,6 @@ export class EditorService {
       if (parent) break;
     }
     return parent;
-  }
-
-  // 备份数据
-  public backup() {
-    if(!this.canEdit) return;
-    let index = 1;
-    for (const key of this.BackupKeys) {
-      if (index == this.BackupKeys.length) {
-        const json = JSON.stringify(this.nodes);
-        localStorage.setItem(`${this.BackupKeyPrefix}${index}`, json);
-        break;
-      }
-      const up = localStorage.getItem(`${this.BackupKeyPrefix}${index + 1}`);
-      if (up) localStorage.setItem(`${this.BackupKeyPrefix}${index}`, up);
-      index++;
-    }
-    this.canBack = true;
-  }
-
-  // 回退数据
-  public fallback() {
-    if(!this.canEdit) return;
-    const json = localStorage.getItem(`${this.BackupKeyPrefix}${this.BackupCount}`);
-    if (!json) {
-      this.canBack = false;
-      return;
-    }
-    let data = JSON.parse(json) as DocumentNode[];
-    this.nodes = [];
-    this.nodes = this.convertNodes(data);
-    for (let index = this.BackupKeys.length; index > 0; index--) {
-      if (index == 1) localStorage.removeItem(`${this.BackupKeyPrefix}1`)
-      const down = localStorage.getItem(`${this.BackupKeyPrefix}${index - 1}`);
-      if (!down) localStorage.removeItem(`${this.BackupKeyPrefix}${index}`);
-      else localStorage.setItem(`${this.BackupKeyPrefix}${index}`, down);
-    }
   }
 
   public convertNodes(nodes: DocumentNode[]): DocumentNode[] {
@@ -238,8 +217,7 @@ export class EditorService {
   }
 
   public insertNode(preNode: DocumentNode, node: DocumentNode) {
-    if(!this.canEdit) return;
-    this.backup();
+    if (!this.canEdit) return;
     const parent = this.getNodeParent(preNode);
     if (!parent && node.type == DocumentNodeType.h2) {
       const index = this.nodes.indexOf(preNode);
@@ -252,15 +230,14 @@ export class EditorService {
   }
 
   public insertNotHeadPeerNode(preNode: DocumentNode, nodeType: DocumentNodeType) {
-    if(!this.canEdit) return;
+    if (!this.canEdit) return;
     const node = this.nodeFactory(nodeType);
     this.insertNode(preNode, node);
   }
 
   public removeNode(node: DocumentNode) {
-    if(!this.canEdit) return;
+    if (!this.canEdit) return;
     const parent = this.getNodeParent(node);
-    this.backup();
     if (!parent) {
       this.nodes = this.nodes.filter(x => x != node);
     } else {
@@ -268,15 +245,15 @@ export class EditorService {
     }
   }
 
-  private initBackupInfo(){
-    if(!this.canEdit) return;
-    for (let index = 0; index < this.BackupCount; index++) {
-      this.BackupKeys.push(`${this.BackupKeyPrefix}${index + 1}`)
-    }
-    for (const key of this.BackupKeys) {
-      localStorage.removeItem(key);
-    }
+
+
+  public uploadfile(ownerId: string, category: FileCategory, formData: FormData): Observable<ResponseResult<string>> {
+    const url = `${this.resourceUrl}/Save?ownerId=${ownerId}&category=${category}`;
+    return this.http.post<ResponseResult<string>>(url, formData)
+      .pipe(catchError(this.handleError));
   }
+
+
 
   private getParent(child: DocumentNode, current: DocumentNode): DocumentNode | null {
     if (!current.children) return null;
@@ -314,5 +291,12 @@ export class EditorService {
     data.data = node.data;
     data.children = [];
     return data;
+  }
+
+
+
+  private handleError(error: HttpErrorResponse) {
+    const msg = `${error.status}  ${error.message}`
+    return throwError(() => msg);
   }
 }

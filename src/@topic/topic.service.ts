@@ -7,7 +7,7 @@ import { FileCategory } from 'src/@resource/model';
 import { AUTH_KEY, LoginRes } from 'src/@security/auth.service';
 import { OptionItem, ResponsePagingResult, ResponseResult } from 'src/@shared/models/paging.model';
 import { environment } from 'src/environments/environment';
-import { DomainElet, SequnceM, TopicElet } from './model';
+import { DomainElet, NoteContentM, SequnceM, TopicElet } from './model';
 
 @Injectable({
   providedIn: 'root'
@@ -178,6 +178,16 @@ export class TopicService {
 
   public sortNote(param: SequnceM): Observable<ResponseResult<boolean>> {
     const url = `${this.noteUrl}/sortMyNotes`;
+    return this.http.patch<ResponseResult<boolean>>(url, param, this.httpOptions).pipe(catchError(this.handleError));
+  }
+
+  public getNoteContent(id: string): Observable<ResponseResult<NoteContentM>> {
+    const url = `${this.noteUrl}/GetContent?id=${id}`;
+    return this.http.get<ResponseResult<NoteContentM>>(url).pipe(catchError(this.handleError));
+  }
+
+  public saveNoteContent(param: NoteContentM): Observable<ResponseResult<boolean>> {
+    const url = `${this.noteUrl}/saveContent`;
     return this.http.patch<ResponseResult<boolean>>(url, param, this.httpOptions).pipe(catchError(this.handleError));
   }
 

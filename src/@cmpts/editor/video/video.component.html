@@ -15,7 +15,7 @@
       </button>
     </div>
     <div class="editor-video-container" *ngIf="node.url && !service.printMode" #view>
-      <video controls [src]="node.url" [loop]="true" [volume]="0.2"></video>
+      <video controls [src]="service.fileBaseUrl+node.url" [loop]="true" [volume]="0.2"></video>
       <div class="editor-video-name">{{ node.content }}</div>
     </div>
   </div>

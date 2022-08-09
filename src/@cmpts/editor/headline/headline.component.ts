@@ -66,13 +66,11 @@ export class HeadlineComponent implements OnInit {
         break;
     }
     const node = this.service.nodeFactory(type);
-    this.service.backup();
     this.node.children.push(node);
   }
 
   addChild(type: DocumentNodeType) {
     const node = this.service.nodeFactory(type);
-    this.service.backup();
     this.node.children.push(node);
   }
 

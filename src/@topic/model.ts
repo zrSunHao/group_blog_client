@@ -20,3 +20,8 @@ export class SequnceM {
     dragObjectId: string = '';
     dropTargets: OptionItem[] = [];
 }
+
+export class NoteContentM {
+    id: string = '';
+    content: string = '';
+}

@@ -1,17 +1,15 @@
 <div class="page">
   <div>
     <div class="topbar">
-      <mat-icon>dashboard</mat-icon>
-      <div>
-        <h2>主题管理</h2>
-      </div>
+      <mat-icon class="topbar-icon">dashboard</mat-icon>
+      <div><h2>笔记管理 - [{{noteName}}]</h2></div>
       <div class="box-fill"></div>
       <button type="button" mat-raised-button color="primary" (click)="onEditEnable()" *ngIf="!serv.canEdit"><mat-icon>edit</mat-icon> 修改</button>
-      <button type="button" mat-raised-button color="primary" (click)="onAddH2()" *ngIf="serv.canEdit"><mat-icon>refresh</mat-icon> 添加顶级标题</button>
-      <button type="button" mat-raised-button color="primary" (click)="onTempSave()" *ngIf="serv.canEdit"><mat-icon>refresh</mat-icon> 暂存</button>
-      <button type="button" mat-raised-button color="primary" (click)="onSave()" *ngIf="serv.canEdit"><mat-icon>refresh</mat-icon> 保存</button>
-      <button type="button" mat-raised-button color="primary" (click)="onPrintClick()"><mat-icon>refresh</mat-icon> 打印</button>
-      <button type="button" mat-raised-button color="primary" (click)="onBackClick()"><mat-icon>refresh</mat-icon> 返回</button>
+      <button type="button" mat-raised-button color="primary" (click)="onAddH2()" *ngIf="serv.canEdit"><mat-icon>account_tree</mat-icon> 添加顶级标题</button>
+      <button type="button" mat-raised-button color="primary" (click)="onSave()" *ngIf="serv.canEdit"><mat-icon>backup</mat-icon> 保存</button>
+      <button type="button" mat-raised-button color="primary" (click)="onReadOnly()" *ngIf="serv.canEdit"><mat-icon>edit_off</mat-icon> 退出修改</button>
+      <button type="button" mat-raised-button color="primary" (click)="onPrintClick()"><mat-icon>print</mat-icon> 打印</button>
+      <button type="button" mat-raised-button color="primary" (click)="onBackClick()"><mat-icon>arrow_back</mat-icon> 返回</button>
     </div>
   </div>
   <div class="body-container">

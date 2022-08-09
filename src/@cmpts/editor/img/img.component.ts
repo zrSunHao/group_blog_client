@@ -1,4 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { FileCategory } from 'src/@resource/model';
+import { NotifyService } from 'src/@shared/services/notify.service';
 import { EditorService, DocumentNode, LooseObject } from '../editor.service';
 
 @Component({
@@ -18,7 +20,8 @@ export class ImgComponent implements OnInit {
   containerStyle: LooseObject = { 'justify-content': 'flex-start' }; //flex-start center flex-end
   imgStyle: LooseObject = { 'max-height': '20rem', };
 
-  constructor(public service: EditorService) { }
+  constructor(public service: EditorService,
+    private notifyServ: NotifyService) { }
 
   ngOnInit() {
     this.onStatusChange();
@@ -33,11 +36,27 @@ export class ImgComponent implements OnInit {
 
   onFileChange(e: any): void {
     if (e?.target?.files?.length) {
-      // const formData = new FormData();
-      // formData.append('avatar', e.target.files[0]);
-      this.node.url = 'assets/imgs/bg_4.png';
-      this.node.content = e.target.files[0].name;
-      console.log(e.target.files[0])
+      const formData = new FormData();
+      formData.append('file', e.target.files[0]);
+      this.service.uploadfile(this.service.noteId, FileCategory.note_img, formData).subscribe(
+        {
+          next: res => {
+            if (res.success) {
+              this.node.url = res.data as string;
+              this.node.content = e.target.files[0].name;
+            } else {
+              const msg = `图片上传失败！！！ ${res.allMessages}`;
+              this.notifyServ.notify(msg, 'error');
+            }
+            this.file = null;
+          },
+          error: err => {
+            const msg = `图片上传失败！！！ ${err}`;
+            this.notifyServ.notify(msg, 'error');
+            this.file = null;
+          }
+        }
+      )
     }
   }
 
