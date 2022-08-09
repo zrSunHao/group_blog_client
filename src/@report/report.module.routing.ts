@@ -4,7 +4,10 @@ import { ReportComponent } from './report.component';
 
 const routes: Routes = [
     {
-        path: '', component: ReportComponent,
+        path: ':type/:id/:name', component: ReportComponent,
+    },
+    {
+        path: '**', redirectTo:'/notfound',
     },
 ]
 

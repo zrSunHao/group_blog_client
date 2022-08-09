@@ -53,7 +53,7 @@ export class NoteComponent implements OnInit {
   }
 
   onPrintClick() {
-    let url = `${location.protocol}//${location.host}/#report`;
+    let url = `${location.protocol}//${location.host}/#report/my/${this.noteId}/${this.noteName}`;
     window.open(url, '_blank');
   }
 

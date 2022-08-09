@@ -7,6 +7,7 @@ import { EditorModule } from 'src/@cmpts/editor/editor.module';
 import { ReportComponent } from './report.component';
 import { ReportRoutingModule } from './report.module.routing';
 import { HeadlineComponent } from './cmpts/headline/headline.component';
+import { ReportService } from './report.service';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { HeadlineComponent } from './cmpts/headline/headline.component';
     EditorModule,
     ReportRoutingModule
   ],
-  declarations: [ReportComponent,HeadlineComponent]
+  declarations: [ReportComponent, HeadlineComponent],
+  providers: [ReportService]
 })
 export class ReportModule { }
