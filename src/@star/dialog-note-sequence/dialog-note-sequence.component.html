@@ -1,0 +1,12 @@
+<div mat-dialog-title class="header">
+  <h3>笔记排序</h3>
+</div>
+<div mat-dialog-content cdkDropList (cdkDropListDropped)="drop($event)">
+  <div class="note-item" *ngFor="let item of data" cdkDrag >
+    {{ item.name }}
+  </div>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button color="warn" (click)="onCloseClick()">取消</button>
+  <button mat-button color="accent" (click)="onSaveClick()">保存</button>
+</div>

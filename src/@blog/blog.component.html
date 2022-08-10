@@ -8,19 +8,19 @@
       <div class="box-fill"></div>
       <mat-form-field appearance="legacy" color="accent">
         <mat-label>笔记标题与关键字</mat-label>
-        <input matInput placeholder="请输入要查询的标题与关键字" autocomplete="off">
+        <input matInput placeholder="请输入要查询的标题与关键字" autocomplete="off" [(ngModel)]="filter">
       </mat-form-field>
-      <button type="button" mat-raised-button color="primary"><mat-icon>refresh</mat-icon> 重置</button>
-      <button type="button" mat-raised-button color="primary"><mat-icon>search</mat-icon> 查询</button>
+      <button type="button" mat-raised-button color="primary" (click)="onResetClick()"><mat-icon>autorenew</mat-icon> 重置</button>
+      <button type="button" mat-raised-button color="primary" (click)="onSearchClick()"><mat-icon>search</mat-icon> 查询</button>
     </div>
   </div>
   <div class="body-container bg-image-net">
     <div class="note-wrap">
-      <app-note-item *ngFor="let item of [].constructor(15)"
-       (onClick)="onNoteClick(item)"></app-note-item>
+      <app-note-item *ngFor="let note of notes" [data]="note" [fileBaseUrl]="hostServ.fileBaseUrl" [isAuthor]="false"
+       (onClick)="onNoteOpClick($event,note)" [type]="noteType.public"></app-note-item>
     </div>
     <div class="footer">
-      <app-paginator [total]="total" [columns]="columns" [columnOp]="columnOp" (onChange)="onPaginatorChange($event)">
+      <app-paginator [total]="total" [columns]="columns" [columnOp]="columnOp" [pageSize]="pageSize" (onChange)="onPaginatorChange($event)">
       </app-paginator>
     </div>
   </div>

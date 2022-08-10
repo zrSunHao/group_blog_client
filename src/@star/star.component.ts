@@ -3,13 +3,15 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ColumnElet, ColumnOp } from 'src/@cmpts/column-item/column-item.component';
-import { NoteElet } from 'src/@cmpts/note-item/note-item.component';
+import { NoteElet, NoteOp, NoteType } from 'src/@cmpts/note-item/note-item.component';
 import { FileCategory } from 'src/@resource/model';
 import { ConfirmDialogComponent } from 'src/@shared/cmpts/confirm-dialog/confirm-dialog.component';
 import { OptionItem } from 'src/@shared/models/paging.model';
 import { NotifyService } from 'src/@shared/services/notify.service';
 import { SequnceM } from 'src/@topic/model';
 import { DialogColumnComponent } from './dialog-column/dialog-column.component';
+import { DialogNoteSequenceComponent } from './dialog-note-sequence/dialog-note-sequence.component';
+import { DialogNoteToColumnComponent } from './dialog-note-to-column/dialog-note-to-column.component';
 import { StarService } from './star.service';
 
 @Component({
@@ -22,6 +24,7 @@ export class StarComponent implements OnInit {
   selectedColumn: ColumnElet | null = null;
   columns: ColumnElet[] = [];
   notes: NoteElet[] = [];
+  noteType = NoteType;
 
   @ViewChild("imageInput", { static: false })
   imageInput!: ElementRef;
@@ -37,10 +40,6 @@ export class StarComponent implements OnInit {
 
   ngOnInit() {
     this.onResetClick();
-  }
-
-  onNoteClick(note: any) {
-    this.router.navigate(['read']);
   }
 
   onResetClick() {
@@ -114,6 +113,64 @@ export class StarComponent implements OnInit {
   onColumnDrop(event: CdkDragDrop<ColumnElet[]>): void {
     moveItemInArray(this.columns, event.previousIndex, event.currentIndex);
     this.columnSort();
+  }
+
+  onNoteOpClick(op: NoteOp, note: NoteElet): void {
+    switch (op) {
+      case NoteOp.see:
+        this.onNoteSeeClick(note);
+        break;
+      case NoteOp.to_column:
+        this.onNoteToColumnClick(note);
+        break;
+      case NoteOp.delete:
+        this.onNoteDeleteClick(note);
+        break;
+    }
+  }
+
+  onSortNote(): void {
+    const dialogRef = this.dialog.open(DialogNoteSequenceComponent,
+      { width: '360px', data: this.notes, }
+    );
+    dialogRef.afterClosed().subscribe(result => {
+      if (!result?.op || result?.op != 'save') {
+        this.getNoteList();
+      }
+    });
+  }
+
+  private onNoteSeeClick(n: NoteElet): void {
+    this.router.navigate(['read']);
+  }
+
+  private onNoteToColumnClick(n: NoteElet) {
+    let data = {
+      columnId: n.columnId,
+      name: n.name,
+      contentId: n.contentId as string
+    }
+    const dialogRef = this.dialog.open(DialogNoteToColumnComponent,
+      { width: '360px', data: data, }
+    );
+    dialogRef.afterClosed().subscribe(result => {
+      if (result?.op === 'save' && result?.data) {
+        const res: any = result?.data;
+        n.columnId = res.columnId;
+        this.notes = this.notes.filter(x => x.columnId == this.selectedColumn?.id);
+      }
+    });
+  }
+
+  private onNoteDeleteClick(n: NoteElet): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '260px',
+      data: `确定要取消收藏[${n.name}]笔记吗？`,
+    });
+
+    dialogRef.afterClosed().subscribe((result: string) => {
+      if (result === 'yes') this._cancelNote(n);
+    });
   }
 
   private columnSort(): void {
@@ -249,6 +306,24 @@ export class StarComponent implements OnInit {
       },
       error: err => {
         const msg = `笔记数据加载失败！！！ ${err}`;
+        this.notifyServ.notify(msg, 'error');
+      }
+    });
+  }
+
+  private _cancelNote(n: NoteElet): void {
+    this.hostServ.cancelNote(n.contentId as string).subscribe({
+      next: res => {
+        if (res.success) {
+          this.notes = this.notes.filter(x => x.id != n.id);
+          this.notifyServ.notify(`取消收藏笔记[${n.name}]成功！！！`, 'success');
+        } else {
+          const msg = `取消收藏笔记[${n.name}]失败！！！ ${res.allMessages}`;
+          this.notifyServ.notify(msg, 'error');
+        }
+      },
+      error: err => {
+        const msg = `取消收藏笔记[${n.name}]失败！！！ ${err}`;
         this.notifyServ.notify(msg, 'error');
       }
     });

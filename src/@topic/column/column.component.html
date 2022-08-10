@@ -3,9 +3,9 @@
     <div class="topbar">
       <mat-icon class="topbar-icon">widgets</mat-icon>
       <div>
-        <h2>[{{topicName}}]主题 - 
-          <span *ngIf="selectedColumn?.name">[{{selectedColumn?.name}}]</span>
-          专栏({{columns.length}})</h2>
+        <h2>[{{topicName}}]主题 - 专栏({{columns.length}})
+          <span *ngIf="selectedColumn?.name"> - [{{selectedColumn?.name}}]</span>
+          </h2>
       </div>
       <div class="box-fill"></div>
       <input type="file" #imageInput [hidden]="true" accept="image/*" (change)="onFileChange($event)" [ngModel]="file"/>

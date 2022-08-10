@@ -13,6 +13,13 @@ export class NoteElet {
   author: string = '';
   opened: boolean = false;
   lastModifiedAt: Date | null = null;
+  checked: boolean | null = null;
+}
+
+export enum NoteType {
+  my = 0,
+  public = 1,
+  favorite = 3,
 }
 
 export enum NoteOp {
@@ -35,8 +42,10 @@ export class NoteItemComponent implements OnInit {
   @Input() data: NoteElet = new NoteElet();
   @Input() fileBaseUrl: string = '';
   @Input() isAuthor = false;
+  @Input() type: NoteType = NoteType.my;
   @Output() onClick: EventEmitter<NoteOp> = new EventEmitter<NoteOp>();
   defaultImgUrl: string = '';
+  noteType = NoteType;
 
   constructor() { }
 

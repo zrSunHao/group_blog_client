@@ -82,6 +82,16 @@ export class StarService {
     return this.http.get<ResponsePagingResult<NoteElet>>(url).pipe(catchError(this.handleError));
   }
 
+  public cancelNote(id: string): Observable<ResponseResult<boolean>> {
+    const url = `${this.noteUrl}/CancelFavorite?id=${id}`;
+    return this.http.delete<ResponseResult<boolean>>(url, this.httpOptions).pipe(catchError(this.handleError));
+  }
+
+  public sortNote(param: SequnceM): Observable<ResponseResult<boolean>> {
+    const url = `${this.noteUrl}/SortFavoriteNotes`;
+    return this.http.patch<ResponseResult<boolean>>(url, param, this.httpOptions).pipe(catchError(this.handleError));
+  }
+
   public logo(ownerId: string, category: FileCategory, formData: FormData): Observable<ResponseResult<string>> {
     const url = `${this.resourceUrl}/Save?ownerId=${ownerId}&category=${category}`;
     return this.http.post<ResponseResult<string>>(url, formData)

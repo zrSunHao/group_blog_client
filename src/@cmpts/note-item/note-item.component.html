@@ -8,7 +8,12 @@
             <h2 [matTooltip]="data.name" matTooltipPosition="left">{{data.name | clip:10}}<br><span [matTooltip]="data.keys" matTooltipPosition="left">{{data.keys | clip:18}}</span></h2>
             <div class="action">
                 <button type="button" mat-raised-button color="primary" (click)="onSeeClick()">查看</button>
-                <button type="button" mat-raised-button color="primary" [matMenuTriggerFor]="operatemenu">操作</button>
+                <button type="button" mat-raised-button color="primary" *ngIf="type==noteType.my" [matMenuTriggerFor]="myoperatemenu">操作</button>
+                <button type="button" mat-raised-button color="primary" *ngIf="type==noteType.public" [disabled]="data.checked" (click)="onToColumnClick()">
+                  <span *ngIf="!data.checked">收藏</span>
+                  <span *ngIf="data.checked">已收藏</span>
+                </button>
+                <button type="button" mat-raised-button color="primary" *ngIf="type==noteType.favorite" [matMenuTriggerFor]="staroperatemenu">操作</button>
             </div>
             <div class="data">
                 <h3 *ngIf="!isAuthor">{{data.author}}<br><span>作者</span></h3>
@@ -21,7 +26,7 @@
     </div>
 </div>
 
-<mat-menu #operatemenu="matMenu">
+<mat-menu #myoperatemenu="matMenu">
     <button mat-menu-item (click)="onLogoClick()">
       <mat-icon>image</mat-icon><span>上传封面</span>
     </button>
@@ -39,6 +44,15 @@
     </button>
     <button mat-menu-item (click)="onDeleteClick()">
       <mat-icon>delete</mat-icon><span>删 除</span>
+    </button>
+  </mat-menu>
+
+  <mat-menu #staroperatemenu="matMenu">
+    <button mat-menu-item (click)="onToColumnClick()">
+      <mat-icon>category</mat-icon><span>移 动</span>
+    </button>
+    <button mat-menu-item (click)="onDeleteClick()">
+      <mat-icon>delete</mat-icon><span>取消收藏</span>
     </button>
   </mat-menu>
   

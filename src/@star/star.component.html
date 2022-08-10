@@ -2,10 +2,11 @@
   <div>
     <div class="topbar">
       <mat-icon class="topbar-icon">dashboard</mat-icon>
-      <div><h2>我的收藏 - 专栏({{columns.length}})</h2></div>
+      <div><h2>我的收藏 - 专栏({{columns.length}}) <span *ngIf="selectedColumn?.name"> - [{{selectedColumn?.name}}]</span> </h2></div>
       <div class="box-fill"></div>
       <input type="file" #imageInput [hidden]="true" accept="image/*" (change)="onFileChange($event)" [ngModel]="file"/>
       <button type="button" mat-raised-button color="primary" (click)="onAddColumnClick()"><mat-icon>add</mat-icon> 添加专栏</button>
+      <button type="button" mat-raised-button color="primary" *ngIf="notes.length>0" (click)="onSortNote()"><mat-icon>sort</mat-icon> 笔记排序</button>
       <button type="button" mat-raised-button color="primary" (click)="onResetClick()"><mat-icon>autorenew</mat-icon> 刷新</button>
     </div>
   </div>
@@ -19,8 +20,8 @@
       </div>
     </div>
     <div class="note-wrap">
-      <app-note-item *ngFor="let item of [].constructor(15)"
-       (onClick)="onNoteClick(item)"></app-note-item>
+      <app-note-item *ngFor="let note of notes" [data]="note" [fileBaseUrl]="hostServ.fileBaseUrl" [isAuthor]="false"
+       (onClick)="onNoteOpClick($event,note)" [type]="noteType.favorite"></app-note-item>
     </div>
   </div>
 </div>

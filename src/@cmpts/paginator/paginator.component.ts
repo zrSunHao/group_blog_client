@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 export interface Paginator {
   total: number;
@@ -41,7 +41,7 @@ export class PaginatorComponent implements OnInit, OnChanges {
     this.btnStatus();
   }
 
-  ngOnChanges(changes: any) {
+  ngOnChanges(changes: SimpleChanges) {
     this.btnStatus();
   }
 

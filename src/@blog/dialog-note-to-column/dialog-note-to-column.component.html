@@ -1,0 +1,18 @@
+<div mat-dialog-title class="header">
+  <h3>收藏[{{origionName}}]</h3>
+</div>
+<div mat-dialog-content>
+  <form [formGroup]="form" class="favorite-form">
+    <mat-form-field appearance="outline">
+      <mat-label>收藏专栏名称</mat-label>
+      <mat-select formControlName="columnId">
+        <mat-option *ngFor="let item of columns" [value]="item.key">{{item.value}}</mat-option>
+      </mat-select>
+      <mat-icon matSuffix>category</mat-icon>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button color="warn" (click)="onCloseClick()">取消</button>
+  <button mat-button [disabled]="!form.valid" color="accent" (click)="onSaveClick()">保存</button>
+</div>

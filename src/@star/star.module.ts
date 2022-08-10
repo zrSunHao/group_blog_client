@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 import { SharedModule } from 'src/@shared/shared.module';
 
@@ -19,8 +20,10 @@ import { StarComponent } from './star.component';
 import { StarRoutingModule } from './star.module.routing';
 import { StarService } from './star.service';
 import { DialogColumnComponent } from './dialog-column/dialog-column.component';
+import { DialogNoteToColumnComponent } from './dialog-note-to-column/dialog-note-to-column.component';
+import { DialogNoteSequenceComponent } from './dialog-note-sequence/dialog-note-sequence.component';
 
-const mats = [DragDropModule, MatButtonModule, MatMenuModule, MatIconModule, MatFormFieldModule, MatInputModule];
+const mats = [DragDropModule, MatButtonModule, MatMenuModule, MatIconModule, MatFormFieldModule, MatInputModule, MatSelectModule];
 const shareds = [SharedModule, NoteItemModule, ColumnItemModule];
 
 @NgModule({
@@ -29,7 +32,7 @@ const shareds = [SharedModule, NoteItemModule, ColumnItemModule];
     ...mats, ...shareds,
     StarRoutingModule
   ],
-  declarations: [StarComponent, DialogColumnComponent],
+  declarations: [StarComponent, DialogColumnComponent, DialogNoteToColumnComponent, DialogNoteSequenceComponent],
   providers: [StarService]
 })
 export class StarModule { }
