@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,17 +17,19 @@ import { NoteItemModule } from 'src/@cmpts/note-item/note-item.module';
 
 import { StarComponent } from './star.component';
 import { StarRoutingModule } from './star.module.routing';
+import { StarService } from './star.service';
+import { DialogColumnComponent } from './dialog-column/dialog-column.component';
 
 const mats = [DragDropModule, MatButtonModule, MatMenuModule, MatIconModule, MatFormFieldModule, MatInputModule];
 const shareds = [SharedModule, NoteItemModule, ColumnItemModule];
 
 @NgModule({
   imports: [
-    CommonModule,
-    ...mats,
-    ...shareds,
+    CommonModule, FormsModule, ReactiveFormsModule,
+    ...mats, ...shareds,
     StarRoutingModule
   ],
-  declarations: [StarComponent]
+  declarations: [StarComponent, DialogColumnComponent],
+  providers: [StarService]
 })
 export class StarModule { }

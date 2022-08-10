@@ -28,6 +28,7 @@ export class ColumnItemComponent implements OnInit {
   @Input() data: ColumnElet = new ColumnElet();
   @Input() fileBaseUrl: string = '';
   @Input() selectedId: string | null | undefined = '';
+  @Input() isFavorite: boolean = false;
   @Output() onOperate: EventEmitter<ColumnOp> = new EventEmitter<ColumnOp>();
 
   constructor() { }

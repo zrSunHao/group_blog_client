@@ -13,6 +13,7 @@ import { PaginatorModule } from 'src/@cmpts/paginator/paginator.module';
 
 import { BlogComponent } from './blog.component';
 import { BlogRoutingModule } from './blog.module.routing';
+import { BlogService } from './blog.service';
 
 const mats = [MatInputModule, MatFormFieldModule, MatButtonModule, MatMenuModule, MatIconModule,];
 const cmpts = [NoteItemModule, PaginatorModule,];
@@ -25,6 +26,7 @@ const cmpts = [NoteItemModule, PaginatorModule,];
     SharedModule,
     BlogRoutingModule
   ],
-  declarations: [BlogComponent]
+  declarations: [BlogComponent],
+  providers: [BlogService]
 })
 export class BlogModule { }

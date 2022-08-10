@@ -8,6 +8,7 @@ export enum FileCategory {
     note_vedio = 5,
     topic_logo = 11,
     column_logo = 12,
+    favorite_column_logo = 13,
 }
 
 export class ResourceFilter {

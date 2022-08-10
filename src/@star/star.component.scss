@@ -23,12 +23,15 @@
 }
 
 .note-wrap {
-    display: grid;
-    column-count: 1;
-    gap: 1rem;
+    display: flex;
+    column-gap: 15px;
+    row-gap: 15px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
     max-height: calc(100vh - 9rem);
     margin-top: 1rem;
-    width: 768px;
+    width: 800px;
     overflow-y: auto;
     overflow-x: hidden;
     margin-left: 1rem;

@@ -2,22 +2,19 @@
   <div>
     <div class="topbar">
       <mat-icon class="topbar-icon">dashboard</mat-icon>
-      <div><h2>我的收藏 - 专栏(12)</h2></div>
+      <div><h2>我的收藏 - 专栏({{columns.length}})</h2></div>
       <div class="box-fill"></div>
-      <mat-form-field appearance="legacy" color="accent">
-        <mat-label>笔记标题</mat-label>
-        <input matInput placeholder="请输入要查询的笔记标题" autocomplete="off">
-      </mat-form-field>
-      <button type="button" mat-raised-button color="primary"><mat-icon>add</mat-icon> 查询</button>
-      <button type="button" mat-raised-button color="primary"><mat-icon>refresh</mat-icon> 重置</button>
-      <button type="button" mat-raised-button color="primary"><mat-icon>refresh</mat-icon> 刷新</button>
+      <input type="file" #imageInput [hidden]="true" accept="image/*" (change)="onFileChange($event)" [ngModel]="file"/>
+      <button type="button" mat-raised-button color="primary" (click)="onAddColumnClick()"><mat-icon>add</mat-icon> 添加专栏</button>
+      <button type="button" mat-raised-button color="primary" (click)="onResetClick()"><mat-icon>autorenew</mat-icon> 刷新</button>
     </div>
   </div>
   <div class="body-container bg-image-net">
     <div class="column-collect">
       <div class="column-box">
-        <div class="column-wrap">
-          <app-column-item *ngFor="let item of [].constructor(8)"></app-column-item>
+        <div class="column-wrap" cdkDropList (cdkDropListDropped)="onColumnDrop($event)">
+          <app-column-item [selectedId]="selectedColumn?.id" [data]="column" *ngFor="let column of columns" cdkDrag [isFavorite]="true"
+           [fileBaseUrl]="hostServ.fileBaseUrl" (onOperate)="onColumnOpClick($event,column)"></app-column-item>
         </div>
       </div>
     </div>

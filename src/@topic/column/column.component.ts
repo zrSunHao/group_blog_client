@@ -53,10 +53,10 @@ export class ColumnComponent implements OnInit {
   }
 
   onAddColumnClick() {
-    let topic = new ColumnElet();
-    topic.topicId = this.topicId;
+    let column = new ColumnElet();
+    column.topicId = this.topicId;
     const dialogRef = this.dialog.open(DialogColumnComponent,
-      { width: '360px', data: topic, }
+      { width: '360px', data: column, }
     );
     dialogRef.afterClosed().subscribe(result => {
       if (result?.op === 'save' && result?.data) {
@@ -400,7 +400,7 @@ export class ColumnComponent implements OnInit {
         this.notes = res.data;
       },
       error: err => {
-        const msg = `文章数据加载失败！！！ ${err}`;
+        const msg = `笔记数据加载失败！！！ ${err}`;
         this.notifyServ.notify(msg, 'error');
       }
     });

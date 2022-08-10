@@ -12,7 +12,7 @@
   <button mat-menu-item (click)="onLogoClick()">
     <mat-icon>image</mat-icon><span>上传Logo</span>
   </button>
-  <button mat-menu-item (click)="onAddNoteClick()">
+  <button mat-menu-item (click)="onAddNoteClick()" *ngIf="!isFavorite">
     <mat-icon>view_week</mat-icon><span>添加笔记</span>
   </button>
   <button mat-menu-item (click)="onUpdateClick()">
