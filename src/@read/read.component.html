@@ -1,15 +1,13 @@
 <div class="page">
   <div>
     <div class="topbar">
-      <mat-icon>dashboard</mat-icon>
+      <mat-icon class="topbar-icon">dashboard</mat-icon>
       <div>
-        <h2>阅读 - 这是笔记标题</h2>
+        <h2>阅读 - {{noteName}}</h2>
       </div>
       <div class="box-fill"></div>
-      <button type="button" mat-raised-button color="primary" (click)="onFavoriteClick()" *ngIf="!star"><mat-icon>edit</mat-icon> 收藏</button>
-      <button type="button" mat-raised-button color="primary" (click)="onCancelClick()" *ngIf="star"><mat-icon>edit</mat-icon> 取消收藏</button>
-      <button type="button" mat-raised-button color="primary" (click)="onPrintClick()"><mat-icon>refresh</mat-icon> 打印</button>
-      <button type="button" mat-raised-button color="primary" (click)="onBackClick()"><mat-icon>refresh</mat-icon> 返回</button>
+      <button type="button" mat-raised-button color="primary" (click)="onPrintClick()"><mat-icon>print</mat-icon> 打印</button>
+      <button type="button" mat-raised-button color="primary" (click)="onBackClick()"><mat-icon>arrow_back</mat-icon> 返回</button>
     </div>
   </div>
   <div class="body-container">

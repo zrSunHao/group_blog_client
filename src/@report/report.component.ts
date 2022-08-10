@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DocumentNode, EditorService } from 'src/@cmpts/editor/editor.service';
-import { GetDocumentData } from 'src/@cmpts/editor/help';
 import { ResponseResult } from 'src/@shared/models/paging.model';
 import { NotifyService } from 'src/@shared/services/notify.service';
 import { NoteContentM } from 'src/@topic/model';
@@ -74,7 +73,6 @@ export class ReportComponent implements OnInit {
     const data = res.data as NoteContentM;
     if (data.content) {
       let nodes = JSON.parse(data.content) as DocumentNode[];
-      console.log(nodes)
       this.serv.nodes = this.serv.convertNodes(nodes)
 
       setTimeout(() => {

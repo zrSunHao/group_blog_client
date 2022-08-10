@@ -141,7 +141,7 @@ export class StarComponent implements OnInit {
   }
 
   private onNoteSeeClick(n: NoteElet): void {
-    this.router.navigate(['read']);
+    this.router.navigate([`read/${n.contentId}/${n.name}`]);
   }
 
   private onNoteToColumnClick(n: NoteElet) {

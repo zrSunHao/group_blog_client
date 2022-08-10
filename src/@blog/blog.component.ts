@@ -76,7 +76,7 @@ export class BlogComponent implements OnInit {
   }
 
   private onNoteSeeClick(n: NoteElet) {
-    this.router.navigate(['read']);
+    this.router.navigate([`read/${n.contentId}/${n.name}`]);
   }
 
   private onNoteFavoriteClick(n: NoteElet) {

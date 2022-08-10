@@ -9,6 +9,7 @@ import { EditorModule } from 'src/@cmpts/editor/editor.module';
 
 import { ReadComponent } from './read.component';
 import { ReadRoutingModule } from './read.module.routing';
+import { ReadService } from './read.service';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { ReadRoutingModule } from './read.module.routing';
     EditorModule,
     ReadRoutingModule
   ],
-  declarations: [ReadComponent]
+  declarations: [ReadComponent],
+  providers: [ReadService]
 })
 export class ReadModule { }

@@ -4,7 +4,10 @@ import { ReadComponent } from './read.component';
 
 const routes: Routes = [
     {
-        path: '', component: ReadComponent,
+        path: ':id/:name', component: ReadComponent,
+    },
+    {
+        path: '**', redirectTo: '/notfound',
     },
 ]
 
