@@ -51,7 +51,7 @@ export class NoteItemComponent implements OnInit {
 
   ngOnInit() {
     let index = Math.ceil(Math.random() * 10);
-    this.defaultImgUrl = `assets/files/card_${index}.png`
+    this.defaultImgUrl = `assets/imgs/card_${index}.png`
   }
 
   onSeeClick() {
