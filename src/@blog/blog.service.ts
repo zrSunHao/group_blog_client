@@ -20,6 +20,10 @@ export class BlogService {
   };
 
   constructor(public http: HttpClient) {
+    this.init();
+  }
+
+  public init() {
     let key: string = '';
     const json = localStorage.getItem(AUTH_KEY);
     if (json) {

@@ -44,6 +44,7 @@ export class ColumnComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.hostServ.init();
     this.route.params.subscribe(params => {
       this.topicId = params['topicId'];
       this.domainId = params['domainId'];

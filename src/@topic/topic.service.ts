@@ -26,6 +26,9 @@ export class TopicService {
   public dragTopicDomain: DomainElet | null = null;
 
   constructor(public http: HttpClient) {
+  }
+
+  public init(){
     let key: string = '';
     const json = localStorage.getItem(AUTH_KEY);
     if (json) {

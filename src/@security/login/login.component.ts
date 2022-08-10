@@ -24,6 +24,11 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    const json = localStorage.getItem(AUTH_KEY);
+    if (json) {
+      const res = JSON.parse(json) as LoginRes;
+      if (res) this.router.navigate(['/']);
+    }
   }
 
   login(): void {
@@ -35,6 +40,7 @@ export class LoginComponent implements OnInit {
         if (res.success) {
           const loginRes = res.data as LoginRes;
           localStorage.setItem(AUTH_KEY, JSON.stringify(loginRes));
+          //window.location.reload();
           this.router.navigate(['/']);
         } else {
           const msg = `登录失败！！！ ${res.allMessages}`;

@@ -32,6 +32,7 @@ export class TopicComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.hostServ.init();
     this.getDomainList();
   }
 

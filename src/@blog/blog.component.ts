@@ -34,6 +34,7 @@ export class BlogComponent implements OnInit {
     private dialog: MatDialog,) { }
 
   ngOnInit() {
+    this.hostServ.init();
     this.onResetClick();
   }
 

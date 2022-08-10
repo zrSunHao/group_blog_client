@@ -23,6 +23,9 @@ export class StarService {
   };
 
   constructor(public http: HttpClient) {
+  }
+
+  public init() {
     let key: string = '';
     const json = localStorage.getItem(AUTH_KEY);
     if (json) {
@@ -31,8 +34,6 @@ export class StarService {
     }
     this.fileBaseUrl = `${this.resourceUrl}/GetFileByName?key=${key}&name=`;
   }
-
-  
 
   public getColumnList(): Observable<ResponsePagingResult<ColumnElet>> {
     const url = `${this.baseUrl}/GetFavoriteColumnList`;

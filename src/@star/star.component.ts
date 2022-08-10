@@ -39,6 +39,7 @@ export class StarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.hostServ.init();
     this.onResetClick();
   }
 

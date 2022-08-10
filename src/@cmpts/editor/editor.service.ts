@@ -102,7 +102,7 @@ export class EditorService {
   public dragNode: DocumentNode | null = null;
   public NodeType = DocumentNodeType;
   public Headlines = [DocumentNodeType.h2, DocumentNodeType.h3, DocumentNodeType.h4, DocumentNodeType.h5, DocumentNodeType.h6];
-  
+
   onToggle: EventEmitter<DocumentNode> = new EventEmitter<DocumentNode>();
   onSelected: EventEmitter<DocumentNode> = new EventEmitter<DocumentNode>();
 
@@ -113,6 +113,9 @@ export class EditorService {
   };
 
   constructor(public http: HttpClient) {
+  }
+
+  public init() {
     let key: string = '';
     const json = localStorage.getItem(AUTH_KEY);
     if (json) {
