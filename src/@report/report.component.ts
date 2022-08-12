@@ -32,7 +32,10 @@ export class ReportComponent implements OnInit {
       this.serv.noteId = this.noteId;
       this.serv.printMode = true;
       this.serv.editEnable(false);
-      if (this.type == 'my') this._getMyContent();
+      if (this.type == 'my') {
+        this._getMyContent();
+        this.serv.init();
+      }
       else {
         this.serv.opened(this.noteId);
         this._getOpenedNoteContent();

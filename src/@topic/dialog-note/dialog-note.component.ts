@@ -22,7 +22,7 @@ export class DialogNoteComponent implements OnInit {
     private notifyServ: NotifyService,
     private hostServ: TopicService) {
     this.form = new FormGroup({
-      name: new FormControl<string | null>(null, [Validators.required, Validators.pattern(/^[\u4E00-\u9FA5A-Za-z0-9_-·]{2,32}$/)]),
+      name: new FormControl<string | null>(null, [Validators.required, Validators.maxLength(32)]),
       keys: new FormControl<string | null>(null, [Validators.required, Validators.maxLength(32)]),
     });
   }
