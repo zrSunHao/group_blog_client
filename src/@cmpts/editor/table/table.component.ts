@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { EditorService, DocumentNode, LooseObject } from '../editor.service';
+import { EditorService, DocumentNode, LooseObject, DocumentNodeType } from '../editor.service';
 
 @Component({
   selector: 'app-table',
@@ -18,6 +18,7 @@ export class TableComponent implements OnInit {
   ths: string[] = [];
   rows: Array<string[]> = [];
   containerStyle: LooseObject = { 'justify-content': 'flex-start' }; //flex-start center flex-end
+  nodeType = DocumentNodeType;
 
   constructor(public service: EditorService) { }
 

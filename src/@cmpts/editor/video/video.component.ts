@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FileCategory } from 'src/@resource/model';
 import { NotifyService } from 'src/@shared/services/notify.service';
-import { EditorService, DocumentNode } from '../editor.service';
+import { EditorService, DocumentNode, DocumentNodeType } from '../editor.service';
 
 @Component({
   selector: 'app-video',
@@ -15,6 +15,7 @@ export class VideoComponent implements OnInit {
   @ViewChild('view', { static: false })
   view!: ElementRef;
   file: any;
+  nodeType = DocumentNodeType;
 
   @Input() node: DocumentNode = new DocumentNode();
 

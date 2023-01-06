@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FileCategory } from 'src/@resource/model';
 import { NotifyService } from 'src/@shared/services/notify.service';
-import { EditorService, DocumentNode, LooseObject } from '../editor.service';
+import { EditorService, DocumentNode, LooseObject, DocumentNodeType } from '../editor.service';
 
 @Component({
   selector: 'app-img',
@@ -15,6 +15,7 @@ export class ImgComponent implements OnInit {
   @ViewChild('view', { static: false })
   view!: ElementRef;
   file: any;
+  nodeType = DocumentNodeType;
 
   @Input() node: DocumentNode = new DocumentNode();
   containerStyle: LooseObject = { 'justify-content': 'flex-start' }; //flex-start center flex-end

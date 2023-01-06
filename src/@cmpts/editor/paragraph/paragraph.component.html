@@ -12,7 +12,11 @@
     </mat-form-field>
     <div class="p-container" *ngIf="!edit" (click)="onInputFocus()" #view>
       <p>
-        <span *ngFor="let ele of elements" [ngStyle]="ele.style">{{ ele.text }}</span>
+        <ng-container *ngFor="let ele of elements">
+          <span *ngIf="ele.type == peType.span" [ngStyle]="ele.style">{{ ele.text }}</span>
+          <sub *ngIf="ele.type == peType.sub">{{ ele.text }}</sub>
+          <sup *ngIf="ele.type == peType.sup">{{ ele.text }}</sup>
+        </ng-container>
       </p>
     </div>
   </div>

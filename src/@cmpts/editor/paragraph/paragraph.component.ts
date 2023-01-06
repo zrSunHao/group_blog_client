@@ -3,7 +3,14 @@ import { EditorService, DocumentNode, DocumentNodeType, LooseObject } from '../e
 
 class PElement {
   text: string = '';
+  type: PEType = PEType.span;
   style: LooseObject = {};
+}
+
+enum PEType {
+  span = 0,
+  sub = 1,
+  sup = 2
 }
 
 @Component({
@@ -23,6 +30,7 @@ export class ParagraphComponent implements OnInit {
   edit: boolean = false;
   focus: boolean = false;
   elements: PElement[] = [];
+  peType = PEType;
 
   constructor(public service: EditorService) { }
 
@@ -63,7 +71,7 @@ export class ParagraphComponent implements OnInit {
   private onParseContent(): PElement[] {
     const eles: PElement[] = [];
     if (!this.node.content) return eles;
-    const reg = /\$\{(.+?)\}/g;
+    const reg = /\[(.+?)\]/g;
     const rs = this.node.content.match(reg);
     if (!rs) {
       const e = new PElement();
@@ -79,15 +87,19 @@ export class ParagraphComponent implements OnInit {
       text = text.replace(reg, `${fix}${symbol}${fix}`);
     })
     const ses: PElement[] = [];
+    console.log(text)
     rs.forEach(x => {
-      x = x.replace('${', '').replace('}', '');
+      x = x.replace('[', '').replace(']', '');
       const ss = x.split('|');
-      if (!ss) ses.push({ text: x, style: {} });
-      else if (ss.length < 2) ses.push({ text: ss[0], style: {} });
+      if (!ss) ses.push({ text: x, style: {}, type: PEType.span });
+      else if (ss.length < 2) ses.push({ text: ss[0], style: {}, type: PEType.span });
       else {
         const e = new PElement();
         e.text = ss[0];
-        e.style = this.onParseStyle(ss[1]);
+        if (ss[1].indexOf('sup') != -1) e.type = PEType.sup;
+        else if (ss[1].indexOf('sub') != -1) e.type = PEType.sub;
+        else e.type = PEType.span;
+        e.style = this.onParseStyle(ss[1], e.type);
         ses.push(e);
       }
     })
@@ -98,25 +110,49 @@ export class ParagraphComponent implements OnInit {
         eles.push(ses[index]);
         index++;
       } else {
-        eles.push({ text: x, style: {} });
+        eles.push({ text: x, style: {}, type: PEType.span });
       }
     })
     return eles;
   }
   //${名称|color:red;background:green;font-weight:bold;}
-
-  private onParseStyle(msg: string): any {
+  // [名称|cg,fl,fb] cr/cg/cb [名称|sub] [名称|sup]
+  private onParseStyle(msg: string, type: PEType): any {
     let style: LooseObject = {};
-    if (!msg) return style;
-    msg = msg.replace('；', ';').replace('：', ':').replace(' ', '');
-    const widgets = msg.split(';');
+    if (!msg || type != PEType.span) return style;
+    msg = msg.replace('，', ',').replace('：', ':').replace(' ', '');
+    const widgets = msg.split(',');
     if (!widgets) return style;
     widgets.forEach(x => {
-      if (x && x.indexOf(':') > 0) {
-        const ts = x.split(':');
-        if (ts.length >= 2) style[`${ts[0]}`] = ts[1];
+      // if (x && x.indexOf(':') > 0) {
+      //   const ts = x.split(':');
+      //   if (ts.length >= 2) style[`${ts[0]}`] = ts[1];
+      // }
+      switch (x) {
+        case 'fl':
+          style[`text-decoration`] = 'underline';
+          style[`text-underline-offset`] = '0.25rem';
+          break;
+        case 'fb':
+          style[`font-weight`] = 'bold';
+          break;
+        case 'cr':
+          style[`color`] = 'red';
+          style[`font-weight`] = 'bold';
+          break;
+        case 'cg':
+          style[`color`] = 'limegreen';
+          style[`font-weight`] = 'bold';
+          break;
+        case 'cb':
+          style[`color`] = 'deepskyblue';
+          style[`font-weight`] = 'bold';
+          break;
+        default:
+          break;
       }
     });
+    console.log(type, widgets)
     return style;
   }
 }

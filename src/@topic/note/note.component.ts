@@ -69,7 +69,7 @@ export class NoteComponent implements OnInit {
         const data = res.data as NoteContentM;
         if (data.content) {
           let nodes = JSON.parse(data.content) as DocumentNode[];
-          console.log(nodes)
+          //console.log(nodes)
           this.serv.nodes = this.serv.convertNodes(nodes)
 
           setTimeout(() => {

@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FileCategory } from 'src/@resource/model';
 import { NotifyService } from 'src/@shared/services/notify.service';
-import { EditorService, DocumentNode } from '../editor.service';
+import { EditorService, DocumentNode, DocumentNodeType } from '../editor.service';
 
 @Component({
   selector: 'app-file',
@@ -18,6 +18,7 @@ export class FileComponent implements OnInit {
   file: any;
   edit: boolean = false;
   focus: boolean = false;
+  nodeType = DocumentNodeType;
 
   constructor(public service: EditorService,
     private notifyServ: NotifyService) { }

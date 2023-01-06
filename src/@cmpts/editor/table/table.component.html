@@ -35,6 +35,9 @@
   <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.p)">
     <mat-icon>subject</mat-icon><span>添加段落</span>
   </button>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.img)">
+    <mat-icon>image</mat-icon><span>图片</span>
+  </button>
   <button mat-menu-item [matMenuTriggerFor]="position">
     <mat-icon>view_week</mat-icon><span>布局</span>
   </button>
@@ -59,11 +62,11 @@
 </mat-menu>
 
 <mat-menu #addother="matMenu">
-  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.img)">
-    <mat-icon>image</mat-icon><span>图片</span>
-  </button>
   <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.list)">
     <mat-icon>format_list_bulleted</mat-icon><span>清单</span>
+  </button>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,nodeType.table)">
+    <mat-icon>grid_on</mat-icon><span>表格</span>
   </button>
   <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.code)">
     <mat-icon>code</mat-icon><span>代码</span>

@@ -64,6 +64,9 @@
 </mat-menu>
 
 <mat-menu #addother="matMenu">
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,nodeType.img)">
+    <mat-icon>image</mat-icon><span>添加图片</span>
+  </button>
   <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,service.NodeType.list)">
     <mat-icon>format_list_bulleted</mat-icon><span>清单</span>
   </button>

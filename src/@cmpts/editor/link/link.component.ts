@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { EditorService, DocumentNode, DocumentLinkNode } from '../editor.service';
+import { EditorService, DocumentNode, DocumentLinkNode, DocumentNodeType } from '../editor.service';
 
 @Component({
   selector: 'app-link',
@@ -16,6 +16,7 @@ export class LinkComponent implements OnInit {
   edit: boolean = false;
   focus: boolean = false;
   links: DocumentLinkNode[] = [];
+  nodeType = DocumentNodeType;
 
   constructor(public service: EditorService) { }
 

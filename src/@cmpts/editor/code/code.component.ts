@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { EditorService, DocumentNode } from '../editor.service';
+import { EditorService, DocumentNode, DocumentNodeType } from '../editor.service';
 
 @Component({
   selector: 'app-code',
@@ -16,6 +16,7 @@ export class CodeComponent implements OnInit {
   edit: boolean = false;
   focus: boolean = false;
   list: string[] = [];
+  nodeType = DocumentNodeType;
 
   constructor(public service: EditorService) { }
 
