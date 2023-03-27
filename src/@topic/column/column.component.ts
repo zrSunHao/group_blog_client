@@ -49,7 +49,14 @@ export class ColumnComponent implements OnInit {
       this.topicId = params['topicId'];
       this.domainId = params['domainId'];
       this.topicName = params['topicName'];
-      this.onResetClick();
+
+      const columnId = localStorage.getItem(this.hostServ.COLUMN_KEY)
+      if (columnId) {
+        this.selectedColumn = new ColumnElet();
+        this.selectedColumn.id = columnId;
+      }
+      this.notes = [];
+      this.getColumnList();
     });
   }
 
@@ -69,6 +76,7 @@ export class ColumnComponent implements OnInit {
 
   onResetClick() {
     this.selectedColumn = null;
+    localStorage.removeItem(this.hostServ.COLUMN_KEY)
     this.notes = [];
     this.getColumnList();
   }
@@ -283,6 +291,9 @@ export class ColumnComponent implements OnInit {
 
   private onColumnSelectedClick(column: ColumnElet): void {
     this.selectedColumn = column;
+    let columnId = column.id;
+    if (!columnId) columnId = ''
+    localStorage.setItem(this.hostServ.COLUMN_KEY, columnId)
     this.getMyNoteList();
   }
 
@@ -379,7 +390,7 @@ export class ColumnComponent implements OnInit {
       next: res => {
         this.columns = res.data;
         if (this.columns.length > 0) {
-          this.selectedColumn = this.columns[0];
+          if(!this.selectedColumn?.id) this.selectedColumn = this.columns[0];
           this.getMyNoteList();
         }
       },

@@ -25,6 +25,8 @@ export class TopicService {
   public dragTopic: TopicElet | null = null;
   public dragTopicDomain: DomainElet | null = null;
 
+  public COLUMN_KEY = 'COLUMN_KEY'
+
   constructor(public http: HttpClient) {
   }
 
