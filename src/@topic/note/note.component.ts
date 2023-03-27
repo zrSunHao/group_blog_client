@@ -74,7 +74,13 @@ export class NoteComponent implements OnInit {
 
           setTimeout(() => {
             for (const item of this.serv.nodes) {
-              if (this.serv.Headlines.indexOf(item.type) != -1) item.open = true;
+              const isH = this.serv.Headlines.indexOf(item.type) != -1;
+              let iscH = false;
+              for (const c of item.children) {
+                const cH = this.serv.Headlines.indexOf(c.type) != -1;
+                if (cH) iscH = true;
+              }
+              if (isH && iscH) item.open = true;
             }
           }, 100);
         }
