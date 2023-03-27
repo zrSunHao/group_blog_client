@@ -1,3 +1,4 @@
+import { NoteElet } from './../@cmpts/note-item/note-item.component';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DocumentNode, EditorService } from 'src/@cmpts/editor/editor.service';
@@ -16,6 +17,11 @@ export class ReportComponent implements OnInit {
   noteId: string = '';
   noteName: string = '';
   type: string = 'my';
+
+  // column、star、blog: onNoteSeeClick 
+  recorder: string = ''
+  exporter: string = ''
+  updatedAt: Date | null = null
 
   public constructor(public serv: EditorService,
     private router: Router,
@@ -40,6 +46,8 @@ export class ReportComponent implements OnInit {
         this.serv.opened(this.noteId);
         this._getOpenedNoteContent();
       }
+      this.exporter = this.serv.getUserName();
+      this._loadNoteInfo(this.noteId);
     });
   }
 
@@ -84,6 +92,15 @@ export class ReportComponent implements OnInit {
         }
       }, 100);
     }
+  }
+
+  private _loadNoteInfo(noteId: string): void {
+    if(noteId == null || noteId == '') return;
+    const json = localStorage.getItem(noteId)
+    if(json == null || json == '' || json == undefined) return;
+    const note = JSON.parse(json) as NoteElet;
+    this.recorder = note.author;
+    this.updatedAt = note.lastModifiedAt;
   }
 
 }

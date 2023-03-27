@@ -142,6 +142,7 @@ export class StarComponent implements OnInit {
   }
 
   private onNoteSeeClick(n: NoteElet): void {
+    localStorage.setItem(n.contentId as string, JSON.stringify(n))
     this.router.navigate([`read/${n.contentId}/${n.name}`]);
   }
 

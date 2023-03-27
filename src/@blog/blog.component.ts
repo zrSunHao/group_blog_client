@@ -77,6 +77,7 @@ export class BlogComponent implements OnInit {
   }
 
   private onNoteSeeClick(n: NoteElet) {
+    localStorage.setItem(n.contentId as string, JSON.stringify(n))
     this.router.navigate([`read/${n.contentId}/${n.name}`]);
   }
 

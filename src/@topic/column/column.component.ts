@@ -204,6 +204,7 @@ export class ColumnComponent implements OnInit {
   }
 
   private onNoteSeeClick(n: NoteElet): void {
+    localStorage.setItem(n.contentId as string, JSON.stringify(n))
     this.router.navigate([`topic/note/${n.contentId}/${n.name}`]);
   }
 

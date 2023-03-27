@@ -125,6 +125,14 @@ export class EditorService {
     this.fileBaseUrl = `${this.resourceUrl}/GetFileByName?key=${key}&name=`;
   }
 
+  public getUserName(): string {
+    const json = localStorage.getItem(AUTH_KEY);
+    if (!json) return ''
+    const res = JSON.parse(json) as LoginRes;
+    if (res) return res.userName;
+    else return ''
+  }
+
   public opened(noteId: string) {
     this.fileBaseUrl = `${this.resourceUrl}/GetNoteFileByName?noteId=${noteId}&name=`;
   }
