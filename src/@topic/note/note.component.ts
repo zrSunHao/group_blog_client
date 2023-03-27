@@ -81,6 +81,7 @@ export class NoteComponent implements OnInit {
                 if (cH) iscH = true;
               }
               if (isH && iscH) item.open = true;
+              else item.open = false;
             }
           }, 100);
         }
