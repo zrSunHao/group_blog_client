@@ -31,6 +31,7 @@
       <mat-icon *ngSwitchCase="NodeType.quote">format_quote</mat-icon>
       <mat-icon *ngSwitchCase="NodeType.table">grid_on</mat-icon>
       <mat-icon *ngSwitchCase="NodeType.video">videocam</mat-icon>
+      <mat-icon *ngSwitchCase="NodeType.text">text_fields</mat-icon>
     </span>
     <div [ngSwitch]="node.type" class="content">{{node.content}}</div>
   </div>

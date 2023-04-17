@@ -1,29 +1,18 @@
 <div class="document-node-container">
-  <div class="node-input-container">
-    <mat-form-field appearance="outline" *ngIf="edit && service.canEdit">
-      <textarea
-        (blur)="onInputBlur()"
-        matInput
-        #input
-        [(ngModel)]="node.content"
-        placeholder="请输入引用内容"
-        rows="5"
-      ></textarea>
-    </mat-form-field>
-    <div class="link-container" *ngIf="!edit" (click)="onInputFocus()" #view>
-      <div class="link-wrap">
-        <div *ngFor="let item of links" class="link-row">
-          <mat-icon color="primary">insert_link</mat-icon>
-          <a [href]="item.url" target="_blank" *ngIf="item.url">
-            {{ item.name }}
-          </a>
-          <span *ngIf="!item.url">{{ item.name }}</span>
-        </div>
-      </div>
+  <div class="node-input-container" (click)="onSetStatus(true)">
+    <div class="tool" *ngIf="status">
+      <button class="op-btn" (click)="onOperate($event, op)" 
+              *ngFor="let op of operates">
+          {{op.name}}
+      </button>
     </div>
+    <div class="text" #text [ngClass]="{'text-focus': status}"></div>
   </div>
   <div class="node-operate-container" *ngIf="service.canEdit">
     <app-operate [nodeType]="node.type" [matMenuTriggerFor]="operatemenu"></app-operate>
+    <div class="save" (click)="onSetStatus(false)" *ngIf="status">
+      <mat-icon color="warn">done_outline</mat-icon>
+    </div>
   </div>
 </div>
 

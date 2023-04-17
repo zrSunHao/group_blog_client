@@ -6,6 +6,7 @@
     <app-headline *ngSwitchCase="nodeType.h6" [node]="item"></app-headline>
 
     <app-paragraph *ngSwitchCase="nodeType.p" [node]="item"></app-paragraph>
+    <app-text *ngSwitchCase="nodeType.text" [node]="item"></app-text>
     <app-img *ngSwitchCase="nodeType.img" [node]="item"></app-img>
     <app-list *ngSwitchCase="nodeType.list" [node]="item"></app-list>
     <app-table *ngSwitchCase="nodeType.table" [node]="item"></app-table>

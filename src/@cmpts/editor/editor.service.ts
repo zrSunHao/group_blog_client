@@ -22,6 +22,7 @@ export enum DocumentNodeType {
   audio = 17,
   video = 18,
   file = 19,
+  text = 20,
   other = 0,
 }
 

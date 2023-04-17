@@ -24,8 +24,8 @@
 </div>
 
 <mat-menu #operatemenu="matMenu">
-  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,nodeType.p)">
-    <mat-icon>subject</mat-icon><span>添加段落</span>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,nodeType.text)">
+    <mat-icon>text_fields</mat-icon><span>添加文本段落</span>
   </button>
   <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,nodeType.img)">
     <mat-icon>image</mat-icon><span>添加图片</span>
@@ -68,5 +68,8 @@
   </button>
   <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,nodeType.video)">
     <mat-icon>videocam</mat-icon><span>视频</span>
+  </button>
+  <button mat-menu-item (click)="service.insertNotHeadPeerNode(node,nodeType.p)">
+    <mat-icon>subject</mat-icon><span>添加段落</span>
   </button>
 </mat-menu>

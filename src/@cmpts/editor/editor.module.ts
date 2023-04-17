@@ -23,6 +23,7 @@ import { ParagraphComponent } from './paragraph/paragraph.component';
 import { QuoteComponent } from './quote/quote.component';
 import { TableComponent } from './table/table.component';
 import { VideoComponent } from './video/video.component';
+import { TextComponent } from './text/text.component';
 import { EditorService } from './editor.service';
 import { OperateComponent } from './operate/operate.component';
 import { TreeComponent } from './tree/tree.component';
@@ -31,7 +32,7 @@ const mats = [MatInputModule, MatFormFieldModule, MatButtonModule, MatIconModule
 const cmpts = [EditorComponent, TreeComponent, OperateComponent,
   HeadlineComponent, ParagraphComponent, TableComponent, ListComponent, CodeComponent,
   FileComponent, ImgComponent, AudioComponent, VideoComponent,
-  LinkComponent, QuoteComponent,];
+  LinkComponent, QuoteComponent,TextComponent];
 
 
 @NgModule({

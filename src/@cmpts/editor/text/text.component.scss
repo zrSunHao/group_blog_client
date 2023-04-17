@@ -1,0 +1,102 @@
+.document-node-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: calc(768px + 82px);
+    margin-bottom: 0.5rem;
+}
+
+.node-input-container {
+    flex: auto;
+}
+
+.node-operate-container {
+    margin-left: 0.5rem;
+}
+
+.text-tool {
+    margin: 0.5rem;
+    width: 50rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+.op-btn{
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    background-color: darkcyan;
+    color: lightgrey;
+    border: darkcyan;
+    border-radius: 0.25rem;
+    padding: 5px 11px;
+    letter-spacing: 0.1rem;
+    transition-duration: 0.4s;
+    font-size: .9rem;
+    cursor: pointer;
+}
+
+.op-btn:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.text {
+    width: 768px;
+    line-height: 2rem;
+    letter-spacing: 0.1rem;
+    outline: none;
+    box-sizing: border-box;
+    text-indent: 2rem;
+    text-underline-offset: 0.25rem;
+    font-size: 1rem;
+}
+
+.text-focus {
+    min-height: 2.5rem;
+    background-color: rgba(86, 85, 85, 0.5);
+    border: 2px solid limegreen;
+    border-radius: 0.25rem;
+    color: silver;
+    padding: 0.5rem;
+    border: 2px solid gray;
+}
+
+.text:empty:before{ 
+    content: '说点啥好呢？'; 
+    color: gray; 
+} 
+.text:focus:before{
+    content:none;
+}
+
+.save {
+    display: flex;
+    width: 60px;
+    height: 30px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-left: 3px solid darkcyan;
+    background: linear-gradient(90deg, rgb(29, 115, 115, 50%), rgb(29, 115, 115, 0%));
+    margin-top: 0.25rem
+}
+
+.save:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+    transition: 0.3s;
+    background: linear-gradient(90deg, rgb(29, 115, 115, 70%), rgb(29, 115, 115, 0%));
+}
+
+.save .mat-icon {
+    margin-left: 5px;
+    width: 18px;
+    height: 18px;
+    line-height: 20px;
+}
+
+.save .material-icons {
+    font-size: 18px;
+}
